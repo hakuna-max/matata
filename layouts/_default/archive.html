@@ -19,7 +19,7 @@
 
   <!-- 总文章数和字数 -->
    <div class="text-info">
-   <p>Total Articles: {{ len .Site.RegularPages }}</p>
+   <p>Articles: {{ len .Site.RegularPages }}</p>
   <p>
     <span>
       <svg
@@ -38,7 +38,7 @@
           p-id="33867"
         ></path>
       </svg>
-    </span>Total Words: {{ printf "%.2f" (div (mul $totalWords 1.0) 1.0) }}
+    </span>Words: {{ printf "%.2f" (div (mul $totalWords 1.0) 1.0) }}
   </p>
 </div>
 </div>
