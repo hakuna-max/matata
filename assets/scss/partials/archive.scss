@@ -2,6 +2,33 @@
     max-width: 800px; /* 设置最大宽度 */
     margin: 0 auto; /* 居中对齐 */
     padding: 20px;
+
+    .icon-text-container {
+      display: flex; // 使用 Flexbox 布局
+      align-items: center; // 垂直居中对齐
+    
+      .material-icons {
+        margin-right: 8px; // 图标与文字之间的间距
+        vertical-align: middle; // 确保图标在文字中垂直居中
+      }
+    
+      .text-info {
+        display: flex; // 子内容使用 Flexbox
+        flex-direction: column; // 按列排列文字内容
+        gap: 4px; // 子内容之间的间距
+    
+        p {
+          margin: 0; // 移除默认的段落间距
+          display: flex; // 使用 Flexbox 布局，方便对齐内部内容
+          align-items: center; // 垂直居中对齐
+        }
+    
+        .icon {
+          display: inline-block; // SVG 图标的内联块布局
+          margin-right: 4px; // 图标与后续文字之间的间距
+        }
+      }
+    }
   
     h1 {
       font-size: 2.5rem; /* 主标题字体大小 */
