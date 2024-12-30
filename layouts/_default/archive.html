@@ -21,7 +21,7 @@
 
   <!-- 总文章数和字数 -->
    <div class="text-info">
-   <p>Articles: {{ len .Site.RegularPages }}</p>
+   <p>Articles: {{ len .Site.RegularPages | sub 1 }}</p>
   <p>
     <span>
       <svg
