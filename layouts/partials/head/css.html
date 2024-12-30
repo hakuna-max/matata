@@ -1,5 +1,4 @@
-{{ $sassOptions := (dict "targetPath" "scss/main.css" "outputStyle" "compressed") }}
-{{ $sass := resources.Get "scss/main.scss" | css.Sass $sassOptions }}
+{{ $sass := resources.Get "scss/main.scss" | css.Sass }}
 
 <!-- 引入 Material Icons -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
