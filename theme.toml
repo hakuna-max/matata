@@ -26,6 +26,6 @@ authors = [
 
 # If porting an existing theme
 [original]
-  author = 'Name of original author'
+  author = 'ZHANG Luping'
   homepage = 'Website of original author'
   repo = 'https://github.com/owner/repo'

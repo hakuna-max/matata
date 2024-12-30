@@ -1,7 +1,16 @@
 {{ define "main" }}
-  {{ .Content }}
-  {{ range site.RegularPages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary }}
-  {{ end }}
+  <!-- 显示网站标题 -->
+  <h1>{{ .Site.Title }}</h1>
+
+  <!-- 显示 Slogan -->
+  <p>{{ .Site.Params.slogan }}</p>
+
+  <!-- 显示连接到不同文档分类的链接 -->
+  <ul>
+    {{ range .Site.Sections }}
+      <li>
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+      </li>
+    {{ end }}
+  </ul>
 {{ end }}

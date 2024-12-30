@@ -1,9 +1,11 @@
-{{- with resources.Get "css/main.css" }}
-  {{- if eq hugo.Environment "development" }}
-    <link rel="stylesheet" href="{{ .RelPermalink }}">
-  {{- else }}
-    {{- with . | minify | fingerprint }}
-      <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
-    {{- end }}
+{{ $sassOptions := (dict "targetPath" "scss/main.css" "outputStyle" "compressed") }}
+{{ $sass := resources.Get "scss/main.scss" | css.Sass $sassOptions }}
+
+{{- if eq hugo.Environment "development" }}
+  <link rel="stylesheet" href="{{ $sass.RelPermalink }}">
+{{- else }}
+  {{ $minified := $sass | minify }}
+  {{- with $minified | fingerprint }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
   {{- end }}
 {{- end }}
