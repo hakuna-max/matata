@@ -1,4 +1,5 @@
-{{ $sass := resources.Get "scss/main.scss" | css.Sass }}
+{{ $opts := dict "transpiler" "libsass" "targetPath" "css/style.css" }}
+{{ $sass := resources.Get "scss/main.scss" | toCSS $opts | minify | fingerprint }}
 
 <!-- 引入 Material Icons -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
