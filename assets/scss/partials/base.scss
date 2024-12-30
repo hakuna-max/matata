@@ -1,30 +1,115 @@
 body {
   margin: 0; /* 移除默认的外边距 */
   padding-top: 60px; /* 添加顶部间距，等于 header 的高度 */
+  padding-bottom: 60px;
   min-height: 100vh; /* 确保占据至少整个视口的高度 */
   background-color: map-get($color-set-1, bg-200); /* 设置背景颜色 */
   color: map-get($color-set-1, text-100); /* 设置字体颜色 */
   font-family: $font-base;
-  // font-weight: 900;
   line-height: 200%;
   letter-spacing: 0.05em;
-}
-.container {
-  max-width: 1200px; /* 最大宽度 */
-  margin: 0 auto; /* 水平居中 */
-  // padding: 20px; /* 内边距 */
 
-  .site-main {
-    transform-origin: top center; /* 确保缩放从顶部中心开始 */
-    transition: transform 0.3s ease; /* 平滑缩放动画 */
-  }
+  .container {
+    max-width: 1200px; /* 最大宽度 */
+    margin: 0 auto; /* 水平居中 */
 
-  @media (max-width: 1200px) {
-    max-width: 95%; /* 小屏幕自适应宽度 */
-  }
+    .site-main {
+      transform-origin: top center; /* 确保缩放从顶部中心开始 */
+      transition: transform 0.3s ease; /* 平滑缩放动画 */
 
-  @media (max-width: 768px) {
-    max-width: 100%; /* 超小屏幕宽度全屏 */
-    padding: 10px; /* 减少内边距 */
+      /* 代码块 */
+      .highlight {
+        display: flex;
+        flex-direction: row; /* 设置水平布局 */
+        border-radius: 16px; /* 圆角 */
+        overflow-x: auto; /* 防止内容溢出 */
+        margin: 0 auto;
+
+        /* 限制代码块最大宽度，与正文对齐 */
+        max-width: inherit;
+        width: 100%; /* 自动占满父容器 */
+        padding: 5px;
+
+        > div {
+          width: inherit;
+          margin: 0;
+          padding: 0;
+        }
+
+        /* 行号列样式 */
+        td:first-child {
+          background-color: map-get($color-set-1, bg-300); /* 行号背景 */
+          padding: 10px; /* 行号列内边距 */
+          color: map-get($color-set-1, text-200); /* 行号字体颜色 */
+          text-align: right; /* 行号右对齐 */
+          font-family: $font-code; /* 字体 */
+          font-size: 0.85rem; /* 行号字体大小 */
+          user-select: none; /* 禁止选中 */
+          vertical-align: top; /* 行号与代码顶部对齐 */
+        }
+
+        /* 代码内容样式 */
+        td:last-child {
+          padding: 10px; /* 代码内容内边距 */
+          width: calc(100% - 40px); /* 剩余宽度用于代码内容 */
+        }
+
+        pre {
+          font-family: $font-code; /* 自定义代码字体 */
+          font-size: 0.9rem; /* 字体大小 */
+          line-height: 1.5; /* 行高 */
+          overflow-x: auto; /* 横向滚动 */
+          white-space: pre-wrap; /* 自动换行 */
+          word-wrap: break-word; /* 防止长单词溢出 */
+          margin: 0; /* 移除默认的外边距 */
+          padding: 5px; /* 使用 td 的内边距 */
+          max-width: 100%;
+          
+        }
+
+        /* 行号样式 */
+        span {
+          white-space: pre; /* 保留空格 */
+        }
+
+        /* 小屏幕适配 */
+        @media (max-width: 768px) {
+          .highlight {
+            padding: 0;
+            margin: 16px 5%; /* 增加两侧间距 */
+          }
+
+          td:first-child {
+            padding: 8px; /* 缩小内边距 */
+            font-size: 0.8rem; /* 缩小行号字体 */
+          }
+
+          td:last-child {
+            padding: 8px; /* 缩小代码内容内边距 */
+          }
+
+          pre {
+            font-size: 0.8rem; /* 缩小代码字体大小 */
+          }
+        }
+      }
+      /* 调整代码块中的注释样式 */
+      code {
+        font-family: $font-code; /* 自定义代码字体 */
+        white-space: pre; /* 允许自动换行 */
+        word-wrap: normal; /* 防止长单词溢出 */
+        line-height: 1.5; /* 行高 */
+        color: map-get($color-set-1, accent-200); /* 代码字体颜色 */
+      }
+    }
+
+    @media (max-width: 1200px) {
+      max-width: 95%; /* 小屏幕自适应宽度 */
+    }
+
+    @media (max-width: 768px) {
+      max-width: 100%; /* 超小屏幕宽度全屏 */
+      padding: 10px; /* 减少内边距 */
+    }
   }
 }
