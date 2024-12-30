@@ -1,0 +1,26 @@
+// 颜色变量，使用示例：map-get($color-set-1, bg-100);
+$color-set-1: (
+  primary-100: #d4eaf7,
+  primary-200: #b6ccd8,
+  primary-300: #3b3c3d,
+  accent-100: #71c4ef,
+  accent-200: #00668c,
+  text-100: #1d1c1c,
+  text-200: #313d44,
+  bg-100: #fffefb,
+  bg-200: #f5f4f1,
+  bg-300: #cccbc8
+);
+
+$color-set-2: (
+  primary-100: #8FBF9F,
+  primary-200: #68a67d,
+  primary-300: #24613b,
+  accent-100: #F18F01,
+  accent-200: #833500,
+  text-100: #353535,
+  text-200: #5f5f5f,
+  bg-100: #F5ECD7,
+  bg-200: #ebe2cd,
+  bg-300: #c2baa6
+);

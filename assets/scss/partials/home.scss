@@ -1,0 +1,44 @@
+// home scss
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    // padding: 20px;
+  
+    h1 {
+      font-size: 5rem;
+      color: map-get($color-set-1, primary-300);
+      margin-bottom: 20px;
+    }
+  
+    p {
+      font-size: 2.5rem;
+      color: map-get($color-set-1, accent-200);
+      margin-bottom: 30px;
+    }
+  
+    ul {
+      list-style-type: none;
+      padding: 0;
+  
+      li {
+        display: inline-block;
+        margin: 0 15px;
+  
+        a {
+          text-decoration: none;
+          color: map-get($color-set-1, accent-100);
+          font-size: 1.2rem;
+  
+          &:hover {
+            color: map-get($color-set-1, accent-200);
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+  

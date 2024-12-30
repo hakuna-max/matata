@@ -1,0 +1,7 @@
+body {
+    margin: 0; /* 移除默认的外边距 */
+    padding: 0; /* 移除默认的内边距 */
+    min-height: 100vh; /* 确保占据至少整个视口的高度 */
+    background-color: map-get($color-set-1, bg-200); /* 设置背景颜色 */
+    color: map-get($color-set-1, text-100); /* 设置字体颜色 */
+  }

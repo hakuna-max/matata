@@ -1,45 +1,24 @@
-html, body {
-    height: 100%; // 确保父级容器占满视口高度
-    margin: 0; // 清除默认外边距
-  }
-  
-  .wrapper {
-    display: flex;
-    flex-direction: column; // 使子元素按列排列
-    min-height: 100vh; // 视口高度
-  }
-  
-  .content {
-    flex: 1; // 内容部分拉伸以占满剩余空间
-  }
-
-  .footer-info {
-    display: flex;
-    justify-content: center; // 水平居中
-    align-items: center; // 垂直居中
+.footer {
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    width:100%;
+    justify-content: center;
+    align-items: center;
     padding: 10px;
-    background-color: #f8f9fa; // 页脚背景色
+    background-color: map-get($color-set-1, bg-200);
+    color: map-get($color-set-1, text-200);
     text-align: center;
+    z-index: 9999;
+
+    a {
+        text-decoration: none;
+        color: map-get($color-set-1, accent-100);
+        // font-size: 1.2rem;
+
+        &:hover {
+          color: map-get($color-set-1, accent-200);
+          text-decoration: underline;
+        }
+      }
   }
-// .footer-info {
-//     display: flex;
-//     flex-direction: column; /* Stack children vertically */
-//     justify-content: center; /* Center vertically */
-//     align-items: center; /* Center horizontally */
-//     transform: translateY(+60%); /* 向上移动10%，根据需要调整 */
-//     padding-left: 10%;
-//     padding-right: 10%;
-  
-//     @media print {
-//       padding-left: 2%; // 减少打印时的左内边距
-//       padding-right: 2%; // 减少打印时的右内边距
-//       width: auto; // 设置为100%可能有助于利用更多页面空间
-//     }
-  
-//     // 适用于移动设备的媒体查询
-//     @media (max-width: 768px) {
-//       // 通常768px是分界点，可以根据需要调整
-//       padding-left: 5%; // 减少左右内边距
-//       padding-right: 5%;
-//     }
-//   }
