@@ -6,6 +6,7 @@
     .icon-text-container {
       display: flex; // 使用 Flexbox 布局
       align-items: center; // 垂直居中对齐
+      gap: 16px; // 图标和文字之间的间距
     
       .material-icons {
         margin-right: 8px; // 图标与文字之间的间距
@@ -14,8 +15,9 @@
     
       .text-info {
         display: flex; // 子内容使用 Flexbox
-        flex-direction: column; // 按列排列文字内容
-        gap: 4px; // 子内容之间的间距
+        flex-direction: row; // 改为行方向
+        align-items: center; // 垂直居中
+        gap: 16px; // 子内容之间的间距
     
         p {
           margin: 0; // 移除默认的段落间距
@@ -25,7 +27,7 @@
     
         .icon {
           display: inline-block; // SVG 图标的内联块布局
-          margin-right: 4px; // 图标与后续文字之间的间距
+          margin-right: 8px; // 图标与后续文字之间的间距
         }
       }
     }
