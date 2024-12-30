@@ -73,12 +73,14 @@
   {{ $month := substr $key 5 2 }}
   <h2>{{ $year }} 年 {{ $month }} 月</h2>
   <ul>
+    {{ if not (eq .File.Path "content/archive.md") }} <!-- 排除 archive.md -->
     {{ range $pages }}
       <li>
         <a href="{{ .RelPermalink }}">
           {{ .Date.Format "2006-01-02" }} {{ .Title }}
         </a>
       </li>
+    {{ end }}
     {{ end }}
   </ul>
 {{ end }}
