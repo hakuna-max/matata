@@ -76,12 +76,14 @@
   <h2>{{ $year }} 年 {{ $month }} 月</h2>
   <ul>
     {{ range $pages }}
+    {{ if not (eq .File.Path "content/archive.md") }} <!-- 排除 archive.md -->
       <li>
         <a href="{{ .RelPermalink }}">
           {{ .Date.Format "2006-01-02" }} {{ .Title }}
         </a>
       </li>
     {{ end }}
+  {{ end }}
   </ul>
 {{ end }}
 </div>
