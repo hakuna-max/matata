@@ -11,10 +11,12 @@
 
   <!-- 遍历所有文章 -->
   {{ range .Site.RegularPages }}
+  {{ if not (eq .File.Path "content/archive.md") }} <!-- 排除 archive.md -->
     {{ $folder := path.Dir .File.Path }} <!-- 获取文章所在的子文件夹路径 -->
     {{ $folderArticles := index $folderStats $folder | default (dict "count" 0 "words" 0) }}
     {{ $folderStats = merge $folderStats (dict $folder (dict "count" (add $folderArticles.count 1) "words" (add $folderArticles.words .WordCount))) }}
     {{ $totalWords = add $totalWords .WordCount }}
+  {{ end }}
   {{ end }}
 
   <!-- 总文章数和字数 -->
