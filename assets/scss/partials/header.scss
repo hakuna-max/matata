@@ -1,7 +1,3 @@
-$btn-bg: map-get($color-set-2, primary-100);
-$btn-hover: map-get($color-set-2, primary-200);
-$btn-shadow: rgba(255, 255, 255, 0.1);
-
 .site-header {
   position: fixed; /* 固定在顶部 */
   top: 0; /* 距离页面顶部为 0 */
@@ -15,7 +11,7 @@ $btn-shadow: rgba(255, 255, 255, 0.1);
   /* 禁止选择和复制内容 */
   user-select: none;
 
-  /* 内容限制在最大宽度 */
+ /* 内容限制在最大宽度 */
   .container {
     max-width: 1200px; /* 最大内容宽度 */
     margin: 0 auto; /* 水平居中 */
@@ -28,13 +24,23 @@ $btn-shadow: rgba(255, 255, 255, 0.1);
   /* 左边样式 */
   .header-left {
     .site-title {
-        display: flex;
-        align-items: center;
-        // gap: 10px;
+      display: flex;
+      align-items: center;
       font-size: 1.5rem;
       font-weight: bold;
       text-decoration: none;
       color: map-get($color-set-1, text-100);
+
+      .material-icons {
+        vertical-align: middle;
+        font-size: 1.2rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        margin-right: 8px; /* 控制图标与文字的间距 */
+        color: map-get($color-set-3, accent-100);
+      }
 
       &:hover {
         color: map-get($color-set-1, accent-200);
@@ -149,7 +155,17 @@ $btn-shadow: rgba(255, 255, 255, 0.1);
       text-decoration: none;
       font-size: 1rem;
       color: map-get($color-set-1, text-100);
-      align-items: center; /* 垂直居中对齐 */
+
+      .material-icons {
+        vertical-align: middle;
+        font-size: 1.2rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        margin-right: 4px;
+        color: map-get($color-set-3, accent-200);
+      }
 
       &:hover {
         color: map-get($color-set-1, accent-200);

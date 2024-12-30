@@ -1,11 +1,11 @@
 {{ define "main" }}
-<div class="list-container">
-<h1>{{ .Title }}</h1>
-{{ .Content }}
+<div class="archive-container">
+<h1>Archive</h1>
 
+<p>Total pages: {{ len .Site.RegularPages }}</p>
 {{ $grouped := dict }}
 
-{{ range .Pages }}
+{{ range .Site.RegularPages }}
   {{ $key := .Date.Format "2006-01" }}
   {{ $existing := index $grouped $key | default slice }}
   {{ $grouped = merge $grouped (dict $key ($existing | append .)) }}
