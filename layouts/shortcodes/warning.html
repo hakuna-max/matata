@@ -1,0 +1,7 @@
+<!-- layouts/shortcodes/warning.html -->
+<aside class="admonition warning">
+  <div class="admonition-icon"></div>
+  <div class="admonition-content">
+    {{ .Inner | $.Page.RenderString (dict "display" "block") }}
+  </div>
+</aside>

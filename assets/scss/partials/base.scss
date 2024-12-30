@@ -101,6 +101,18 @@ body {
         line-height: 1.5; /* 行高 */
         color: map-get($color-set-1, accent-200); /* 代码字体颜色 */
       }
+
+      img {
+        display: block;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 80%;
+        border: 1px solid map-get($color-set-1, bg-200); /* 半透明边框 */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px map-get($color-set-1, bg-200);
+      }
     }
 
     @media (max-width: 1200px) {
