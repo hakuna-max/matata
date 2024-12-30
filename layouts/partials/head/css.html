@@ -1,6 +1,9 @@
 {{ $sassOptions := (dict "targetPath" "scss/main.css" "outputStyle" "compressed") }}
 {{ $sass := resources.Get "scss/main.scss" | css.Sass $sassOptions }}
 
+<!-- 引入 Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 {{- if eq hugo.Environment "development" }}
   <link rel="stylesheet" href="{{ $sass.RelPermalink }}">
 {{- else }}

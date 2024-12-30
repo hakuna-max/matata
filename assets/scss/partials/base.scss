@@ -1,8 +1,30 @@
 body {
-    margin: 0; /* 移除默认的外边距 */
-    padding: 0; /* 移除默认的内边距 */
-    min-height: 100vh; /* 确保占据至少整个视口的高度 */
-    background-color: map-get($color-set-1, bg-200); /* 设置背景颜色 */
-    color: map-get($color-set-1, text-100); /* 设置字体颜色 */
-    font-family: $font-base;
+  margin: 0; /* 移除默认的外边距 */
+  padding-top: 60px; /* 添加顶部间距，等于 header 的高度 */
+  min-height: 100vh; /* 确保占据至少整个视口的高度 */
+  background-color: map-get($color-set-1, bg-200); /* 设置背景颜色 */
+  color: map-get($color-set-1, text-100); /* 设置字体颜色 */
+  font-family: $font-base;
+  // font-weight: 900;
+  line-height: 200%;
+  letter-spacing: 0.05em;
+}
+.container {
+  max-width: 1200px; /* 最大宽度 */
+  margin: 0 auto; /* 水平居中 */
+  // padding: 20px; /* 内边距 */
+
+  .site-main {
+    transform-origin: top center; /* 确保缩放从顶部中心开始 */
+    transition: transform 0.3s ease; /* 平滑缩放动画 */
   }
+
+  @media (max-width: 1200px) {
+    max-width: 95%; /* 小屏幕自适应宽度 */
+  }
+
+  @media (max-width: 768px) {
+    max-width: 100%; /* 超小屏幕宽度全屏 */
+    padding: 10px; /* 减少内边距 */
+  }
+}

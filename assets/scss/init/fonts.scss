@@ -1,18 +1,30 @@
 // 字体引入
 @font-face {
     font-family: "JetBrains Mono";
-    src: url("/assets/fonts/JetBrains/JetBrainsMono-Regular.woff2")
+    src: url("assets/fonts/JetBrains/JetBrainsMono-Regular.woff2")
       format("woff2");
     font-weight: normal;
     font-style: normal;
   }
 
   @font-face {
-    font-family: "Roboto";
-    src: url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+    font-family: "Roboto", serif;
+    src: url("assets/fonts/Roboto/Roboto-Regular.ttf") format("ttf");
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Noto Serif SC", serif;
+    src: url("/assets/fonts/Noto_Serif_SC/NotoSerifSC-Medium.ttf") format("ttf");
     font-weight: normal;
     font-style: normal;
   }
-  
-  @import "/assets/fonts/lxgw/lxgw-wenkai-mono-webfont/style.css";
-  @import "/assets/fonts/lxgw/lxgw-wenkai-screen-webfont/style.css";
+
+  @font-face {
+    font-family: "Noto Sans", serif;
+    src: url("/assets/fonts/Noto_Sans/NotoSans-VariableFont_wdth,wght.ttf") format("ttf");
+    font-optical-sizing: auto;
+    font-weight:normal;
+    font-style: normal;
+  }

@@ -3,6 +3,7 @@
     left:0px;
     bottom:0px;
     width:100%;
+    border-top: 1px solid #ddd;
     justify-content: center;
     align-items: center;
     padding: 10px;
@@ -11,10 +12,16 @@
     text-align: center;
     z-index: 9999;
 
+    .copyright {
+      font-size: 0.8rem;
+      font-weight: 700;
+      opacity: 0.5;
+    }
+
     a {
         text-decoration: none;
         color: map-get($color-set-1, accent-100);
-        // font-size: 1.2rem;
+
 
         &:hover {
           color: map-get($color-set-1, accent-200);

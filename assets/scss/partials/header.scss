@@ -1,0 +1,159 @@
+$btn-bg: map-get($color-set-2, primary-100);
+$btn-hover: map-get($color-set-2, primary-200);
+$btn-shadow: rgba(255, 255, 255, 0.1);
+
+.site-header {
+  position: fixed; /* 固定在顶部 */
+  top: 0; /* 距离页面顶部为 0 */
+  left: 0; /* 距离页面左侧为 0 */
+  width: 100%; /* 背景填充整个页面宽度 */
+  background-color: map-get($color-set-1, bg-200);
+  border-bottom: 1px solid map-get($color-set-2, primary-200);
+  z-index: 1000; /* 确保 header 层级高于其他内容 */
+  padding: 10px 0;
+
+  /* 禁止选择和复制内容 */
+  user-select: none;
+
+  /* 内容限制在最大宽度 */
+  .container {
+    max-width: 1200px; /* 最大内容宽度 */
+    margin: 0 auto; /* 水平居中 */
+    padding: 0 20px; /* 左右内边距 */
+    display: flex; /* Flexbox 布局 */
+    justify-content: flex-start; /* 两端对齐 */
+    align-items: center; /* 垂直居中对齐 */
+  }
+
+  /* 左边样式 */
+  .header-left {
+    .site-title {
+        display: flex;
+        align-items: center;
+        // gap: 10px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+      color: map-get($color-set-1, text-100);
+
+      &:hover {
+        color: map-get($color-set-1, accent-200);
+      }
+    }
+  }
+
+  /* 中间样式 */
+  .header-center {
+    display: flex;
+    gap: 15px; /* 间距 */
+    font-weight: 600;
+    margin-left: 50px;
+
+    a {
+      text-decoration: none;
+      font-size: 1rem;
+      color: map-get($color-set-1, text-200);
+      position: relative;
+
+      /* 添加下划线动画 */
+      &::before,
+      &::after {
+        content: ""; /* 伪元素内容为空 */
+        display: block;
+        position: absolute;
+        height: 2px; /* 下划线高度 */
+        background: map-get($color-set-1, accent-200); /* 下划线颜色 */
+        width: 0%; /* 初始宽度为 0 */
+        transition: width 0.5s; /* 动画时间 */
+      }
+
+      &::before {
+        top: 0; /* 上划线位置 */
+        left: 0;
+      }
+
+      &::after {
+        bottom: 0; /* 下划线位置 */
+        right: 0;
+      }
+
+      &:hover::before,
+      &:hover::after {
+        width: 100%; /* hover 时宽度填满 */
+      }
+    }
+
+    .dropdown {
+      position: relative;
+
+      .dropdown-toggle {
+        background: none;
+        border: none;
+        font-size: 1rem;
+        color: map-get($color-set-1, text-200);
+        cursor: pointer;
+        font-weight: bolder;
+
+        &:hover {
+          color: map-get($color-set-1, accent-200);
+        }
+      }
+
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: map-get($color-set-2, bg-100);
+        // border: 1px solid map-get($color-set-2, primary-300);
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+        // opacity: 0.5; /* 默认透明 */
+        // transform: translateY(10px); /* 默认偏移 */
+        transition: opacity 0.3s ease, transform 0.3s ease; /* 添加动画 */
+
+        a {
+          display: block;
+          padding: 10px 20px;
+          text-decoration: none;
+          color: map-get($color-set-1, text-100);
+
+          &:hover {
+            background-color: map-get($color-set-1, bg-200);
+          }
+        }
+        /* 鼠标悬停时显示菜单 */
+        .dropdown:hover & {
+          display: block;
+          opacity: 1; /* 渐显 */
+          transform: translateY(0); /* 复位偏移 */
+        }
+      }
+
+      &:hover .dropdown-menu {
+        display: block;
+      }
+    }
+  }
+
+  /* 右边样式 */
+  .header-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      font-size: 1rem;
+      color: map-get($color-set-1, text-100);
+      align-items: center; /* 垂直居中对齐 */
+
+      &:hover {
+        color: map-get($color-set-1, accent-200);
+      }
+    }
+  }
+}

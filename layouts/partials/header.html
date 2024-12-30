@@ -1,2 +1,46 @@
-<h1>{{ site.Title }}</h1>
-{{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+<header class="site-header">
+    <div class="container">
+      <!-- 左边：网站 Title -->
+      <div class="header-left">
+        <a href="/" class="site-title">
+            <span class="material-icons">home</span>
+            <!-- {{ .Site.Title }} -->
+          </a>
+      </div>
+  
+      <!-- 中间：显示 content/ 文件夹 -->
+      <nav class="header-center">
+        <!-- 显示最多 3 个文件夹 -->
+        {{ range first 4 .Site.Sections }}
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+        {{ end }}
+  
+        <!-- 如果文件夹多余 3 个，显示 "更多" 下拉菜单 -->
+        {{ if gt (len .Site.Sections) 4 }}
+          <div class="dropdown">
+            <button class="btn dropdown-toggle">
+                <i class="animation"></i> More <i class="animation"></i>
+              </button>
+            <div class="dropdown-menu">
+              {{ range after 4 .Site.Sections }}
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+              {{ end }}
+            </div>
+          </div>
+        {{ end }}
+      </nav>
+  
+      <!-- 右边：固定标签 -->
+      <div class="header-right">
+        <a href="/archive">
+          <span class="material-icons">archive</span>
+          <span>Achieved</span>
+        </a>
+        <a href="/tags">
+          <span class="material-icons">label</span>
+          <span>Tags</span>
+        </a>
+      </div>
+    </div>
+  </header>
+  

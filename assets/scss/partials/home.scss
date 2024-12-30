@@ -14,13 +14,13 @@ $colors: (red, green, blue);
   user-select: none;
 
   h1 {
-    font-size: 5rem;
+    // font-size: 5rem;
     color: map-get($color-set-1, primary-300);
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   p {
-    font-size: 2.5rem;
+    // font-size: 1.5rem;
     color: map-get($color-set-1, accent-200);
     margin-bottom: 30px;
   }
