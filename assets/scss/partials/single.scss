@@ -1,0 +1,58 @@
+.desc {
+    color: map-get($color-set-2, primary-300);
+    font-size: small;
+    font-weight:bold;
+    display: flex; /* 使用 flexbox 布局 */
+    align-items: center; /* 垂直居中对齐 */
+    gap: 8px; /* 图标与文字之间的间距 */
+    opacity: 0.5;
+
+    /* 禁止选择和复制内容 */
+    user-select: none;
+    
+    /* 单独调整包含每个部分的 span */
+    span {
+      display: flex;
+      align-items: center; /* 确保图标与文字在 span 内居中 */
+      gap: 5px; /* 图标和文字的间距 */
+
+      a {
+        text-decoration: none;
+        color: map-get($color-set-2, accent-100);
+        font-size: 0.9em;
+  
+        &:hover {
+          color: map-get($color-set-2, accent-200);
+          text-decoration: underline;
+        }
+      }
+    }
+  
+    /* 设置 SVG 的对齐方式 */
+    svg {
+      display: inline-block;
+      vertical-align: middle; /* 确保与文本对齐 */
+      width: 1em; /* 根据字体大小自动调整图标尺寸 */
+      height: 1em;
+    }
+
+    .tags {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-transform: capitalize;
+    
+        a {
+        
+          background-color: map-get($color-set-2, bg-200);
+          padding: 0em 1em;
+          border-radius: 5px;
+          font-size: 0.9em;
+    
+          &:hover {
+            background-color: map-get($color-set-2, bg-300);
+          }
+        }
+      }
+  }
+  
