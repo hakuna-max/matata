@@ -1,0 +1,18 @@
+// 字体引入
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url("/assets/fonts/JetBrains/JetBrainsMono-Regular.woff2")
+      format("woff2");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Roboto";
+    src: url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @import "/assets/fonts/lxgw/lxgw-wenkai-mono-webfont/style.css";
+  @import "/assets/fonts/lxgw/lxgw-wenkai-screen-webfont/style.css";

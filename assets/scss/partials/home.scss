@@ -1,44 +1,78 @@
 // home scss
+$colors: (red, green, blue);
+
 .home-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    text-align: center;
-    // padding: 20px;
-  
-    h1 {
-      font-size: 5rem;
-      color: map-get($color-set-1, primary-300);
-      margin-bottom: 20px;
-    }
-  
-    p {
-      font-size: 2.5rem;
-      color: map-get($color-set-1, accent-200);
-      margin-bottom: 30px;
-    }
-  
-    ul {
-      list-style-type: none;
-      padding: 0;
-  
-      li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: -100px;
+  min-height: 100vh;
+  text-align: center;
+
+  /* 禁止选择和复制内容 */
+  user-select: none;
+
+  h1 {
+    font-size: 5rem;
+    color: map-get($color-set-1, primary-300);
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 2.5rem;
+    color: map-get($color-set-1, accent-200);
+    margin-bottom: 30px;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    font-weight: bold;
+
+    li {
+      display: inline-block;
+      margin: 0 15px;
+      position: relative; /* 确保伪元素相对于 li 定位 */
+
+      /* 添加竖线 */
+      &::after {
+        content: ""; /* 添加伪元素内容为空 */
         display: inline-block;
-        margin: 0 15px;
-  
-        a {
-          text-decoration: none;
-          color: map-get($color-set-1, accent-100);
-          font-size: 1.2rem;
-  
-          &:hover {
-            color: map-get($color-set-1, accent-200);
-            text-decoration: underline;
-          }
+        position: absolute;
+        right: -15px; /* 将竖线放置到 li 的右侧 */
+        height: 100%; /* 竖线高度与 li 等高 */
+        width: 2px; /* 竖线宽度 */
+      }
+
+      /* 根据索引分配竖线颜色 */
+      &:nth-child(3n + 1)::after {
+        background-color: red;
+      }
+
+      &:nth-child(3n + 2)::after {
+        background-color: green;
+      }
+
+      &:nth-child(3n + 3)::after {
+        background-color: blue;
+      }
+
+      /* 去掉最后一个 li 的竖线 */
+      &:last-child::after {
+        display: none;
+      }
+
+      a {
+        text-decoration: none;
+        color: map-get($color-set-1, accent-100);
+        font-size: 1.2rem;
+
+        &:hover {
+          color: map-get($color-set-1, accent-200);
+          text-decoration: underline;
         }
       }
     }
   }
-  
+}
