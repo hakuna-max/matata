@@ -21,7 +21,7 @@
 
   <!-- 总文章数和字数 -->
    <div class="text-info">
-   <p>Articles: {{ len .Site.RegularPages | sub 1 }}</p>
+   <p>Articles: {{ if gt (len .Site.RegularPages) 0 }}{{ sub (len .Site.RegularPages) 1 }}{{ else }}0{{ end }}</p>
   <p>
     <span>
       <svg
@@ -48,7 +48,7 @@
 {{ $grouped := dict }}
 
 {{ range .Site.RegularPages }}
-{{ if not (eq .File.Path "content/archive.md") }} <!-- 排除 archive.md -->
+{{ if not (eq .File.BaseFileName "archive") }}  <!-- 排除 archive.md -->
   {{ $key := .Date.Format "2006-01" }}
   {{ $existing := index $grouped $key | default slice }}
   {{ $grouped = merge $grouped (dict $key ($existing | append .)) }}
@@ -76,7 +76,7 @@
   <h2>{{ $year }} 年 {{ $month }} 月</h2>
   <ul>
     {{ range $pages }}
-    {{ if not (eq .File.Path "content/archive.md") }} <!-- 排除 archive.md -->
+    {{ if not (eq .File.BaseFileName "archive") }}  <!-- 排除 archive.md -->
       <li>
         <a href="{{ .RelPermalink }}">
           {{ .Date.Format "2006-01-02" }} {{ .Title }}
