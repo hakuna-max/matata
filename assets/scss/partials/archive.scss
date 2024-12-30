@@ -8,6 +8,7 @@
       align-items: center; // 垂直居中对齐
       gap: 4px; // 图标和文字之间的间距
       opacity: 0.5;
+      user-select: none; // 禁止选中文本
     
       .material-icons {
         margin-right: 4px; // 图标与文字之间的间距
