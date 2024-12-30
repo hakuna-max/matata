@@ -2,7 +2,7 @@
 <div class="archive-container">
 <h1>Archive</h1>
 
-<p>Total pages: {{ len .Site.RegularPages }}</p>
+<span class="material-icons">atm <p>Total pages: {{ len .Site.RegularPages }}</p></span>
 {{ $grouped := dict }}
 
 {{ range .Site.RegularPages }}
