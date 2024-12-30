@@ -3,8 +3,8 @@ $font-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
   "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
   "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
-$font-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
-  "Liberation Mono", "Courier New", monospace;
+$font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+  "Courier New", monospace;
 
 // 添加 JetBrains Mono 字体
 $font-jetbrains-mono: "JetBrains Mono", $font-monospace;
@@ -15,17 +15,6 @@ $font-chinese: "LXGW WenKai Screen", "Kaiti", SimSun, serif;
 // 自定义字体变量
 $font-base: $font-sans-serif, $font-chinese; // 英文优先使用 sans-serif，中文优先使用 WenKai
 $font-code: $font-jetbrains-mono; // 优先使用 JetBrains Mono 作为代码字体
-
-// 字体引入
-@font-face {
-    font-family: "JetBrains Mono";
-    src: url("/assets/fonts/JetBrains/JetBrainsMono-Regular.woff2") format("woff2");
-    font-weight: normal;
-    font-style: normal;
-  }
-  
-  @import '/assets/fonts/lxgw/lxgw-wenkai-mono-webfont/style.css';
-  @import '/assets/fonts/lxgw/lxgw-wenkai-screen-webfont/style.css';
 
 // 颜色变量，使用示例：map-get($color-set-1, bg-100);
 $color-set-1: (
@@ -38,18 +27,18 @@ $color-set-1: (
   text-200: #313d44,
   bg-100: #fffefb,
   bg-200: #f5f4f1,
-  bg-300: #cccbc8
+  bg-300: #cccbc8,
 );
 
 $color-set-2: (
-  primary-100: #8FBF9F,
+  primary-100: #8fbf9f,
   primary-200: #68a67d,
   primary-300: #24613b,
-  accent-100: #F18F01,
+  accent-100: #f18f01,
   accent-200: #833500,
   text-100: #353535,
   text-200: #5f5f5f,
-  bg-100: #F5ECD7,
+  bg-100: #f5ecd7,
   bg-200: #ebe2cd,
-  bg-300: #c2baa6
+  bg-300: #c2baa6,
 );
