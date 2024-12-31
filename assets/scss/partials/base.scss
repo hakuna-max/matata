@@ -6,6 +6,7 @@ body {
   background-color: map-get($color-set-1, bg-200); /* 设置背景颜色 */
   color: map-get($color-set-1, text-100); /* 设置字体颜色 */
   font-family: $font-base;
+  font-weight: 600;
   line-height: 200%;
   letter-spacing: 0.05em;
 
@@ -69,6 +70,7 @@ body {
           margin: 0; /* 移除默认的外边距 */
           padding: 5px; /* 使用 td 的内边距 */
           max-width: 100%;
+          font-weight: normal;
         }
 
         /* 行号样式 */
