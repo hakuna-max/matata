@@ -1,0 +1,21 @@
+{{ define "main" }}
+<section>
+  <h1>Tags</h1>
+  <div class="tags-container">
+    {{ range .Data.Terms }}
+      <div class="tag-box">
+        <h2> 
+            <a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a> <span>{{ .Count }}</span>
+        </h2>
+        <ul>
+          {{ range .Pages }}
+            <li>
+              <a href="{{ .Permalink }}">{{ .Title }}</a>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

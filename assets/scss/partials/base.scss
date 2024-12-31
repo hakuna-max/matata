@@ -60,7 +60,7 @@ body {
         }
 
         pre {
-          font-family: $font-code; /* 自定义代码字体 */
+          font-family: $font-code !important; /* 自定义代码字体 */
           font-size: 0.9rem; /* 字体大小 */
           line-height: 1.5; /* 行高 */
           overflow-x: auto; /* 横向滚动 */

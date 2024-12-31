@@ -13,7 +13,7 @@ $font-jetbrains-mono: "JetBrains Mono";
 $font-chinese: "Noto Serif SC";
 
 // 自定义字体变量
-$font-base: $font-sans-serif, $font-chinese; // 英文优先使用 sans-serif，中文优先使用 WenKai
+$font-base: $font-chinese, $font-sans-serif; // 英文优先使用 sans-serif，中文优先使用 WenKai
 $font-code: $font-jetbrains-mono; // 优先使用 JetBrains Mono 作为代码字体
 
 // 颜色变量，使用示例：map-get($color-set-1, bg-100);
