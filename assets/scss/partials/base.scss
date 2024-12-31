@@ -69,7 +69,6 @@ body {
           margin: 0; /* 移除默认的外边距 */
           padding: 5px; /* 使用 td 的内边距 */
           max-width: 100%;
-          
         }
 
         /* 行号样式 */
@@ -129,4 +128,37 @@ body {
       padding: 10px; /* 减少内边距 */
     }
   }
+}
+
+/* 默认隐藏滚动条 */
+*::-webkit-scrollbar {
+  width: 1px; /* 固定滚动条宽度，避免动态变化 */
+  height: 1px; /* 固定水平滚动条高度 */
+  background: transparent; /* 默认透明 */
+}
+
+/* 滚动条轨道样式 */
+*::-webkit-scrollbar-track {
+  background: map-get($color-set-2, bg-300); /* 使用背景色 bg-300 */
+  border-radius: 10px;
+  transition: background-color 0.3s ease-in-out; /* 平滑轨道背景变化 */
+}
+
+/* 滑块默认样式 */
+*::-webkit-scrollbar-thumb {
+  background: map-get($color-set-2, accent-200); /* 使用 accent-200 作为滑块颜色 */
+  border-radius: 10px; /* 圆角滑块 */
+  transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out; /* 添加滑块的平滑变化 */
+  opacity: 0; /* 默认隐藏滑块 */
+}
+
+/* 鼠标悬浮到内容区域时，显示滑块 */
+*:hover::-webkit-scrollbar-thumb {
+  background: map-get($color-set-2, accent-100); /* 鼠标悬浮时，滑块颜色变亮 */
+  opacity: 1; /* 滑块变得可见 */
+}
+
+/* 鼠标悬浮到滑块时进一步调整颜色 */
+*::-webkit-scrollbar-thumb:hover {
+  background: map-get($color-set-2, primary-200); /* 鼠标悬浮时，滑块颜色更深 */
 }
