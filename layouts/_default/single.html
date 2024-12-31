@@ -85,7 +85,7 @@ $dateHuman := .Date | time.Format ":date_long" }}
         p-id="33868"
       ></path>
     </svg>
-    {{ .WordCount }} 字</span
+    {{ .WordCount }} 字 </span
   >&nbsp;
   <span>
     <!-- 阅读： -->
@@ -110,8 +110,14 @@ $dateHuman := .Date | time.Format ":date_long" }}
         fill="#adb5bd"
       ></path>
     </svg>
-    {{ .ReadingTime }} 分钟</span
-  >
+    {{ $readingSpeed := .Site.Language.Params.reading_speed }}
+    {{ $readingTime := div .WordCount $readingSpeed }}
+    {{ if gt (mod .WordCount $readingSpeed) 0 }}
+      {{ add $readingTime 1 }}
+    {{ else }}
+      {{ $readingTime }}
+    {{ end }} minutes
+  </span>
   <span class="tags">
     <!-- 标签 -->
     <svg
