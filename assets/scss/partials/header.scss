@@ -32,14 +32,14 @@
       color: map-get($color-set-1, text-100);
 
       .material-icons {
-        vertical-align: middle;
-        font-size: 1.2rem;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        line-height: 1;
-        margin-right: 8px; /* 控制图标与文字的间距 */
-        color: map-get($color-set-3, accent-100);
+        display: inline-flex; /* 确保图标作为 flex 容器 */
+        align-items: center; /* 图标与文字上下居中对齐 */
+        justify-content: center; /* 图标水平居中 */
+        vertical-align: middle; /* 对齐文字基线 */
+        font-size: 1.2rem; /* 设置图标字体大小 */
+        line-height: 1; /* 避免 line-height 影响对齐 */
+        margin-right: 4px; /* 控制图标与文字的间距 */
+        color: inherit; /* 让图标颜色继承父元素的颜色 */
       }
 
       &:hover {
@@ -157,14 +157,14 @@
       color: map-get($color-set-1, text-100);
 
       .material-icons {
-        vertical-align: middle;
-        font-size: 1.2rem;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        line-height: 1;
-        margin-right: 4px;
-        color: map-get($color-set-3, accent-200);
+        display: inline-flex; /* 确保图标作为 flex 容器 */
+        align-items: center; /* 图标与文字上下居中对齐 */
+        justify-content: center; /* 图标水平居中 */
+        vertical-align: middle; /* 对齐文字基线 */
+        font-size: 1.2rem; /* 设置图标字体大小 */
+        line-height: 1; /* 避免 line-height 影响对齐 */
+        margin-right: 4px; /* 控制图标与文字的间距 */
+        color: inherit; /* 让图标颜色继承父元素的颜色 */
       }
 
       &:hover {
