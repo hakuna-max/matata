@@ -9,6 +9,11 @@ body {
   line-height: 200%;
   letter-spacing: 0.05em;
 
+  ::selection {
+    background-color: map-get($color-set-1, primary-100); /* 选中文本背景色 */
+    color: map-get($color-set-1, text-100); /* 选中文本字体颜色 */
+  }
+
   .container {
     max-width: 1200px; /* 最大宽度 */
     margin: 0 auto; /* 水平居中 */
