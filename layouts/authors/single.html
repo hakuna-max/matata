@@ -16,8 +16,30 @@
     {{ end }}
   </ul>
 </div>
+
+
 <!-- 文章内容 -->
 <div class="author-content">
   {{ .Content }}
+
+  <!-- 作者的所有文章 -->
+  <div class="author-articles">
+    <h2>Articles by {{ .Title }}</h2>
+    <ul>
+      {{ $currentAuthor := .Title }} <!-- 当前作者的名称 -->
+      {{ range .Site.RegularPages }} <!-- 遍历所有 Regular Pages -->
+      {{ if not (or (eq .File.BaseFileName "archive") (strings.HasPrefix .File.Path "authors\\")) }}
+      {{ $pageAuthor := or (.Params.author) .Site.Params.author }} <!-- 获取文章的作者 -->
+      {{ if eq $pageAuthor $currentAuthor }} <!-- 只显示属于当前作者的文章 -->
+      <li>
+        <a href="{{ .RelPermalink }}">
+          {{ .Date.Format "2006-01-02" }} - {{ .Title }}
+        </a>
+      </li>
+      {{ end }}
+      {{ end }}
+      {{ end }}
+    </ul>
+  </div>
 </div>
 {{ end }}
