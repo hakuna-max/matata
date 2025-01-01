@@ -26,7 +26,8 @@
    <p>Articles: 
     {{ $filteredPages := slice }}
     {{ range .Site.RegularPages }}
-      {{ if not (or (eq .File.BaseFileName "archive") (strings.HasPrefix .File.Path "authors\\")) }}
+    {{ $normalizedPath := strings.Replace .File.Path "\\" "/" -1 }}
+    {{ if not (or (eq .File.BaseFileName "archive") (strings.HasPrefix $normalizedPath "authors/")) }} 
         {{ $filteredPages = $filteredPages | append . }}
       {{ end }}
     {{ end }}
