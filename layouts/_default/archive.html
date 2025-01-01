@@ -11,13 +11,15 @@
 
   <!-- 遍历所有文章 -->
   {{ range .Site.RegularPages }}
-  {{ if not (or (eq .File.BaseFileName "archive") (strings.HasPrefix .File.Path "authors\\")) }}  <!-- 排除 archive.md 以及content/authors/-->  
+  {{ $normalizedPath := strings.Replace .File.Path "\\" "/" -1 }}
+  {{ if not (or (eq .File.BaseFileName "archive") (strings.HasPrefix $normalizedPath "authors/")) }}  <!-- 排除 archive.md 以及content/authors/-->  
   {{ $folder := path.Dir .File.Path }} <!-- 获取文章所在的子文件夹路径 -->
     {{ $folderArticles := index $folderStats $folder | default (dict "count" 0 "words" 0) }}
     {{ $folderStats = merge $folderStats (dict $folder (dict "count" (add $folderArticles.count 1) "words" (add $folderArticles.words .WordCount))) }}
     {{ $totalWords = add $totalWords .WordCount }}
   {{ end }}
   {{ end }}
+
 
   <!-- 总文章数和字数 -->
    <div class="text-info">
@@ -57,13 +59,15 @@
 {{ $grouped := dict }}
 
 {{ range .Site.RegularPages }}
-{{ if not (or (eq .File.BaseFileName "archive") (strings.HasPrefix .File.Path "authors\\")) }}  <!-- 排除 archive.md -->
+{{ $normalizedPath := strings.Replace .File.Path "\\" "/" -1 }} <!-- 将路径中的 '\' 替换为 '/' -->
+  {{ if not (or (eq .File.BaseFileName "archive") (strings.HasPrefix $normalizedPath "authors/")) }}  <!-- 排除 archive.md 以及content/authors/-->
   <p>{{ .File.Path }}</p>
   {{ $key := .Date.Format "2006-01" }}
   {{ $existing := index $grouped $key | default slice }}
   {{ $grouped = merge $grouped (dict $key ($existing | append .)) }}
 {{ end }}
 {{ end }}
+
 
 {{ $sortedKeys := slice }}
 {{ range $key, $value := $grouped }}
@@ -86,7 +90,8 @@
   <h2>{{ $year }} 年 {{ $month }} 月</h2>
   <ul>
     {{ range $pages }}
-    {{ if not (or (eq .File.BaseFileName "archive") (strings.HasPrefix .File.Path "authors\\")) }}  <!-- 排除 archive.md -->
+    {{ $normalizedPath := strings.Replace .File.Path "\\" "/" -1 }}
+    {{ if not (or (eq .File.BaseFileName "archive") (strings.HasPrefix $normalizedPath "authors/")) }} <!-- 排除 archive.md 以及content/authors/-->
       <li>
         <a href="{{ .RelPermalink }}">
           {{ .Date.Format "2006-01-02" }} {{ .Title }}
@@ -94,7 +99,9 @@
       </li>
     {{ end }}
   {{ end }}
+
   </ul>
 {{ end }}
+
 </div>
 {{ end }}

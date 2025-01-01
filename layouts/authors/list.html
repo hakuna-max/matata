@@ -37,7 +37,8 @@
                   {{ $articles := slice }} <!-- 初始化空的文章列表 -->
                 
                   {{ range .Site.RegularPages }}
-                  {{ if not (or (eq .File.BaseFileName "archive") (strings.HasPrefix .File.Path "authors\\")) }}
+                  {{ $normalizedPath := strings.Replace .File.Path "\\" "/" -1 }}
+                  {{ if not (or (eq .File.BaseFileName "archive") (strings.HasPrefix $normalizedPath "authors/")) }}
                     {{ $pageAuthor := or (.Params.author) .Site.Params.author }} <!-- 检查 Front Matter 和全局配置 -->
                     {{ if eq $pageAuthor $author }}
                       {{ $articles = $articles | append . }}
