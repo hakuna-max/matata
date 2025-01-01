@@ -61,7 +61,6 @@
 {{ range .Site.RegularPages }}
 {{ $normalizedPath := strings.Replace .File.Path "\\" "/" -1 }} <!-- 将路径中的 '\' 替换为 '/' -->
   {{ if not (or (eq .File.BaseFileName "archive") (strings.HasPrefix $normalizedPath "authors/")) }}  <!-- 排除 archive.md 以及content/authors/-->
-  <p>{{ .File.Path }}</p>
   {{ $key := .Date.Format "2006-01" }}
   {{ $existing := index $grouped $key | default slice }}
   {{ $grouped = merge $grouped (dict $key ($existing | append .)) }}

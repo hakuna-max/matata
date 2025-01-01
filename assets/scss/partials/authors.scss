@@ -10,6 +10,29 @@
   height: 150px;
 }
 
+.author-articles {
+  margin-top: 20px;
+
+  a {
+    text-decoration: none;
+    color: map-get($color-set-3, text-200); /* 分组标题颜色 */
+
+    &:hover {
+      color: map-get($color-set-3, accent-100); /* 鼠标悬浮时颜色 */
+    }
+  }
+
+  ul li {
+    margin: 5px 0;
+    border-bottom: 1px solid map-get($color-set-2, bg-100); /* 下边框分隔线 */
+    transition: background-color 0.3s ease;
+    border-radius: 8px;
+
+    &:hover {
+      background-color: map-get($color-set-1, bg-100); /* 鼠标悬浮时背景 */
+    }
+  }
+}
 
 // For athors list page
 // Helper function to retrieve colors
