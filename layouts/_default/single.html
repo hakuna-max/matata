@@ -22,7 +22,11 @@ $dateHuman := .Date | time.Format ":date_long" }}
     {{ with .Params.author }}
     <a href="/author/{{ . | urlize }}">{{ . }}</a>
     {{ else }}
+    {{ with .Site.Params.author }}
+    <a href="/author/{{ . | urlize }}">{{ . }}</a>
+    {{ else }}
     <span>Unknown Author</span>
+    {{ end }}
     {{ end }}
   </span>
   <span>
