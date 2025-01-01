@@ -28,7 +28,8 @@
     <ul>
       {{ $currentAuthor := .Title }} <!-- 当前作者的名称 -->
       {{ range .Site.RegularPages }} <!-- 遍历所有 Regular Pages -->
-      {{ if not (or (eq .File.BaseFileName "archive") (strings.HasPrefix .File.Path "authors\\")) }}
+      {{ $normalizedPath := strings.Replace .File.Path "\\" "/" -1 }}
+      {{ if not (or (eq .File.BaseFileName "archive") (strings.HasPrefix $normalizedPath "authors/")) }}
       {{ $pageAuthor := or (.Params.author) .Site.Params.author }} <!-- 获取文章的作者 -->
       {{ if eq $pageAuthor $currentAuthor }} <!-- 只显示属于当前作者的文章 -->
       <li>
