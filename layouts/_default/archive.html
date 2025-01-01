@@ -58,6 +58,7 @@
 
 {{ range .Site.RegularPages }}
 {{ if not (or (eq .File.BaseFileName "archive") (strings.HasPrefix .File.Path "authors\\")) }}  <!-- 排除 archive.md -->
+  <p>{{ .File.Path }}</p>
   {{ $key := .Date.Format "2006-01" }}
   {{ $existing := index $grouped $key | default slice }}
   {{ $grouped = merge $grouped (dict $key ($existing | append .)) }}
