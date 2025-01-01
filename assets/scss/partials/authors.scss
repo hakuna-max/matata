@@ -52,6 +52,34 @@ $card-height: 254px;
 $blur-intensity: 15px;
 $font-author: "Playwrite US Trad", "Noto Serif SC", serif;
 
+.author-list {
+  strong {
+    font-weight: bolder;
+    color: $card-text; /* 自定义颜色 */
+    background-color: transparent; /* 移除背景色 */
+    padding: 0;
+    border-radius: 0;
+  }
+
+  a {
+    color: $card-text; /* 自定义链接颜色 */
+    text-decoration: none;
+    font-weight: bolder;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    &:visited {
+      all: unset;
+    }
+
+    &:active {
+      all: unset;
+    }
+  }
+}
+
 // SCSS structure
 .card {
   overflow: visible;

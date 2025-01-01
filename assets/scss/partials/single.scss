@@ -56,3 +56,34 @@
       }
   }
   
+
+.single-content {
+  strong {
+    font-weight: bolder; /* 加粗 */
+    color: map-get($color-set-4, primary-100); /* 突出颜色 */
+    background-color: map-get($color-set-1, bg-100); /* 背景高亮 */
+    padding: 2px 4px; /* 内边距让强调更明显 */
+    border-radius: 4px; /* 圆角 */
+  }
+
+  a {
+    color: map-get($color-set-1, accent-200); /* 默认链接颜色 */
+    text-decoration: underline; /* 默认无下划线 */
+    font-weight: 600; /* 加粗链接 */
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* 平滑过渡效果 */
+  
+    &:hover {
+      color: map-get($color-set-1, accent-100); /* 悬停时链接颜色 */
+      text-shadow: 0px 2px 5px map-get($color-set-1, accent-100); /* 添加阴影效果 */
+    }
+  
+    &:visited {
+      color: map-get($color-set-1, text-200); /* 已访问链接的颜色 */
+    }
+  
+    &:active {
+      color: map-get($color-set-1, primary-300); /* 点击时的链接颜色 */
+      text-decoration: underline; /* 点击时显示下划线 */
+    }
+  }
+}

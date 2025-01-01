@@ -146,6 +146,8 @@ $dateHuman := .Date | time.Format ":date_long" }}
   </span>
 </div>
 
-{{ .Content }}
+<div class="single-content">
+  {{ .Content }}
+</div>
 <!-- {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }} -->
 {{ end }}
