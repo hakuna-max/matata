@@ -1,6 +1,26 @@
+// For athors list page
+// Helper function to retrieve colors
+@function get-color($key) {
+  @return map-get($color-set-2, $key);
+}
+
+// Variables derived from the color set
+$card-bg: get-color(bg-200);
+$card-text: get-color(text-100);
+$card-text-secondary: get-color(text-200);
+$card-highlight: get-color(accent-100);
+$card-highlight-secondary: get-color(accent-200);
+$card-shadow: rgba(get-color(text-100), 0.9);
+$card-width: 190px;
+$card-height: 254px;
+$blur-intensity: 15px;
+$font-author: "Playwrite US Trad", "Noto Serif SC", serif;
+
 .author-profile {
   text-align: center;
   margin: 20px auto;
+
+  font-family: $font-author;
 }
 
 .author-photo,
@@ -34,23 +54,7 @@
   }
 }
 
-// For athors list page
-// Helper function to retrieve colors
-@function get-color($key) {
-  @return map-get($color-set-2, $key);
-}
 
-// Variables derived from the color set
-$card-bg: get-color(bg-200);
-$card-text: get-color(text-100);
-$card-text-secondary: get-color(text-200);
-$card-highlight: get-color(accent-100);
-$card-highlight-secondary: get-color(accent-200);
-$card-shadow: rgba(get-color(text-100), 0.9);
-$card-width: 190px;
-$card-height: 254px;
-$blur-intensity: 15px;
-$font-author: "Playwrite US Trad", "Noto Serif SC", serif;
 
 .author-list {
   strong {
