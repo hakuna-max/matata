@@ -8,22 +8,26 @@
           </a>
       </div>
   
-      <!-- 中间：显示 content/ 文件夹 -->
+      <!-- 中间：显示 content/ 文件夹 （排除 authors 文件夹） -->
       <nav class="header-center">
-        <!-- 显示最多 3 个文件夹 -->
+        <!-- 显示最多 4 个文件夹，排除 Authors -->
         {{ range first 4 .Site.Sections }}
-          <a href="{{ .Permalink }}">{{ .Title }}</a>
+          {{ if ne .Title "Authors" }}
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          {{ end }}
         {{ end }}
-  
-        <!-- 如果文件夹多余 3 个，显示 "更多" 下拉菜单 -->
+      
+        <!-- 如果文件夹多余 4 个，显示 "更多" 下拉菜单 -->
         {{ if gt (len .Site.Sections) 4 }}
           <div class="dropdown">
             <button class="btn dropdown-toggle">
-                <i class="animation"></i> More <i class="animation"></i>
-              </button>
+              <i class="animation"></i> More <i class="animation"></i>
+            </button>
             <div class="dropdown-menu">
               {{ range after 4 .Site.Sections }}
-                <a href="{{ .Permalink }}">{{ .Title }}</a>
+                {{ if ne .Title "Authors" }}
+                  <a href="{{ .Permalink }}">{{ .Title }}</a>
+                {{ end }}
               {{ end }}
             </div>
           </div>
@@ -32,13 +36,18 @@
   
       <!-- 右边：固定标签 -->
       <div class="header-right">
+      <!-- Authors 链接 -->
+      <a href="/authors/">
+        <span class="material-symbols-outlined">group_add</span>
+        <span></span>
+      </a>
         <a href="/archive/">
           <span class="material-icons">archive</span>
-          <span>Archive</span>
+          <span></span>
         </a>
         <a href="/tags">
           <span class="material-icons">label</span>
-          <span>Tags</span>
+          <span></span>
         </a>
       </div>
     </div>
