@@ -1,0 +1,207 @@
+.author-profile {
+  text-align: center;
+  margin: 20px auto;
+}
+
+.author-photo,
+.author-thumbnail {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+
+
+// For athors list page
+// Helper function to retrieve colors
+@function get-color($key) {
+  @return map-get($color-set-2, $key);
+}
+
+// Variables derived from the color set
+$card-bg: get-color(bg-200);
+$card-text: get-color(text-100);
+$card-text-secondary: get-color(text-200);
+$card-highlight: get-color(accent-100);
+$card-highlight-secondary: get-color(accent-200);
+$card-shadow: rgba(get-color(text-100), 0.9);
+$card-width: 190px;
+$card-height: 254px;
+$blur-intensity: 15px;
+$font-author: "Playwrite US Trad", "Noto Serif SC", serif;
+
+// SCSS structure
+.card {
+  overflow: visible;
+  width: 190px;
+  height: 254px;
+  font-family: $font-author;
+  font-weight: bolder;
+
+  .content {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 300ms;
+    box-shadow: 0px 0px 10px 1px $card-shadow;
+    border-radius: 5px;
+
+    .front,
+    .back {
+      background-color: $card-bg;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .back {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &::before {
+        position: absolute;
+        content: "";
+        display: block;
+        width: 160px;
+        height: 160%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          $card-highlight,
+          $card-highlight,
+          transparent
+        );
+        animation: rotation 5s infinite linear;
+      }
+
+      .back-content {
+        position: absolute;
+        width: 99%;
+        height: 99%;
+        background-color: $card-bg;
+        border-radius: 5px;
+        color: $card-text;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+      }
+    }
+
+    &:hover {
+      transform: rotateY(180deg);
+    }
+
+    .front {
+      transform: rotateY(180deg);
+      color: $card-text;
+
+      .front-content {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .badge {
+          background-color: rgba($card-text, 0.33);
+          padding: 2px 10px;
+          border-radius: 10px;
+          backdrop-filter: blur(2px);
+          width: fit-content;
+        }
+
+        .description {
+          box-shadow: 0px 0px 10px 5px rgba($card-text, 0.53);
+          width: 100%;
+          padding: 10px;
+          background-color: get-color(bg-300);
+          backdrop-filter: blur(5px);
+          border-radius: 5px;
+
+          .title {
+            font-size: 11px;
+            max-width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+            p {
+              width: 50%;
+            }
+          }
+
+          .card-footer {
+            color: $card-text-secondary;
+            margin-top: 5px;
+            font-size: 8px;
+          }
+        }
+      }
+
+      .img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+
+        .circle {
+          width: 90px;
+          height: 90px;
+          border-radius: 50%;
+          background-color: lighten($card-highlight, 20%);
+          position: relative;
+          filter: blur(15px);
+          animation: floating 2.6s infinite linear;
+
+          &#bottom {
+            background-color: $card-highlight-secondary;
+            left: 50px;
+            top: 0;
+            width: 150px;
+            height: 150px;
+            animation-delay: -0.8s;
+          }
+
+          &#right {
+            background-color: get-color(primary-300);
+            left: 160px;
+            top: -80px;
+            width: 30px;
+            height: 30px;
+            animation-delay: -1.8s;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Animations
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}

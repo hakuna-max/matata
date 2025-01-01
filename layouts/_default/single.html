@@ -20,10 +20,10 @@ $dateHuman := .Date | time.Format ":date_long" }}
     </svg>
     <!-- 作者姓名 -->
     {{ with .Params.author }}
-    <a href="/author/{{ . | urlize }}">{{ . }}</a>
+    <a href="/authors/{{ . | urlize }}">{{ . }}</a>
     {{ else }}
     {{ with .Site.Params.author }}
-    <a href="/author/{{ . | urlize }}">{{ . }}</a>
+    <a href="/authors/{{ . | urlize }}">{{ . }}</a>
     {{ else }}
     <span>Unknown Author</span>
     {{ end }}

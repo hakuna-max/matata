@@ -14,6 +14,8 @@
   rel="stylesheet"
 />
 
+<link href="https://fonts.googleapis.com/css2?family=Playwrite+US+Trad:wght@100..400&display=swap" rel="stylesheet">
+
 {{- if eq hugo.Environment "development" }}
 <link rel="stylesheet" href="{{ $sass.RelPermalink }}" />
 {{- else }} {{ $minified := $sass | minify }} {{- with $minified | fingerprint
