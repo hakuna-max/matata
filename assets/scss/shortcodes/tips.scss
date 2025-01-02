@@ -1,0 +1,19 @@
+.admonition.tips {
+    padding: 10px;
+    border-left: 4px solid map-get($map: $color-set-2, $key: primary-300);
+
+    .admonition-icon {
+        display: flex;
+        align-items: center; /* 垂直居中对齐图标和内容 */
+        margin-right: 8px; /* 调整图标和内容的水平间距 */
+    }
+
+    .material-symbols-outlined {
+        color: map-get($map: $color-set-3, $key: accent-100);
+        margin: 0; /* 去掉任何外边距 */
+    }
+
+    .admonition-content {
+        margin: 0; /* 确保内容没有额外间距 */
+    }
+}

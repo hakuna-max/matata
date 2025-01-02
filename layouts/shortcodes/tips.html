@@ -1,6 +1,10 @@
 <!-- layouts/shortcodes/warning.html -->
-<aside class="admonition warning">
-  <div class="admonition-icon"></div>
+<aside class="admonition tips">
+  <div class="admonition-icon">
+    <span class="material-symbols-outlined">
+      lightbulb_2
+      </span>
+  </div>
   <div class="admonition-content">
     {{ .Inner | $.Page.RenderString (dict "display" "block") }}
   </div>
