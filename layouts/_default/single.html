@@ -145,12 +145,14 @@ $dateHuman := .Date | time.Format ":date_long" }}
   {{ .TableOfContents }}
 </div>
 
-<div class="single-content">
-  {{ .Content }}
+<div class="content-wrapper">
+  <div class="single-content">
+    {{ .Content }}
+  </div>
+  <a href="#" class="back-to-top" title="Back to Top">
+    <span class="material-symbols-outlined">assistant_navigation</span>
+  </a>
 </div>
-<a href="#" class="back-to-top" title="Back to Top">
-  <span class="material-symbols-outlined"> assistant_navigation </span>
-</a>
 <!-- {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }} -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
