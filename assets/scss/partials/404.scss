@@ -1,0 +1,86 @@
+.container-404 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Nunito Sans";
+  padding-top: 20%;
+
+  svg {
+    width: 100%;
+    visibility: hidden;
+  }
+
+  h1 {
+    font-size: 7.5em;
+    margin: 20px 0px;
+    font-weight:bold;
+  }
+
+  h2 {
+    font-weight:bold;
+    margin-top: 50px;
+  }
+
+  .container .row {
+    display: flex;
+    flex-wrap: nowrap; /* 防止子元素换行 */
+    align-items: flex-end;
+  }
+
+  .col-md-6 {
+    flex: 0 0 50%; /* 确保每列占据 50% */
+  }
+
+  .btn {
+    z-index: 1;
+    overflow: hidden;
+    background: transparent;
+    position: relative;
+    padding: 8px 50px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    letter-spacing: 2px;
+    transition: 0.2s ease;
+    font-weight: bold;
+    margin: 5px 0px;
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    &.green {
+      border: 4px solid map-get($map: $color-set-1, $key: primary-200);
+      color: var(--blue);
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 0%;
+        height: 100%;
+        background: map-get($map: $color-set-1, $key: primary-200);
+        z-index: -1;
+        transition: 0.2s ease;
+      }
+      &:hover {
+        color: map-get($map: $color-set-1, $key: bg-100);
+        background: map-get($map: $color-set-1, $key: primary-200);
+        transition: 0.2s ease;
+        &:before {
+          width: 100%;
+        }
+      }
+    }
+  }
+  @media screen and (max-width:768px) {
+    body {
+      display:block;
+    }
+    .container {
+      margin-top:70px;
+      margin-bottom:70px;
+    }
+  } 
+}
