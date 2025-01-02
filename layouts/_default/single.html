@@ -21,13 +21,11 @@ $dateHuman := .Date | time.Format ":date_long" }}
     <!-- 作者姓名 -->
     {{ with .Params.author }}
     <a href="/authors/{{ . | urlize }}">{{ . }}</a>
-    {{ else }}
-    {{ with .Site.Params.author }}
+    {{ else }} {{ with .Site.Params.author }}
     <a href="/authors/{{ . | urlize }}">{{ . }}</a>
     {{ else }}
     <span>Unknown Author</span>
-    {{ end }}
-    {{ end }}
+    {{ end }} {{ end }}
   </span>
   <span>
     <!-- 更新： -->
@@ -114,13 +112,9 @@ $dateHuman := .Date | time.Format ":date_long" }}
         fill="#adb5bd"
       ></path>
     </svg>
-    {{ $readingSpeed := .Site.Language.Params.reading_speed }}
-    {{ $readingTime := div .WordCount $readingSpeed }}
-    {{ if gt (mod .WordCount $readingSpeed) 0 }}
-      {{ add $readingTime 1 }}
-    {{ else }}
-      {{ $readingTime }}
-    {{ end }} minutes
+    {{ $readingSpeed := .Site.Language.Params.reading_speed }} {{ $readingTime
+    := div .WordCount $readingSpeed }} {{ if gt (mod .WordCount $readingSpeed) 0
+    }} {{ add $readingTime 1 }} {{ else }} {{ $readingTime }} {{ end }} minutes
   </span>
   <span class="tags">
     <!-- 标签 -->
@@ -146,8 +140,37 @@ $dateHuman := .Date | time.Format ":date_long" }}
   </span>
 </div>
 
+<div class="toc">
+  <span>Table of Content</span>
+  {{ .TableOfContents }}
+</div>
+
 <div class="single-content">
   {{ .Content }}
 </div>
+<a href="#" class="back-to-top" title="Back to Top">
+  <span class="material-symbols-outlined"> assistant_navigation </span>
+</a>
 <!-- {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }} -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const backToTopButton = document.querySelector('.back-to-top');
+
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 200) {
+        backToTopButton.classList.add('visible');
+      } else {
+        backToTopButton.classList.remove('visible');
+      }
+    });
+
+    backToTopButton.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  });
+</script>
 {{ end }}

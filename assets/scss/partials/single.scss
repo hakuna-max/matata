@@ -1,61 +1,110 @@
 .desc {
-    color: map-get($color-set-2, primary-300);
-    font-size: small;
-    font-weight:bold;
-    display: flex; /* 使用 flexbox 布局 */
-    align-items: center; /* 垂直居中对齐 */
-    gap: 8px; /* 图标与文字之间的间距 */
-    opacity: 0.5;
+  color: map-get($color-set-2, primary-300);
+  font-size: small;
+  font-weight: bold;
+  display: flex; /* 使用 flexbox 布局 */
+  align-items: center; /* 垂直居中对齐 */
+  gap: 8px; /* 图标与文字之间的间距 */
+  opacity: 0.5;
 
-    /* 禁止选择和复制内容 */
-    user-select: none;
-    
-    /* 单独调整包含每个部分的 span */
-    span {
-      display: flex;
-      align-items: center; /* 确保图标与文字在 span 内居中 */
-      gap: 5px; /* 图标和文字的间距 */
+  /* 禁止选择和复制内容 */
+  user-select: none;
 
-      a {
-        text-decoration: none;
-        color: map-get($color-set-2, accent-100);
-        font-size: 0.9em;
-  
-        &:hover {
-          color: map-get($color-set-2, accent-200);
-          text-decoration: underline;
-        }
+  /* 单独调整包含每个部分的 span */
+  span {
+    display: flex;
+    align-items: center; /* 确保图标与文字在 span 内居中 */
+    gap: 5px; /* 图标和文字的间距 */
+
+    a {
+      text-decoration: none;
+      color: map-get($color-set-2, accent-100);
+      font-size: 0.9em;
+
+      &:hover {
+        color: map-get($color-set-2, accent-200);
+        text-decoration: underline;
       }
     }
-  
-    /* 设置 SVG 的对齐方式 */
-    svg {
-      display: inline-block;
-      vertical-align: middle; /* 确保与文本对齐 */
-      width: 1em; /* 根据字体大小自动调整图标尺寸 */
-      height: 1em;
-    }
-
-    .tags {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        text-transform: capitalize;
-    
-        a {
-        
-          background-color: map-get($color-set-2, bg-200);
-          padding: 0em 1em;
-          border-radius: 5px;
-          font-size: 0.9em;
-    
-          &:hover {
-            background-color: map-get($color-set-2, bg-300);
-          }
-        }
-      }
   }
-  
+
+  /* 设置 SVG 的对齐方式 */
+  svg {
+    display: inline-block;
+    vertical-align: middle; /* 确保与文本对齐 */
+    width: 1em; /* 根据字体大小自动调整图标尺寸 */
+    height: 1em;
+  }
+
+  .tags {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-transform: capitalize;
+
+    a {
+      background-color: map-get($color-set-2, bg-200);
+      padding: 0em 1em;
+      border-radius: 5px;
+      font-size: 0.9em;
+
+      &:hover {
+        background-color: map-get($color-set-2, bg-300);
+      }
+    }
+  }
+}
+
+.toc {
+  position: relative;
+  max-height: 300px; // 设置固定高度
+  overflow-y: auto; // 超出部分隐藏并允许垂直滚动
+  border: 1px solid #ddd; // 添加边框
+  padding: 0px; // 内边距
+  background-color: #f9f9f9; // 背景色
+  border-radius: 5px; // 圆角
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // 添加阴影
+
+  // 固定标题样式
+  span {
+    position: sticky; // 固定位置
+    top: 0; // 距离顶部为 0
+    background-color: #f9f9f9; // 背景色与 TOC 一致
+    z-index: 1; // 确保标题不被内容覆盖
+    font-weight: bold;
+    font-size: 16px;
+    padding: 5px 10px; // 上下内边距
+    display: block;
+    color: #333;
+    border-bottom: 1px solid #ddd; // 添加分割线
+  }
+
+  // 定义 TableOfContents 的样式
+  #TableOfContents {
+    list-style: none; // 去除列表样式
+    padding: 0; // 去除内边距
+    margin: 0; // 去除外边距
+
+     a {
+      text-decoration: none;
+      color: map-get($color-set-3, text-200); /* 分组标题颜色 */
+
+      &:hover {
+        color: map-get($color-set-3, accent-100); /* 鼠标悬浮时颜色 */
+      }
+    }
+
+    ol li {
+      margin: 5px 0;
+      transition: background-color 0.3s ease;
+      border-radius: 8px;
+
+      &:hover {
+        background-color: map-get($color-set-1, bg-100); /* 鼠标悬浮时背景 */
+      }
+    }
+  }
+}
 
 .single-content {
   strong {
@@ -71,19 +120,51 @@
     text-decoration: underline; /* 默认无下划线 */
     font-weight: 600; /* 加粗链接 */
     transition: color 0.3s ease, text-shadow 0.3s ease; /* 平滑过渡效果 */
-  
+
     &:hover {
       color: map-get($color-set-1, accent-100); /* 悬停时链接颜色 */
       text-shadow: 0px 2px 5px map-get($color-set-1, accent-100); /* 添加阴影效果 */
     }
-  
+
     &:visited {
       color: map-get($color-set-1, text-200); /* 已访问链接的颜色 */
     }
-  
+
     &:active {
       color: map-get($color-set-1, primary-300); /* 点击时的链接颜色 */
       text-decoration: underline; /* 点击时显示下划线 */
     }
+  }
+}
+
+.back-to-top {
+  position: fixed; // 固定在页面上
+  bottom: 60px; // 距离底部 20px
+  right: calc((100% - 1200px) / 2 - 60px); // 距离右侧 20px
+  // background-color: #007bff; // 按钮背景颜色
+  color: map-get($color-set-3, accent-200); // 按钮文字或图标颜色
+  font-size: 24px; // 图标大小
+  text-align: center; // 图标居中
+  padding: 10px; // 内边距
+  // border-radius: 50%; // 圆形按钮
+  // box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); // 添加阴影
+  // transition: opacity 0.3s, visibility 0.3s; // 过渡效果
+  opacity: 0; // 默认隐藏
+  visibility: hidden; // 默认不可见
+  z-index: 1000; // 确保按钮在最上层
+
+  &:hover {
+    color: map-get($color-set-3, accent-100);
+    cursor: pointer;
+  }
+
+  &.visible {
+    opacity: 1; // 当按钮可见时显示
+    visibility: visible; // 设置为可见
+  }
+
+  .material-symbols-outlined {
+    vertical-align: middle; // 图标垂直居中
+    font-size: 50px; // 根据需要调整图标大小
   }
 }
