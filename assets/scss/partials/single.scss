@@ -55,21 +55,25 @@
   }
 }
 
+/* 固定标题样式 */
 .toc {
-  position: relative;
-  max-height: 300px; // 设置固定高度
-  overflow-y: auto; // 超出部分隐藏并允许垂直滚动
-  border: 1px solid #ddd; // 添加边框
-  padding: 0px; // 内边距
-  background-color: #f9f9f9; // 背景色
-  border-radius: 5px; // 圆角
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // 添加阴影
+  position: relative; /* 改为相对定位，不随内容滚动 */
+  background-color: inherit; /* 背景色与 TOC 一致 */
+  font-weight: bold;
+  font-size: 16px;
+  padding: 5px 10px; /* 上下内边距 */
+  display: block;
+  color: #333;
+  border-bottom: 1px solid #ddd; /* 添加分割线 */
 
-  // 固定标题样式
+  &:has(#TableOfContents:empty) {
+    display: none; /* 隐藏空的 TOC 容器 */
+  }
+
   span {
     position: sticky; // 固定位置
     top: 0; // 距离顶部为 0
-    background-color: #f9f9f9; // 背景色与 TOC 一致
+    background-color: inherit; // 背景色与 TOC 一致
     z-index: 1; // 确保标题不被内容覆盖
     font-weight: bold;
     font-size: 16px;
@@ -77,13 +81,16 @@
     display: block;
     color: #333;
     border-bottom: 1px solid #ddd; // 添加分割线
+    font-family: "Playwrite US Trad";
   }
+  /* 定义 TableOfContents 的样式 */
 
-  // 定义 TableOfContents 的样式
   #TableOfContents {
-    list-style: none; // 去除列表样式
-    padding: 0; // 去除内边距
-    margin: 0; // 去除外边距
+    max-height: 300px; /* 设置固定高度 */
+    overflow-y: auto; /* 超出部分隐藏并允许垂直滚动 */
+    list-style: none; /* 去除列表样式 */
+    padding: 10px;
+    margin: 0; /* 去除外边距 */
 
     a {
       text-decoration: none;
@@ -97,7 +104,7 @@
     ol li {
       margin: 5px 0;
       transition: background-color 0.3s ease;
-      border-radius: 8px;
+      border-radius: 4px;
 
       &:hover {
         background-color: map-get($color-set-1, bg-100); /* 鼠标悬浮时背景 */

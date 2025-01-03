@@ -140,10 +140,12 @@ $dateHuman := .Date | time.Format ":date_long" }}
   </span>
 </div>
 
+{{ if .Page.TableOfContents }}
 <div class="toc">
   <span>Table of Content</span>
-  {{ .TableOfContents }}
+    {{ .TableOfContents }}
 </div>
+{{ end }}
 
 <div class="content-wrapper">
   <div class="single-content">
