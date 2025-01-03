@@ -18,13 +18,51 @@
 
   <!-- 中间：显示 content/ 文件夹 （排除 authors 文件夹） -->
   <nav class="header-center">
-    <!-- 显示最多 3 个文件夹，排除 Authors -->
-    {{ range first 3 .Site.Sections }} {{ if ne .Title "Authors" }}
-    <a href="{{ .Permalink }}">{{ .Title }}</a>
-    {{ end }} {{ end }}
+    <!-- 定义需要优先显示的文件夹 -->
+    {{ $priorityFolders := slice "Programmings" "DSAs" "BAs" }}
+    {{ $excludeFolders := or .Site.Params.excludeFolders (slice) }}
 
-    <!-- 如果文件夹多余 4 个，显示 "更多" 下拉菜单 -->
-    {{ if gt (len .Site.Sections) 4 }}
+    <!-- 收集所有文件夹 -->
+    {{ $allFolders := .Site.Sections }}
+    <!-- 按字典序排序 -->
+    {{ $sortedFolders := sort $allFolders "Title" }}
+  
+    <!-- 筛选出优先显示的文件夹 -->
+    {{ $priorityVisible := where $sortedFolders "Title" "in" $priorityFolders }}
+  
+    <!-- 初始化主文件夹列表 -->
+    {{ $topFolders := slice }}
+    {{ range $priorityVisible }}
+      {{ $topFolders = $topFolders | append . }}
+    {{ end }}
+  
+    <!-- 如果优先文件夹不足 3 个，用其余文件夹补充 -->
+    {{ $remainingFolders := where $sortedFolders "Title" "not in" $priorityFolders }}
+    {{ $remainingFolders := where $remainingFolders "Title" "not in" $excludeFolders }}
+    
+    {{ range (first (sub 3 (len $topFolders)) $remainingFolders) }}
+      {{ $topFolders = $topFolders | append . }}
+    {{ end }}
+
+  
+    <!-- 显示主文件夹 -->
+    {{ range $topFolders }}
+    <a href="{{ .Permalink }}">{{ .Title }}</a>
+    {{ end }}
+  
+    <!-- 处理剩余文件夹，放到 dropdown 中 -->
+    {{ $topTitles := slice }}
+    {{ range $topFolders }}
+      {{ $topTitles = $topTitles | append .Title }}
+    {{ end }}
+    {{ $dropdownFolders := slice }}
+    {{ range $sortedFolders }}
+      {{ if and (not (in $topTitles .Title)) (not (in $excludeFolders .Title)) }}
+        {{ $dropdownFolders = $dropdownFolders | append . }}
+      {{ end }}
+    {{ end }}
+  
+    {{ if gt (len $dropdownFolders) 0 }}
     <div class="dropdown">
       <button class="dropdown-toggle">
         <svg
@@ -46,14 +84,15 @@
         </svg>
       </button>
       <div class="dropdown-menu">
-        {{ range after 3 .Site.Sections }} {{ if ne .Title "Authors" }}
+        <!-- 显示剩余文件夹 -->
+        {{ range $dropdownFolders }}
         <a href="{{ .Permalink }}">{{ .Title }}</a>
-        {{ end }} {{ end }}
+        {{ end }}
       </div>
     </div>
     {{ end }}
   </nav>
-
+  
   <!-- 右边：固定标签 -->
   <div class="header-right">
     <!-- Authors 链接 -->
