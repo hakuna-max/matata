@@ -18,12 +18,13 @@
 
     a {
       text-decoration: none;
-      color: map-get($color-set-2, accent-100);
+      color: map-get($color-set-1, text-100);
       font-size: 0.9em;
+      opacity: 1;
 
       &:hover {
-        color: map-get($color-set-2, accent-200);
-        text-decoration: underline;
+        color: map-get($color-set-2, accent-100);
+        text-decoration: none;
       }
     }
   }
@@ -78,9 +79,9 @@
     font-size: 16px;
     padding: 5px 10px; // 上下内边距
     display: block;
-    color: #333;
+    color: inherit;
     width: 100%; // 设置宽度为100%，确保与父级一致
-    border-bottom: 1px solid #ddd; // 添加分割线
+    border-bottom: 1px solid map-get($color-set-2, accent-100); // 添加分割线
     font-family: "Playwrite US Trad";
   }
   /* 定义 TableOfContents 的样式 */
@@ -91,7 +92,7 @@
     list-style: none; /* 去除列表样式 */
     padding: 10px;
     margin: 0; /* 去除外边距 */
-    border-bottom: 1px solid #ddd; /* 添加分割线 */
+    border-bottom: 1px solid map-get($color-set-2, accent-100); /* 添加分割线 */
 
     /* 隐藏滚动条 */
     scrollbar-width: none; /* 对 Firefox 生效 */
