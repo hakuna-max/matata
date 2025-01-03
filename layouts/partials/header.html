@@ -18,19 +18,35 @@
 
   <!-- 中间：显示 content/ 文件夹 （排除 authors 文件夹） -->
   <nav class="header-center">
-    <!-- 显示最多 4 个文件夹，排除 Authors -->
-    {{ range first 4 .Site.Sections }} {{ if ne .Title "Authors" }}
+    <!-- 显示最多 3 个文件夹，排除 Authors -->
+    {{ range first 3 .Site.Sections }} {{ if ne .Title "Authors" }}
     <a href="{{ .Permalink }}">{{ .Title }}</a>
     {{ end }} {{ end }}
 
     <!-- 如果文件夹多余 4 个，显示 "更多" 下拉菜单 -->
     {{ if gt (len .Site.Sections) 4 }}
     <div class="dropdown">
-      <button class="btn dropdown-toggle">
-        <i class="animation"></i> More <i class="animation"></i>
+      <button class="dropdown-toggle">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 -960 960 960"
+          width="24px"
+          fill="#000000"
+        >
+          <path
+            d="M240-400q-33 0-56.5-23.5T160-480q0-33 23.5-56.5T240-560q33 0 56.5 23.5T320-480q0 33-23.5 56.5T240-400Z"
+          ></path>
+          <path
+            d="M480-400q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Z"
+          ></path>
+          <path
+            d="M720-400q-33 0-56.5-23.5T640-480q0-33 23.5-56.5T720-560q33 0 56.5 23.5T800-480q0 33-23.5 56.5T720-400Z"
+          ></path>
+        </svg>
       </button>
       <div class="dropdown-menu">
-        {{ range after 4 .Site.Sections }} {{ if ne .Title "Authors" }}
+        {{ range after 3 .Site.Sections }} {{ if ne .Title "Authors" }}
         <a href="{{ .Permalink }}">{{ .Title }}</a>
         {{ end }} {{ end }}
       </div>
