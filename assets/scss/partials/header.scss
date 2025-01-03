@@ -23,16 +23,53 @@
 
   /* 左边样式 */
   .header-left {
+    position: relative; /* Ensure the tooltip is positioned relative to the parent */
+
     .site-title {
       display: flex;
       align-items: center;
-      font-size: 1.5rem;
-      font-weight: bold;
-      text-decoration: none;
-      color: map-get($color-set-1, text-100);
 
-      &:hover {
-        color: map-get($color-set-1, accent-200);
+      /* Tooltip styling */
+      &::after {
+        content: "Home"; /* The text for the tooltip */
+        position: absolute;
+        top: 30px; /* Position below the SVG */
+        left: 50%; /* Center horizontally */
+        transform: translateX(-50%);
+        color: map-get($color-set-1, accent-200); /* Text color */
+        padding: 2px 8px; /* Padding inside the tooltip */
+        border-radius: 8px; /* Rounded corners */
+        font-size: 10px; /* Slightly larger font size */
+        font-weight: bold; /* Make the text bold */
+        white-space: nowrap; /* Prevent text wrapping */
+        opacity: 0; /* Initially hide the tooltip */
+        visibility: hidden; /* Make it invisible */
+        transform: translateX(-50%) translateY(10px); /* Add an initial offset for animation */
+        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; /* Smooth animation */
+      }
+
+      /* Add a small triangle under the tooltip */
+      &::before {
+        content: "";
+        position: absolute;
+        top: 32px; /* Position above the tooltip */
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 6px; /* Size of the triangle */
+        border-style: solid;
+        border-color: transparent transparent map-get($color-set-1, accent-200)
+          transparent; /* Triangle color matches gradient */
+        opacity: 0; /* Initially hidden */
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+
+      /* Show the tooltip on hover */
+      &:hover::after,
+      &:hover::before {
+        opacity: 0.6;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0); /* Bring it to its final position */
       }
     }
   }
@@ -193,17 +230,60 @@
   .header-right {
     margin-left: auto;
     display: flex;
-    align-items: center;
+    align-items: center; /* Vertically align all elements */
     gap: 20px;
+
     a {
+      position: relative; /* Ensure the tooltip is positioned relative to each link */
       display: flex;
-      align-items: center;
+      align-items: center; /* Vertically align the icons */
+      justify-content: center;
       text-decoration: none;
       font-size: 1rem;
-      color: map-get($color-set-1, text-100);
 
-      &:hover {
-        color: map-get($color-set-1, accent-200);
+      /* Tooltip styling */
+      &::after {
+        content: attr(
+          data-tooltip
+        ); /* Tooltip text from "data-tooltip" attribute */
+        position: absolute;
+        top: 30px; /* Position below the SVG */
+        left: 50%; /* Center horizontally */
+        transform: translateX(-50%);
+        color: map-get($color-set-1, accent-200); /* Tooltip text color */
+        padding: 2px 8px; /* Padding inside the tooltip */
+        border-radius: 8px; /* Rounded corners */
+        font-size: 10px; /* Slightly larger font size */
+        font-weight: bold; /* Bold text */
+        white-space: nowrap; /* Prevent text wrapping */
+        opacity: 0; /* Initially hide the tooltip */
+        visibility: hidden; /* Make it invisible */
+        transform: translateX(-50%) translateY(10px); /* Add an initial offset for animation */
+        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; /* Smooth animation */
+      }
+
+      /* Add a small triangle under the tooltip */
+      &::before {
+        content: "";
+        position: absolute;
+        top: 32px; /* Position above the tooltip */
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 6px; /* Size of the triangle */
+        border-style: solid;
+        border-color: transparent transparent map-get($color-set-1, accent-200)
+          transparent; /* Triangle color matches tooltip text color */
+        opacity: 0; /* Initially hidden */
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+
+      /* Show the tooltip on hover */
+      &:hover::after,
+      &:hover::before {
+        opacity: 0.6;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0); /* Bring it to its final position */
       }
     }
   }
