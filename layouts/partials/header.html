@@ -1,59 +1,84 @@
-<header class="site-header">
-    <div class="container">
-      <!-- 左边：网站 Title -->
-      <div class="header-left">
-        <a href="/" class="site-title">
-            <span class="material-symbols-outlined">home</span>
-            <!-- {{ .Site.Title }} -->
-          </a>
-      </div>
-  
-      <!-- 中间：显示 content/ 文件夹 （排除 authors 文件夹） -->
-      <nav class="header-center">
-        <!-- 显示最多 4 个文件夹，排除 Authors -->
-        {{ range first 4 .Site.Sections }}
-          {{ if ne .Title "Authors" }}
-            <a href="{{ .Permalink }}">{{ .Title }}</a>
-          {{ end }}
-        {{ end }}
-      
-        <!-- 如果文件夹多余 4 个，显示 "更多" 下拉菜单 -->
-        {{ if gt (len .Site.Sections) 4 }}
-          <div class="dropdown">
-            <button class="btn dropdown-toggle">
-              <i class="animation"></i> More <i class="animation"></i>
-            </button>
-            <div class="dropdown-menu">
-              {{ range after 4 .Site.Sections }}
-                {{ if ne .Title "Authors" }}
-                  <a href="{{ .Permalink }}">{{ .Title }}</a>
-                {{ end }}
-              {{ end }}
-            </div>
-          </div>
-        {{ end }}
-      </nav>
-  
-      <!-- 右边：固定标签 -->
-      <div class="header-right">
-      <!-- Authors 链接 -->
-      <a href="/authors/">
-        <span class="material-symbols-outlined">group_add</span>
-        <span></span>
-      </a>
-        <a href="/archive/">
-          <span class="material-symbols-outlined">
-            quick_reference_all
-            </span>
-          <span></span>
-        </a>
-        <a href="/tags">
-          <span class="material-symbols-outlined">
-            bookmark_star
-            </span>
-          <span></span>
-        </a>
+<div class="header-container">
+  <!-- 左边：网站 Title -->
+  <div class="header-left">
+    <a href="/" class="site-title">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="24px"
+        viewBox="0 -960 960 960"
+        width="24px"
+        fill="#5f6368"
+      >
+        <path
+          d="M180-120q-25 0-42.5-17.5T120-180v-76l160-142v278H180Zm140 0v-160h320v160H320Zm360 0v-328L509-600l121-107 190 169q10 9 15 20.5t5 24.5v313q0 25-17.5 42.5T780-120H680ZM120-310v-183q0-13 5-25t15-20l300-266q8-8 18.5-11.5T480-819q11 0 21.5 3.5T520-804l80 71-480 423Z"
+        />
+      </svg>
+    </a>
+  </div>
+
+  <!-- 中间：显示 content/ 文件夹 （排除 authors 文件夹） -->
+  <nav class="header-center">
+    <!-- 显示最多 4 个文件夹，排除 Authors -->
+    {{ range first 4 .Site.Sections }} {{ if ne .Title "Authors" }}
+    <a href="{{ .Permalink }}">{{ .Title }}</a>
+    {{ end }} {{ end }}
+
+    <!-- 如果文件夹多余 4 个，显示 "更多" 下拉菜单 -->
+    {{ if gt (len .Site.Sections) 4 }}
+    <div class="dropdown">
+      <button class="btn dropdown-toggle">
+        <i class="animation"></i> More <i class="animation"></i>
+      </button>
+      <div class="dropdown-menu">
+        {{ range after 4 .Site.Sections }} {{ if ne .Title "Authors" }}
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+        {{ end }} {{ end }}
       </div>
     </div>
-  </header>
-  
+    {{ end }}
+  </nav>
+
+  <!-- 右边：固定标签 -->
+  <div class="header-right">
+    <!-- Authors 链接 -->
+    <a href="/authors/">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="24px"
+        viewBox="0 -960 960 960"
+        width="24px"
+        fill="#5f6368"
+      >
+        <path
+          d="M40-160v-112q0-34 17.5-62.5T104-378q62-31 126-46.5T360-440q66 0 130 15.5T616-378q29 15 46.5 43.5T680-272v112H40Zm720 0v-120q0-44-24.5-84.5T666-434q51 6 96 20.5t84 35.5q36 20 55 44.5t19 53.5v120H760ZM360-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm400-160q0 66-47 113t-113 47q-11 0-28-2.5t-28-5.5q27-32 41.5-71t14.5-81q0-42-14.5-81T544-792q14-5 28-6.5t28-1.5q66 0 113 47t47 113ZM120-240h480v-32q0-11-5.5-20T580-306q-54-27-109-40.5T360-360q-56 0-111 13.5T140-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T440-640q0-33-23.5-56.5T360-720q-33 0-56.5 23.5T280-640q0 33 23.5 56.5T360-560Zm0 320Zm0-400Z"
+        />
+      </svg>
+    </a>
+    <a href="/archive/">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="24px"
+        viewBox="0 -960 960 960"
+        width="24px"
+        fill="#5f6368"
+      >
+        <path
+          d="m480-240 160-160-56-56-64 64v-168h-80v168l-64-64-56 56 160 160ZM200-640v440h560v-440H200Zm0 520q-33 0-56.5-23.5T120-200v-499q0-14 4.5-27t13.5-24l50-61q11-14 27.5-21.5T250-840h460q18 0 34.5 7.5T772-811l50 61q9 11 13.5 24t4.5 27v499q0 33-23.5 56.5T760-120H200Zm16-600h528l-34-40H250l-34 40Zm264 300Z"
+        />
+      </svg>
+    </a>
+    <a href="/tags">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="24px"
+        viewBox="0 -960 960 960"
+        width="24px"
+        fill="#5f6368"
+      >
+        <path
+          d="m389-400 91-55 91 55-24-104 80-69-105-9-42-98-42 98-105 9 80 69-24 104ZM200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Zm80-122 200-86 200 86v-518H280v518Zm0-518h400-400Z"
+        />
+      </svg>
+    </a>
+  </div>
+</div>
