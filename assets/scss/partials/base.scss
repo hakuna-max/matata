@@ -23,6 +23,51 @@ body {
       transform-origin: top center; /* 确保缩放从顶部中心开始 */
       transition: transform 0.3s ease; /* 平滑缩放动画 */
 
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      
+        thead {
+          th {
+            background-color: map-get($color-set-1, bg-200); // 表头背景色
+            color: map-get($color-set-1, text-100); // 表头文字颜色
+            text-align: left;
+            border-bottom: 2px solid map-get($color-set-1, primary-300); // 表头与内容的分隔线
+            border-top: 2px solid map-get($color-set-1, primary-300); // 表头与内容的分隔线
+            padding: 10px;
+            vertical-align: bottom; // 标题栏向下对齐
+            font-weight: bold; // 加粗表头
+          }
+        }
+      
+        tbody {
+          td {
+            border-bottom: 1px solid map-get($color-set-1, bg-300); // 表体行分隔线
+            padding: 10px;
+            text-align: left;
+            color: map-get($color-set-1, text-200); // 表体文字颜色
+            background-color: map-get($color-set-1, bg-100); // 表体背景色
+            vertical-align: top; // 内容向上对齐
+          }
+      
+          tr:last-child td {
+            border-bottom: 2px solid map-get($color-set-1, primary-300); // 表头与内容的分隔线
+          }
+      
+          tr:hover {
+            background-color: map-get($color-set-1, primary-100); // 表体行悬停背景色
+          }
+        }
+      
+        caption {
+          margin-bottom: 10px;
+          font-weight: bold;
+          font-size: 1.2em;
+          text-align: left;
+          color: map-get($color-set-1, primary-300); // 标题文字颜色
+        }
+      }
+
       /* 代码块 */
       .highlight {
         display: flex;
