@@ -43,12 +43,6 @@
   referrerpolicy="no-referrer"
 ></script>
 
-<!-- 引入 Mermaid -->
- 
-<script src="
-https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js
-"></script>
-
 {{- if eq hugo.Environment "development" }}
 <link rel="stylesheet" href="{{ $sass.RelPermalink }}" />
 {{- else }} {{ $minified := $sass | minify }} {{- with $minified | fingerprint
