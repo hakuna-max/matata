@@ -29,7 +29,7 @@ body {
       
         thead {
           th {
-            background-color: map-get($color-set-1, bg-200); // 表头背景色
+            background-color: map-get($color-set-1, bg-100); // 表头背景色
             color: map-get($color-set-1, text-100); // 表头文字颜色
             text-align: left;
             border-bottom: 2px solid map-get($color-set-1, primary-300); // 表头与内容的分隔线
