@@ -4,9 +4,14 @@
   left: 0; /* 距离页面左侧为 0 */
   width: 100%; /* 背景填充整个页面宽度 */
   background-color: map-get($color-set-1, bg-200);
-  border-bottom: 1px solid map-get($color-set-2, primary-200);
+  border-bottom: 1px solid map-get($color-set-1, bg-300);
   z-index: 1000; /* 确保 header 层级高于其他内容 */
-  padding: 10px 0;
+  padding: 15px 20px; /* 调整内边距，增加空间感 */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* 更精致的阴影效果 */
+  // backdrop-filter: blur(10px); /* 增加模糊效果，透明玻璃感 */
+  color: map-get($color-set-1, text-100); /* 文字颜色 */
+  font-weight: bold;
+  transition: background-color 0.3s, box-shadow 0.3s; /* 添加平滑的过渡效果 */
 
   /* 禁止选择和复制内容 */
   user-select: none;

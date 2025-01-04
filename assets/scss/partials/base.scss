@@ -1,6 +1,6 @@
 body {
   margin: 0; /* 移除默认的外边距 */
-  padding-top: 60px; /* 添加顶部间距，等于 header 的高度 */
+  padding-top: 100px; /* 添加顶部间距，等于 header 的高度 */
   padding-bottom: 60px;
   min-height: 100vh; /* 确保占据至少整个视口的高度 */
   background-color: map-get($color-set-1, bg-200); /* 设置背景颜色 */
