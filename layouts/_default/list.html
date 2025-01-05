@@ -1,44 +1,93 @@
 {{ define "main" }}
 <div class="list-container">
-<h1>{{ .Title }}</h1>
-{{ .Content }}
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
 
-{{ $grouped := dict }}
+  <!-- 将所有文章收集到一个列表中 -->
+  {{ $allItems := .Pages }}
 
-{{ range .Pages }}
-  {{ $key := .Date.Format "2006-01" }}
-  {{ $existing := index $grouped $key | default slice }}
-  {{ $grouped = merge $grouped (dict $key ($existing | append .)) }}
-{{ end }}
+  <!-- 分页器设置，分页操作在此进行 -->
+  {{ $paginator := .Paginate $allItems 6 }} <!-- 每页显示10条记录 -->
 
-{{ $sortedKeys := slice }}
-{{ range $key, $value := $grouped }}
-  {{ $sortedKeys = $sortedKeys | append $key }}
-{{ end }}
+  <!-- 遍历分页内容，而不是全部内容 -->
+  {{ $grouped := dict }}
 
-{{ $sortedKeys = sort $sortedKeys }}
-{{ $total := len $sortedKeys }}
-{{ $reversedKeys := slice }}
-{{ range $i := seq $total }}
-  {{ $index := sub $total $i }}
-  {{ $reversedKeys = $reversedKeys | append (index $sortedKeys $index) }}
-{{ end }}
+  {{ range $paginator.Pages }}
+    {{ $key := .Date.Format "2006-01" }}
+    {{ $existing := index $grouped $key | default slice }}
+    {{ $grouped = merge $grouped (dict $key ($existing | append .)) }}
+  {{ end }}
 
-{{ range $reversedKeys }}
-  {{ $key := . }}
-  {{ $pages := index $grouped $key }}
-  {{ $year := substr $key 0 4 }}
-  {{ $month := substr $key 5 2 }}
-  <h2>{{ $year }} 年 {{ $month }} 月</h2>
-  <ul>
-    {{ range $pages }}
-      <li>
-        <a href="{{ .RelPermalink }}">
-          {{ .Date.Format "2006-01-02" }} {{ .Title }}
-        </a>
-      </li>
+  {{ $sortedKeys := slice }}
+  {{ range $key, $value := $grouped }}
+    {{ $sortedKeys = $sortedKeys | append $key }}
+  {{ end }}
+
+  {{ $sortedKeys = sort $sortedKeys }}
+  {{ $total := len $sortedKeys }}
+  {{ $reversedKeys := slice }}
+  {{ range $i := seq $total }}
+    {{ $index := sub $total $i }}
+    {{ $reversedKeys = $reversedKeys | append (index $sortedKeys $index) }}
+  {{ end }}
+
+  {{ range $reversedKeys }}
+    {{ $key := . }}
+    {{ $pages := index $grouped $key }}
+    {{ $year := substr $key 0 4 }}
+    {{ $month := substr $key 5 2 }}
+    <h3>{{ $year }} 年 {{ $month }} 月</h3>
+    <ul>
+      {{ range $pages }}
+        <li>
+          <a href="{{ .RelPermalink }}">
+            {{ .Date.Format "2006-01-02" }} {{ .Title }}
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+  {{ end }}
+
+  <!-- 添加分页导航，仅当需要分页时才显示 -->
+  {{ if gt $paginator.TotalPages 1 }}
+  <div class="pagination">
+    <!-- 首页链接 -->
+    {{ if $paginator.HasPrev }}
+      <a href="{{ (index $paginator.Pagers 0).URL }}" aria-label="首页">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M240-240v-480h80v480h-80Zm440 0L440-480l240-240 56 56-184 184 184 184-56 56Z"/></svg>
+      </a>
     {{ end }}
-  </ul>
-{{ end }}
+
+    <!-- 上一页 -->
+    {{ if $paginator.HasPrev }}
+      <a href="{{ $paginator.Prev.URL }}" aria-label="上一页">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/></svg>
+      </a>
+    {{ end }}
+
+    <!-- 页码 -->
+    {{ range $paginator.Pagers }}
+      {{ if eq . $paginator }}
+        <strong>{{ .PageNumber }}</strong>
+      {{ else }}
+        <a href="{{ .URL }}">{{ .PageNumber }}</a>
+      {{ end }}
+    {{ end }}
+
+    <!-- 下一页 -->
+    {{ if $paginator.HasNext }}
+      <a href="{{ $paginator.Next.URL }}" aria-label="下一页">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+      </a>
+    {{ end }}
+
+    <!-- 尾页链接 -->
+    {{ if $paginator.HasNext }}
+      <a href="{{ (index $paginator.Pagers (sub $paginator.TotalPages 1)).URL }}" aria-label="尾页">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="m280-240-56-56 184-184-184-184 56-56 240 240-240 240Zm360 0v-480h80v480h-80Z"/></svg>
+      </a>
+    {{ end }}
+  </div>
+  {{ end }}
 </div>
 {{ end }}

@@ -1,58 +1,150 @@
 .list-container {
-    max-width: 800px; /* 设置最大宽度 */
-    margin: 0 auto; /* 居中对齐 */
-    padding: 20px;
-  
-    h1 {
-      font-size: 2.5rem; /* 主标题字体大小 */
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 30px;
-      color: map-get($color-set-3, accent-100);
-      padding-bottom: 40px;
-    }
-  
-    h2 {
-      font-size: 1.8rem; /* 分组标题字体大小 */
-      font-weight: bold;
-      color: map-get($color-set-1, text-100);; /* 分组标题颜色 */
-      margin-top: 30px;
-      margin-bottom: 15px;
-      border-left: 4px solid map-get($color-set-2, primary-200); /* 左侧绿色边框 */
-      padding-left: 10px;
-    }
-  
-    ul {
-      list-style: none; /* 去掉默认列表样式 */
-      margin: 0;
-      padding: 0;
-  
-      li {
-        display: flex; /* 行内布局 */
-        flex-direction: column;
-        align-items: flex-start; /* 左对齐 */
-        padding: 10px 0;
-        border-bottom: 1px solid map-get($color-set-2, bg-100); /* 下边框分隔线 */
-        transition: background-color 0.3s ease;
-        border-radius: 8px;
-  
+  max-width: 800px; /* 设置最大宽度 */
+  margin: 0 auto; /* 居中对齐 */
+  padding: 20px;
+
+  h1 {
+    font-size: 2.5rem; /* 主标题字体大小 */
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+    color: map-get($color-set-3, accent-100);
+    padding-bottom: 40px;
+  }
+
+  h3 {
+    font-weight: bold;
+    color: map-get($color-set-1, text-100); /* 分组标题颜色 */
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-left: 4px solid map-get($color-set-3, text-100); /* 左侧绿色边框 */
+    padding-left: 10px;
+  }
+
+  ul {
+    list-style: none; /* 去掉默认列表样式 */
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: flex; /* 行内布局 */
+      flex-direction: column;
+      align-items: flex-start; /* 左对齐 */
+      padding: 10px 0;
+      border-bottom: 1px solid map-get($color-set-2, bg-100); /* 下边框分隔线 */
+      transition: background-color 0.3s ease;
+      border-radius: 8px;
+
+      &:hover {
+        background-color: map-get($color-set-1, bg-100); /* 鼠标悬浮时背景 */
+      }
+
+      a {
+        text-decoration: none; /* 去掉下划线 */
+        color: map-get($color-set-3, accent-100); /* 链接颜色 */
+        font-size: 1.1rem; /* 标题字体大小 */
+        font-weight: bold;
+        padding-left: 40px;
+
         &:hover {
-          background-color: map-get($color-set-1, bg-100); /* 鼠标悬浮时背景 */
-        }
-  
-        a {
-          text-decoration: none; /* 去掉下划线 */
-          color: map-get($color-set-3, accent-100); /* 链接颜色 */
-          font-size: 1.1rem; /* 标题字体大小 */
-          font-weight: bold;
-          padding-left: 40px;
-  
-          &:hover {
-            text-decoration: none; /* 鼠标悬浮下划线 */
-            color: map-get($color-set-3, text-100); /* 鼠标悬浮时颜色 */
-          }
+          text-decoration: none; /* 鼠标悬浮下划线 */
+          color: map-get($color-set-3, text-100); /* 鼠标悬浮时颜色 */
         }
       }
     }
   }
-  
+  // 定义颜色变量
+  $theme-colors: $color-set-1; // 你可以切换为其他颜色集，例如 $color-set-2 等
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 10px 0;
+
+    a,
+    strong {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 36px;
+      height: 36px;
+      font-size: 14px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 50%;
+      background-color: map-get($theme-colors, bg-100);
+      color: map-get($theme-colors, text-200);
+      border: 2px solid map-get($theme-colors, accent-100);
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: map-get($theme-colors, accent-100);
+        color: map-get($theme-colors, bg-100);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transform: scale(1.1);
+      }
+    }
+
+    strong {
+      background-color: map-get($theme-colors, primary-100);
+      color: map-get($theme-colors, bg-100);
+      cursor: default;
+      border: 2px solid transparent;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* SVG 图标的样式 */
+    svg {
+      fill: map-get($theme-colors, text-200);
+      transition: fill 0.3s ease, transform 0.3s ease;
+
+      &:hover {
+        fill: map-get($theme-colors, primary-200);
+        transform: rotate(360deg); /* 旋转动画 */
+      }
+    }
+
+    a[aria-label="首页"],
+    a[aria-label="尾页"] {
+      background-color: map-get($theme-colors, primary-200);
+      color: map-get($theme-colors, bg-100);
+      width: 40px;
+      height: 40px;
+      border-radius: 6px;
+      border: none;
+
+      &:hover {
+        background-color: map-get($theme-colors, primary-100);
+        svg {
+          fill: map-get($theme-colors, bg-100);
+          transform: scale(1.2);
+        }
+      }
+    }
+
+    @media (max-width: 600px) {
+      gap: 6px;
+
+      a,
+      strong {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+      }
+
+      a[aria-label="首页"],
+      a[aria-label="尾页"] {
+        width: 32px;
+        height: 32px;
+      }
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
