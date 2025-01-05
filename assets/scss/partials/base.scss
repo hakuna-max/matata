@@ -16,7 +16,7 @@ body {
   }
 
   .container {
-    max-width: 1200px; /* 最大宽度 */
+    max-width: 70%; /* 最大宽度 */
     margin: 0 auto; /* 水平居中 */
 
     .site-main {
@@ -177,14 +177,12 @@ body {
   }
 }
 
-/* 默认隐藏滚动条 */
 *::-webkit-scrollbar {
-  width: 1px; /* 固定滚动条宽度，避免动态变化 */
+  width: 2px; /* 固定滚动条宽度，避免动态变化 */
   height: 1px; /* 固定水平滚动条高度 */
   background: transparent; /* 默认透明 */
 }
 
-/* 滚动条轨道样式 */
 *::-webkit-scrollbar-track {
   background: map-get($color-set-2, bg-300); /* 使用背景色 bg-300 */
   border-radius: 10px;
@@ -201,8 +199,10 @@ body {
 
 /* 鼠标悬浮到内容区域时，显示滑块 */
 *:hover::-webkit-scrollbar-thumb {
-  background: map-get($color-set-2, accent-100); /* 鼠标悬浮时，滑块颜色变亮 */
+  background: map-get($color-set-4, primary-100); /* 鼠标悬浮时，滑块颜色变亮 */
   opacity: 1; /* 滑块变得可见 */
+  width: 2px;
+  height: 2px;
 }
 
 /* 鼠标悬浮到滑块时进一步调整颜色 */
