@@ -54,7 +54,7 @@
     }
   }
   // 定义颜色变量
-  $theme-colors: $color-set-1; // 你可以切换为其他颜色集，例如 $color-set-2 等
+  $theme-colors: $color-set-1; 
 
   .pagination {
     display: flex;
@@ -63,6 +63,7 @@
     gap: 10px;
     margin-top: 20px;
     padding: 10px 0;
+    user-select: none;
 
     a,
     strong {
