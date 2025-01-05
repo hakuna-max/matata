@@ -7,7 +7,7 @@
   {{ $allItems := .Pages }}
 
   <!-- 分页器设置，分页操作在此进行 -->
-  {{ $paginator := .Paginate $allItems 6 }} <!-- 每页显示10条记录 -->
+  {{ $paginator := .Paginate $allItems 8 }} <!-- 每页显示10条记录 -->
 
   <!-- 遍历分页内容，而不是全部内容 -->
   {{ $grouped := dict }}
