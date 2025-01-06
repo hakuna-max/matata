@@ -1,0 +1,30 @@
+{{ $defaultPassword := .Site.Params.defaultPassword }} <!-- 从 `hugo.toml` 的 `params` 读取默认密码 -->
+{{ $password := .Get "password" | default $defaultPassword }} <!-- 优先使用 Shortcode 提供的密码 -->
+{{ $hashedPassword := sha256 $password }}
+{{ $id := sha256 (printf "%s-%d" (now.Format "20060102150405") .Position) }}
+
+<div id="protected-content-{{ $id }}" 
+    class="protected-content" 
+    style="display: none;" 
+    data-id="{{ $id }}" 
+    data-password="{{ $hashedPassword  }}" 
+    data-content="{{ .Inner | markdownify | base64Encode }}">
+</div>
+
+<div id="protected-form-{{ $id }}" 
+    class="protected-form" 
+    data-id="{{ $id }}">
+    <input
+        type="password"
+        id="password-input-{{ $id }}"
+        class="protected-input"
+        placeholder="Enter the password to view the content"
+        name="password"
+    />
+    <button type="button" id="submit-button-{{ $id }}" class="protected-button">
+        Submit
+    </button>
+    <p id="error-message-{{ $id }}" class="protected-error-message">
+        Incorrect password!
+    </p>
+</div>

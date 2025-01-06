@@ -1,0 +1,90 @@
+.protected-form {
+    max-width: 400px;
+    margin: 50px auto; // 控制上下左右的外边距，上下各 50px
+    padding: 20px 20px 30px; // 内边距：上、左右 20px，下方略大（30px）
+    background-color: map-get($color-set-1, bg-100); // 背景色
+    border: 1px solid map-get($color-set-1, bg-300); // 边框颜色
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    visibility: hidden; // 初始状态隐藏
+    opacity: 0; // 防止闪现
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s; // 解决闪现问题
+  }
+  
+  .protected-form.visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease; // 显示时淡入
+  }
+  
+  .protected-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0; // 设置上下间距为 10px，左右无间距
+    border: 1px solid map-get($color-set-1, primary-200); // 边框颜色
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: map-get($color-set-1, primary-100); // 背景色
+    color: map-get($color-set-1, text-100); // 输入文字颜色
+  }
+  
+  .protected-input::placeholder {
+    color: map-get($color-set-1, text-200); // placeholder 文字颜色
+    text-align: center;
+    opacity: 0.5;
+  }
+  
+  .protected-button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 0; // 控制按钮与输入框的间距，上方 10px，下方无额外间距
+    background-color: map-get($color-set-1, accent-100); // 按钮背景色
+    border: none;
+    border-radius: 4px;
+    color: map-get($color-set-1, bg-100); // 按钮文字颜色
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .protected-button:hover {
+    background-color: map-get($color-set-1, accent-200); // 按钮 hover 背景色
+  }
+  
+  .protected-error-message {
+    color: map-get($color-set-1, primary-300); // 错误提示文字颜色
+    font-size: 14px;
+    margin: 15px 0 0; // 设置错误信息与按钮的间距，上方 15px，其他无间距
+    text-align: center;
+    visibility: hidden; // 初始状态不可见
+    opacity: 0; // 初始透明
+    height: 0; // 高度为 0
+    overflow: hidden; // 隐藏内容
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s, height 0.3s ease; // 添加高度过渡效果
+  }
+  
+  .protected-error-message.show {
+    visibility: visible; // 设置为可见
+    opacity: 1; // 设置为不透明
+    height: auto; // 恢复自动高度
+    transition: opacity 0.3s ease, visibility 0s linear 0s, height 0.3s ease; // 确保立即显示
+  }
+  
+  @media (max-width: 480px) {
+    .protected-form {
+      margin: 30px auto; // 缩小移动端的上下外边距
+      padding: 15px; // 缩小内边距
+    }
+  
+    .protected-input,
+    .protected-button {
+      font-size: 14px;
+    }
+  
+    .protected-error-message {
+      font-size: 12px;
+    }
+  }
+  
