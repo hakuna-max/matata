@@ -2,10 +2,12 @@ import { setupDocumentReady, initializeSvgAnimations } from 'js/animation/page-l
 import { backToTop } from './utils/back-to-top';
 import { initializeMermaid } from './utils/mermaid';
 import { initProtectedContent } from './utils/protected-content';
+import { initializeAllContainers } from './utils/d3';
 
 setupDocumentReady();
 initializeSvgAnimations();
 backToTop();
 initializeMermaid();
 initProtectedContent();
+initializeAllContainers();
 
