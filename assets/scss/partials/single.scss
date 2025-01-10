@@ -10,6 +10,12 @@
   /* 禁止选择和复制内容 */
   user-select: none;
 
+  /* 小屏幕隐藏 */
+  @media screen and (max-width: 768px) {
+    /* 768px 可根据需求调整 */
+    display: none;
+  }
+
   span {
     display: relative;
     gap: 8px;
@@ -61,11 +67,6 @@
       &:hover {
         background-color: map-get($color-set-2, bg-300);
       }
-    }
-    /* 小屏幕隐藏 */
-    @media screen and (max-width: 768px) {
-      /* 768px 可根据需求调整 */
-      display: none;
     }
   }
 }
