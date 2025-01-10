@@ -1,16 +1,6 @@
 {{ $opts := dict "transpiler" "libsass" "targetPath" "css/style.css" }} {{ $sass
 := resources.Get "scss/main.scss" | toCSS $opts | minify | fingerprint }}
 
-<!-- 引入 Material Icons -->
-<link
-  href="https://fonts.googleapis.com/icon?family=Material+Icons"
-  rel="stylesheet"
-/>
-<link
-  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-  rel="stylesheet"
-/>
-
 <!-- 引入 Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
