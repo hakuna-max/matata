@@ -19,69 +19,41 @@
   <!-- 中间：显示 content/ 文件夹 （排除 authors 文件夹） -->
   <nav class="header-center">
     <!-- 定义需要优先显示的文件夹 -->
-    {{ $priorityFolders := slice "Programmings" "DSAs" "BAs" }}
-    {{ $excludeFolders := or .Site.Params.excludeFolders (slice) }}
+    {{ $priorityFolders := slice "Programmings" "DSAs" "BAs" }} {{
+    $excludeFolders := or .Site.Params.excludeFolders (slice) }}
 
     <!-- 收集所有文件夹 -->
     {{ $allFolders := .Site.Sections }}
     <!-- 按字典序排序 -->
     {{ $sortedFolders := sort $allFolders "Title" }}
-  
+
     <!-- 筛选出优先显示的文件夹 -->
     {{ $priorityVisible := where $sortedFolders "Title" "in" $priorityFolders }}
-  
-    <!-- 初始化主文件夹列表 -->
-    {{ $topFolders := slice }}
-    {{ range $priorityVisible }}
-      {{ $topFolders = $topFolders | append . }}
-    {{ end }}
-  
-    <!-- 如果优先文件夹不足 3 个，用其余文件夹补充 -->
-    {{ $remainingFolders := where $sortedFolders "Title" "not in" $priorityFolders }}
-    {{ $remainingFolders := where $remainingFolders "Title" "not in" $excludeFolders }}
-    
-    {{ range (first (sub 3 (len $topFolders)) $remainingFolders) }}
-      {{ $topFolders = $topFolders | append . }}
-    {{ end }}
 
-  
+    <!-- 初始化主文件夹列表 -->
+    {{ $topFolders := slice }} {{ range $priorityVisible }} {{ $topFolders =
+    $topFolders | append . }} {{ end }}
+
+    <!-- 如果优先文件夹不足 3 个，用其余文件夹补充 -->
+    {{ $remainingFolders := where $sortedFolders "Title" "not in"
+    $priorityFolders }} {{ $remainingFolders := where $remainingFolders "Title"
+    "not in" $excludeFolders }} {{ range (first (sub 3 (len $topFolders))
+    $remainingFolders) }} {{ $topFolders = $topFolders | append . }} {{ end }}
+
     <!-- 显示主文件夹 -->
     {{ range $topFolders }}
     <a href="{{ .Permalink }}">{{ .Title }}</a>
     {{ end }}
-  
+
     <!-- 处理剩余文件夹，放到 dropdown 中 -->
-    {{ $topTitles := slice }}
-    {{ range $topFolders }}
-      {{ $topTitles = $topTitles | append .Title }}
-    {{ end }}
-    {{ $dropdownFolders := slice }}
-    {{ range $sortedFolders }}
-      {{ if and (not (in $topTitles .Title)) (not (in $excludeFolders .Title)) }}
-        {{ $dropdownFolders = $dropdownFolders | append . }}
-      {{ end }}
-    {{ end }}
-  
-    {{ if gt (len $dropdownFolders) 0 }}
+    {{ $topTitles := slice }} {{ range $topFolders }} {{ $topTitles = $topTitles
+    | append .Title }} {{ end }} {{ $dropdownFolders := slice }} {{ range
+    $sortedFolders }} {{ if and (not (in $topTitles .Title)) (not (in
+    $excludeFolders .Title)) }} {{ $dropdownFolders = $dropdownFolders | append
+    . }} {{ end }} {{ end }} {{ if gt (len $dropdownFolders) 0 }}
     <div class="dropdown">
       <button class="dropdown-toggle">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="24px"
-          viewBox="0 -960 960 960"
-          width="24px"
-          fill="#000000"
-        >
-          <path
-            d="M240-400q-33 0-56.5-23.5T160-480q0-33 23.5-56.5T240-560q33 0 56.5 23.5T320-480q0 33-23.5 56.5T240-400Z"
-          ></path>
-          <path
-            d="M480-400q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Z"
-          ></path>
-          <path
-            d="M720-400q-33 0-56.5-23.5T640-480q0-33 23.5-56.5T720-560q33 0 56.5 23.5T800-480q0 33-23.5 56.5T720-400Z"
-          ></path>
-        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M383-480 200-664l56-56 240 240-240 240-56-56 183-184Zm264 0L464-664l56-56 240 240-240 240-56-56 183-184Z"/></svg>
       </button>
       <div class="dropdown-menu">
         <!-- 显示剩余文件夹 -->
@@ -92,7 +64,7 @@
     </div>
     {{ end }}
   </nav>
-  
+
   <!-- 右边：固定标签 -->
   <div class="header-right">
     <!-- Authors 链接 -->

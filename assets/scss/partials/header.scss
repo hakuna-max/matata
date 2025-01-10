@@ -130,66 +130,10 @@
         border: none;
         cursor: pointer;
         padding: 0;
+        transition: transform 0.3s ease; 
 
         svg {
-          width: 36px;
-          height: 36px;
-        }
-
-        .avg-more path {
-          animation: color-animation 3s infinite;
-        }
-
-        @keyframes color-fade-1 {
-          0%,
-          33% {
-            fill: map-get($color-set-1, accent-200); /* 深颜色 */
-            fill-opacity: 1; /* 第1个点显示 */
-          }
-          33.1%,
-          100% {
-            fill-opacity: 0; /* 第1个点隐藏 */
-          }
-        }
-
-        @keyframes color-fade-2 {
-          0%,
-          33% {
-            fill-opacity: 0; /* 第2个点隐藏 */
-          }
-          33.1%,
-          66% {
-            fill: map-get($color-set-1, accent-200); /* 深颜色 */
-            fill-opacity: 1; /* 第2个点显示 */
-          }
-          66.1%,
-          100% {
-            fill-opacity: 0; /* 第2个点隐藏 */
-          }
-        }
-
-        @keyframes color-fade-3 {
-          0%,
-          66% {
-            fill-opacity: 0; /* 第3个点隐藏 */
-          }
-          66.1%,
-          100% {
-            fill: map-get($color-set-1, accent-200); /* 深颜色 */
-            fill-opacity: 1; /* 第3个点显示 */
-          }
-        }
-
-        svg path:nth-child(1) {
-          animation: color-fade-1 3s infinite;
-        }
-
-        svg path:nth-child(2) {
-          animation: color-fade-2 3s infinite;
-        }
-
-        svg path:nth-child(3) {
-          animation: color-fade-3 3s infinite;
+          transition: transform 0.3s ease;
         }
       }
 
@@ -223,10 +167,16 @@
         }
       }
 
-      &:hover .dropdown-menu {
-        display: block;
-        opacity: 1; /* 显示 */
-        transform: translateY(0); /* 上移到正常位置 */
+      &:hover {
+        .dropdown-menu {
+          display: block;
+          opacity: 1; /* 显示 */
+          transform: translateY(0); /* 上移到正常位置 */
+        }
+    
+        .dropdown-toggle svg {
+          transform: rotate(90deg); /* 顺时针旋转 90 度 */
+        }
       }
     }
   }
