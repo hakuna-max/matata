@@ -28,34 +28,47 @@
   
       <!-- 主菜单 -->
       <ul class="menu-list">
-        <!-- 显示主文件夹 -->
+        <!-- 定义主文件夹 -->
         {{ $priorityFolders := slice "Programmings" "DSAs" "BAs" }}
         {{ $excludeFolders := or .Site.Params.excludeFolders (slice) }}
         {{ $allFolders := .Site.Sections }}
         {{ $sortedFolders := sort $allFolders "Title" }}
+      
+        <!-- 筛选出优先显示的主文件夹 -->
         {{ $priorityVisible := where $sortedFolders "Title" "in" $priorityFolders }}
         {{ $topFolders := slice }}
         {{ range $priorityVisible }}
         {{ $topFolders = $topFolders | append . }}
         {{ end }}
+      
+        <!-- 剩余文件夹 -->
         {{ $remainingFolders := where $sortedFolders "Title" "not in" $priorityFolders }}
         {{ $remainingFolders := where $remainingFolders "Title" "not in" $excludeFolders }}
-        {{ range (first (sub 3 (len $topFolders)) $remainingFolders) }}
-        {{ $topFolders = $topFolders | append . }}
+      
+        <!-- 判断 $topFolders 是否不足三个 -->
+        {{ if lt (len $topFolders) 3 }}
+          {{ $addedFolders := slice }}
+          {{ range (first (sub 3 (len $topFolders)) $remainingFolders) }}
+            {{ $topFolders = $topFolders | append . }}
+            {{ $addedFolders = $addedFolders | append .Title }}
+          {{ end }}
+          {{ $remainingFolders = where $remainingFolders "Title" "not in" $addedFolders }}
         {{ end }}
-  
-        <!-- 主文件夹列表 -->
+      
+        <!-- 显示 $topFolders -->
         {{ range $topFolders }}
         <li>
           <a href="{{ .Permalink }}">{{ .Title }}</a>
         </li>
         {{ end }}
-  
-        <!-- 显示 $remainingFolders -->
-        {{ range $remainingFolders }}
-        <li>
+      
+        <!-- 如果有剩余文件夹，显示它们 -->
+        {{ if gt (len $remainingFolders) 0 }}
+          {{ range $remainingFolders }}
+          <li>
             <a href="{{ .Permalink }}">{{ .Title }}</a>
-        </li>
+          </li>
+          {{ end }}
         {{ end }}
       </ul>
   
