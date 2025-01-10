@@ -19,7 +19,9 @@ body {
     max-width: 60%; /* 最大宽度 */
     margin: 0 auto; /* 水平居中 */
 
-    h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); } 
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+    }
 
     .site-main {
       transform-origin: top center; /* 确保缩放从顶部中心开始 */
@@ -90,6 +92,23 @@ body {
           overflow: auto;
           position: relative;
           width: 100%;
+        }
+      }
+
+      /* 针对小屏幕优化 */
+      @media (max-width: 768px) {
+        .highlight {
+          flex-direction: column; /* 在小屏幕上改为垂直方向布局 */
+          padding: 8px; /* 缩小整体内边距 */
+          font-size: 0.8rem; /* 再次调整字体大小以适应屏幕 */
+          overflow-x: auto; /* 仍保留水平滚动条 */
+
+          pre {
+            font-size: 0.8rem; /* 字体更小以适配小屏幕 */
+            padding: 5px; /* 调整内边距 */
+            white-space: pre-wrap; /* 自动换行 */
+            word-wrap: break-word; /* 长内容可断词 */
+          }
         }
       }
 
