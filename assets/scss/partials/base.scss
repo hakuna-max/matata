@@ -16,8 +16,10 @@ body {
   }
 
   .container {
-    max-width: 70%; /* 最大宽度 */
+    max-width: 60%; /* 最大宽度 */
     margin: 0 auto; /* 水平居中 */
+
+    h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); } 
 
     .site-main {
       transform-origin: top center; /* 确保缩放从顶部中心开始 */
@@ -26,7 +28,7 @@ body {
       table {
         border-collapse: collapse;
         width: 100%;
-      
+
         thead {
           th {
             background-color: map-get($color-set-1, bg-100); // 表头背景色
@@ -39,7 +41,7 @@ body {
             font-weight: bold; // 加粗表头
           }
         }
-      
+
         tbody {
           td {
             border-bottom: 1px solid map-get($color-set-1, bg-300); // 表体行分隔线
@@ -49,29 +51,32 @@ body {
             background-color: map-get($color-set-1, bg-100); // 表体背景色
             vertical-align: top; // 内容向上对齐
           }
-      
+
           tr:last-child td {
             border-bottom: 2px solid map-get($color-set-1, primary-300); // 表头与内容的分隔线
           }
-      
+
           tr:hover {
-            background-color: map-get($color-set-1, primary-100); // 表体行悬停背景色
+            background-color: map-get(
+              $color-set-1,
+              primary-100
+            ); // 表体行悬停背景色
           }
         }
-      
+
         caption {
           margin-bottom: 10px;
           font-weight: bold;
           font-size: 1.2em;
           text-align: left;
-          color: map-get($color-set-1, primary-300); 
+          color: map-get($color-set-1, primary-300);
         }
       }
 
       /* 代码块 */
       .highlight {
         display: flex;
-        flex-direction: row; 
+        flex-direction: row;
         width: 100%;
         max-width: 100%;
         padding: 5px;
@@ -99,11 +104,11 @@ body {
         margin-left: auto;
         margin-right: auto;
         max-width: 80%;
-        border: 1px solid map-get($color-set-1, bg-200); 
+        border: 1px solid map-get($color-set-1, bg-200);
         border-radius: 8px;
         box-shadow: 0 4px 8px map-get($color-set-1, bg-200);
       }
-      
+
       .mermaid {
         display: block;
         margin-top: auto;
@@ -111,12 +116,11 @@ body {
         margin-left: auto;
         margin-right: auto;
         max-width: 80%;
-        border: 1px solid map-get($color-set-1, bg-200); 
+        border: 1px solid map-get($color-set-1, bg-200);
         border-radius: 8px;
         box-shadow: 0 4px 8px map-get($color-set-1, bg-200);
       }
     }
-
     @media (max-width: 1200px) {
       max-width: 95%; /* 小屏幕自适应宽度 */
     }
@@ -135,14 +139,14 @@ body {
 }
 
 *::-webkit-scrollbar-track {
-  background: map-get($color-set-2, bg-300); 
+  background: map-get($color-set-2, bg-300);
   border-radius: 10px;
   transition: background-color 0.3s ease-in-out; /* 平滑轨道背景变化 */
 }
 
 /* 滑块默认样式 */
 *::-webkit-scrollbar-thumb {
-  background: map-get($color-set-2, accent-200); 
+  background: map-get($color-set-2, accent-200);
   border-radius: 10px;
   transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out; /* 添加滑块的平滑变化 */
   opacity: 0;

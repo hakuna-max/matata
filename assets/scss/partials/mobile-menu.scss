@@ -1,0 +1,150 @@
+.mobile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: relative; /* 为了定位下拉菜单 */
+    z-index: 9999;
+  
+    .menu-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      svg {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+  
+    .mobile-menu {
+      display: none; /* 默认隐藏 */
+      flex-direction: column;
+      gap: 1rem;
+      background: map-get($color-set-1, bg-200); /* 下拉菜单背景色 */
+      padding: 1rem;
+      box-shadow: 0 4px 8px map-get($map: $color-set-1, $key: bg-300); /* 更明显的阴影 */
+      border-radius: 4px;
+      position: absolute;
+      top: 3rem; /* 调整菜单与汉堡图标的距离 */
+      right: 0; /* 菜单靠右对齐 */
+      animation: fadeIn 0.3s ease-in-out; /* 下拉动画 */
+
+      .mobile-title {
+        text-align: center; /* 整体居中 */
+      
+        .site-title {
+          text-decoration: none;
+          color: inherit;
+      
+          .title-container {
+            display: flex; /* 使用 flexbox 布局 */
+            align-items: center; /* 垂直居中 */
+            justify-content: center; /* 水平居中 */
+            gap: 0.5rem; /* 图标和标题之间的间距 */
+          }
+      
+          svg {
+            display: inline-block; /* 确保 SVG 不拉伸 */
+            width: 24px; /* 图标宽度 */
+            height: 24px; /* 图标高度 */
+          }
+      
+          span {
+            font-size: 1.2rem; /* 根据需求调整标题字体大小 */
+            font-weight: bold;
+          }
+        }
+      }
+  
+      .menu-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+  
+        li {
+          a {
+            text-decoration: none;
+            color: #0a0101; /* 白色文字 */
+            font-weight: 500;
+  
+            &:hover {
+              color: #bc1e1e; /* 浅色 hover 效果 */
+            }
+          }
+        }
+      }
+
+      .fixed-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      
+        li {
+          margin: 0.5rem 0; /* 每个链接之间的间距 */
+      
+          .link-item {
+            text-decoration: none;
+            color: inherit;
+      
+            .icon-text {
+              display: flex; /* 使用 flex 布局 */
+              align-items: center; /* 垂直居中 */
+              gap: 0.5rem; /* 图标和文字之间的间距 */
+            }
+      
+            svg {
+              width: 24px; /* 图标宽度 */
+              height: 24px; /* 图标高度 */
+              flex-shrink: 0; /* 防止图标缩小 */
+            }
+      
+            span {
+              font-size: 1rem; /* 文字大小 */
+              font-weight: 500; /* 适当加粗 */
+              color: #5f6368; /* 默认颜色 */
+            }
+      
+            &:hover {
+              color: #007acc; /* 鼠标悬停颜色 */
+            }
+          }
+        }
+      }
+  
+    }
+  
+    .mobile-menu.show {
+      display: flex; /* 显示菜单 */
+    }
+  }
+  
+  /* 动画效果 */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* 桌面和移动端切换 */
+  .desktop-header {
+    display: block;
+  }
+  
+  .mobile-header {
+    display: none;
+  }
+  
+  @media (max-width: 768px) {
+    .desktop-header {
+      display: none;
+    }
+  
+    .mobile-header {
+      display: flex;
+    }
+  }
+  

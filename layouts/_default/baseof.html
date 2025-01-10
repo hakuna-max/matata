@@ -10,7 +10,13 @@
   <div class="container">
   {{ if not .IsHome}}
     <header class="site-header">
-      {{ partial "header.html" . }}
+      <div class="desktop-header">
+        {{ partial "header.html" . }}
+      </div>
+      <!-- 调用移动版 header -->
+    <div class="mobile-header">
+      {{ partial "mobile-menu.html" . }}
+    </div>
     </header>
   {{ end }}
   <main class="site-main">

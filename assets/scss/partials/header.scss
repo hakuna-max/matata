@@ -1,34 +1,34 @@
 .site-header {
-  position: fixed; /* 固定在顶部 */
-  top: 0; /* 距离页面顶部为 0 */
-  left: 0; /* 距离页面左侧为 0 */
-  width: 100%; /* 背景填充整个页面宽度 */
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
   background-color: map-get($color-set-1, bg-200);
   border-bottom: 1px solid map-get($color-set-1, bg-300);
-  z-index: 1000; /* 确保 header 层级高于其他内容 */
-  padding: 15px 20px; /* 调整内边距，增加空间感 */
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* 更精致的阴影效果 */
-  // backdrop-filter: blur(10px); /* 增加模糊效果，透明玻璃感 */
-  color: map-get($color-set-1, text-100); /* 文字颜色 */
+  z-index: 1000; 
+  padding: 15px 20px; 
+  box-shadow: 0 8px 15px map-get($map: $color-set-1, $key: bg-300); 
+  // backdrop-filter: blur(10px);
+  color: map-get($color-set-1, text-100); 
   font-weight: bold;
-  transition: background-color 0.3s, box-shadow 0.3s; /* 添加平滑的过渡效果 */
+  // transition: background-color 0.3s, box-shadow 0.3s; 
 
   /* 禁止选择和复制内容 */
   user-select: none;
 
   /* 内容限制在最大宽度 */
   .header-container {
-    max-width: 70%; /* 最大内容宽度 */
-    margin: 0 auto; /* 水平居中 */
-    padding: 0 20px; /* 左右内边距 */
-    display: flex; /* Flexbox 布局 */
-    justify-content: flex-start; /* 两端对齐 */
-    align-items: center; /* 垂直居中对齐 */
+    max-width: 70%; 
+    margin: 0 auto; 
+    // padding: 0 20px; 
+    display: flex; 
+    justify-content: flex-start; 
+    align-items: center; 
   }
 
   /* 左边样式 */
   .header-left {
-    position: relative; /* Ensure the tooltip is positioned relative to the parent */
+    position: relative; 
 
     .site-title {
       display: flex;
@@ -36,35 +36,35 @@
 
       /* Tooltip styling */
       &::after {
-        content: "Home"; /* The text for the tooltip */
+        content: "Home"; 
         position: absolute;
-        top: 30px; /* Position below the SVG */
-        left: 50%; /* Center horizontally */
+        top: 30px;
+        left: 50%; 
         transform: translateX(-50%);
-        color: map-get($color-set-1, accent-200); /* Text color */
-        padding: 2px 8px; /* Padding inside the tooltip */
-        border-radius: 8px; /* Rounded corners */
-        font-size: 10px; /* Slightly larger font size */
-        font-weight: bold; /* Make the text bold */
-        white-space: nowrap; /* Prevent text wrapping */
-        opacity: 0; /* Initially hide the tooltip */
-        visibility: hidden; /* Make it invisible */
-        transform: translateX(-50%) translateY(10px); /* Add an initial offset for animation */
-        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; /* Smooth animation */
+        color: map-get($color-set-1, accent-200); 
+        padding: 2px 8px; 
+        border-radius: 8px; 
+        font-size: 10px; 
+        font-weight: bold; 
+        white-space: nowrap;
+        opacity: 0; 
+        visibility: hidden; 
+        transform: translateX(-50%) translateY(10px); 
+        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; 
       }
 
       /* Add a small triangle under the tooltip */
       &::before {
         content: "";
         position: absolute;
-        top: 32px; /* Position above the tooltip */
+        top: 32px; 
         left: 50%;
         transform: translateX(-50%);
-        border-width: 6px; /* Size of the triangle */
+        border-width: 6px; 
         border-style: solid;
         border-color: transparent transparent map-get($color-set-1, accent-200)
-          transparent; /* Triangle color matches gradient */
-        opacity: 0; /* Initially hidden */
+          transparent; 
+        opacity: 0; 
         visibility: hidden;
         transition: opacity 0.3s ease, visibility 0.3s ease;
       }
@@ -74,7 +74,7 @@
       &:hover::before {
         opacity: 0.6;
         visibility: visible;
-        transform: translateX(-50%) translateY(0); /* Bring it to its final position */
+        transform: translateX(-50%) translateY(0); 
       }
     }
   }
@@ -149,9 +149,9 @@
         padding: 5px 5px;
 
         min-width: 150px;
-        transform: translateY(10px); /* 初始下移 */
-        opacity: 0; /* 初始透明 */
-        transition: opacity 0.3s ease, transform 0.3s ease; /* 平滑过渡 */
+        transform: translateY(10px); 
+        opacity: 0; 
+        transition: opacity 0.3s ease, transform 0.3s ease; 
 
         a {
           display: block;
@@ -170,12 +170,12 @@
       &:hover {
         .dropdown-menu {
           display: block;
-          opacity: 1; /* 显示 */
-          transform: translateY(0); /* 上移到正常位置 */
+          opacity: 1; 
+          transform: translateY(0); 
         }
     
         .dropdown-toggle svg {
-          transform: rotate(90deg); /* 顺时针旋转 90 度 */
+          transform: rotate(90deg); 
         }
       }
     }
@@ -185,13 +185,13 @@
   .header-right {
     margin-left: auto;
     display: flex;
-    align-items: center; /* Vertically align all elements */
+    align-items: center; 
     gap: 20px;
 
     a {
-      position: relative; /* Ensure the tooltip is positioned relative to each link */
+      position: relative; 
       display: flex;
-      align-items: center; /* Vertically align the icons */
+      align-items: center; 
       justify-content: center;
       text-decoration: none;
       font-size: 1rem;
@@ -200,35 +200,35 @@
       &::after {
         content: attr(
           data-tooltip
-        ); /* Tooltip text from "data-tooltip" attribute */
+        ); 
         position: absolute;
-        top: 30px; /* Position below the SVG */
-        left: 50%; /* Center horizontally */
+        top: 30px; 
+        left: 50%; 
         transform: translateX(-50%);
-        color: map-get($color-set-1, accent-200); /* Tooltip text color */
-        padding: 2px 8px; /* Padding inside the tooltip */
-        border-radius: 8px; /* Rounded corners */
-        font-size: 10px; /* Slightly larger font size */
-        font-weight: bold; /* Bold text */
-        white-space: nowrap; /* Prevent text wrapping */
-        opacity: 0; /* Initially hide the tooltip */
-        visibility: hidden; /* Make it invisible */
-        transform: translateX(-50%) translateY(10px); /* Add an initial offset for animation */
-        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; /* Smooth animation */
+        color: map-get($color-set-1, accent-200); 
+        padding: 2px 8px; 
+        border-radius: 8px; 
+        font-size: 10px; 
+        font-weight: bold; 
+        white-space: nowrap; 
+        opacity: 0; 
+        visibility: hidden; 
+        transform: translateX(-50%) translateY(10px);
+        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; 
       }
 
       /* Add a small triangle under the tooltip */
       &::before {
         content: "";
         position: absolute;
-        top: 32px; /* Position above the tooltip */
+        top: 32px; 
         left: 50%;
         transform: translateX(-50%);
-        border-width: 6px; /* Size of the triangle */
+        border-width: 6px; 
         border-style: solid;
         border-color: transparent transparent map-get($color-set-1, accent-200)
-          transparent; /* Triangle color matches tooltip text color */
-        opacity: 0; /* Initially hidden */
+          transparent; 
+        opacity: 0; 
         visibility: hidden;
         transition: opacity 0.3s ease, visibility 0.3s ease;
       }
@@ -238,8 +238,17 @@
       &:hover::before {
         opacity: 0.6;
         visibility: visible;
-        transform: translateX(-50%) translateY(0); /* Bring it to its final position */
+        transform: translateX(-50%) translateY(0); 
       }
+    }
+    @media (max-width: 1200px) {
+      max-width: 95%; /* 小屏幕自适应宽度 */
+      padding: 10px; /* 减少内边距 */
+    }
+  
+    @media (max-width: 768px) {
+      max-width: 100%; /* 超小屏幕宽度全屏 */
+      padding: 10px; /* 减少内边距 */
     }
   }
 }
