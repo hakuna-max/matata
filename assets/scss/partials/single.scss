@@ -218,6 +218,11 @@
     opacity: 1;
     visibility: visible;
   }
+  /* 小屏幕隐藏 */
+  @media screen and (max-width: 768px) {
+    /* 768px 可根据需求调整 */
+    display: none;
+  }
 }
 
 .d3-container {
