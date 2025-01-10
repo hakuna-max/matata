@@ -40,6 +40,10 @@
             align-items: center; /* 垂直居中 */
             justify-content: center; /* 水平居中 */
             gap: 0.5rem; /* 图标和标题之间的间距 */
+            
+            span {
+              font-family: "Liu Jian Mao Cao", serif;
+            }
           }
       
           svg {
