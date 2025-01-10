@@ -19,6 +19,42 @@ export function getCookie(name) {
   }, null);
 }
 
+// 解码 Base64 内容
+export function decodeBase64(encodedContent) {
+  try {
+    return decodeURIComponent(
+      atob(encodedContent)
+        .split("")
+        .map((c) => `%${c.charCodeAt(0).toString(16).padStart(2, "0")}`)
+        .join("")
+    );
+  } catch (error) {
+    console.error("Failed to decode content", error);
+    return "Error decoding content.";
+  }
+}
+
+// 数学公式渲染
+export function renderMath(container) {
+  if (typeof renderMathInElement !== "undefined") {
+    renderMathInElement(container, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "\\[", right: "\\]", display: true },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "$", right: "$", display: false },
+      ],
+    });
+    console.log("Math rendering applied.");
+  } else if (typeof MathJax !== "undefined") {
+    MathJax.typesetPromise([container]).then(() => {
+      console.log("Math rendering applied via MathJax.");
+    });
+  } else {
+    console.warn("Math rendering library not found.");
+  }
+}
+
 // 初始化受保护内容
 export function initProtectedContent(id, correctPassword) {
   // 检查 Cookie 并决定显示内容还是密码表单
@@ -53,21 +89,6 @@ export function initProtectedContent(id, correctPassword) {
   }
 }
 
-// 解码 Base64 内容
-export function decodeBase64(encodedContent) {
-  try {
-    return decodeURIComponent(
-      atob(encodedContent)
-        .split("")
-        .map((c) => `%${c.charCodeAt(0).toString(16).padStart(2, "0")}`)
-        .join("")
-    );
-  } catch (error) {
-    console.error("Failed to decode content", error);
-    return "Error decoding content.";
-  }
-}
-
 // 显示受保护内容
 export function showProtectedContent(id) {
   const contentElement = document.getElementById(`protected-content-${id}`);
@@ -77,9 +98,20 @@ export function showProtectedContent(id) {
     const encodedContent = contentElement.getAttribute("data-content");
     const decodedContent = decodeBase64(encodedContent);
 
-    contentElement.innerHTML = decodedContent; // 显示解码内容
+    const container = document.createElement("div");
+    container.innerHTML = decodedContent;
+
+    // 插入内容到 DOM
+    contentElement.innerHTML = "";
+    contentElement.appendChild(container);
     contentElement.style.display = "block";
+
+    // contentElement.innerHTML = decodedContent; // 显示解码内容
+    // contentElement.style.display = "block";
     formElement.style.display = "none";
+
+
+    renderMath(container); // 渲染数学公式
   } else {
     console.error("Content or Form element not found.");
   }
