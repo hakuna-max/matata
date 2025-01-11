@@ -1,29 +1,3 @@
 .d3-container {
     position: relative;
 }
-
-.d3-sort-button {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 10px 10px;
-    font-size: 12px;
-    cursor: pointer;
-    background-color: map-get($color-set-1, bg-300);
-    transition: background-color 0.3s ease;
-    font-family: "Playwrite US Trad";
-    font-weight: bolder;
-    border: 4px solid map-get($color-set-1, bg-200); 
-    border-radius: 8px;
-    box-shadow: 0 4px 8px map-get($color-set-1, bg-200);
-}
-
-.d3-sort-button:hover {
-    background-color: map-get($color-set-1, accent-200);
-    color:map-get($color-set-1, primary-100)
-}
-
-.d3-sort-button:active {
-    background-color: #24613b; /* primary-300 */
-}
