@@ -1,6 +1,0 @@
-{{ $id := sha256 (printf "%s-%d" (now.Format "20060102150405") .Position) }}
-
-<!-- D3.js 图表容器 -->
-<div id="d3-container-{{ $id }}" class="d3-container" data-id="d3-container-{{ $id }}" style="width: 100%; height:100%;">
-    {{ .Inner }}
-</div>
