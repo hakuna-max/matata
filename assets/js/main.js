@@ -12,6 +12,6 @@ initializeSvgAnimations();
 backToTop();
 initializeMermaid();
 initProtectedContent();
-initializeAllContainers();
+// initializeAllContainers();
 setupMobileMenuToggle();
 
