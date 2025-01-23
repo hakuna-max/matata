@@ -1,34 +1,36 @@
 .site-header {
-  position: fixed; 
-  top: 0; 
-  left: 0; 
-  width: 100%; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   background-color: map-get($color-set-1, bg-200);
   border-bottom: 1px solid map-get($color-set-1, bg-300);
-  z-index: 1000; 
-  padding: 15px 20px; 
-  box-shadow: 0 8px 15px map-get($map: $color-set-1, $key: bg-300); 
-  // backdrop-filter: blur(10px);
-  color: map-get($color-set-1, text-100); 
+  z-index: 1000;
+  padding: 15px 20px;
+  box-shadow: 0 8px 15px map-get($map: $color-set-1, $key: bg-300);
+  color: map-get($color-set-1, text-100);
   font-weight: bold;
-  // transition: background-color 0.3s, box-shadow 0.3s; 
 
-  /* 禁止选择和复制内容 */
   user-select: none;
 
-  /* 内容限制在最大宽度 */
   .header-container {
-    max-width: 70%; 
-    margin: 0 auto; 
-    // padding: 0 20px; 
-    display: flex; 
-    justify-content: flex-start; 
-    align-items: center; 
+    max-width: 70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    @media (max-width: 1200px) {
+      max-width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      max-width: 100%;
+    }
   }
 
-  /* 左边样式 */
   .header-left {
-    position: relative; 
+    position: relative;
 
     .site-title {
       display: flex;
@@ -36,35 +38,35 @@
 
       /* Tooltip styling */
       &::after {
-        content: "Home"; 
+        content: "Home";
         position: absolute;
         top: 30px;
-        left: 50%; 
+        left: 50%;
         transform: translateX(-50%);
-        color: map-get($color-set-1, accent-200); 
-        padding: 2px 8px; 
-        border-radius: 8px; 
-        font-size: 10px; 
-        font-weight: bold; 
+        color: map-get($color-set-1, accent-200);
+        padding: 2px 8px;
+        border-radius: 8px;
+        font-size: 10px;
+        font-weight: bold;
         white-space: nowrap;
-        opacity: 0; 
-        visibility: hidden; 
-        transform: translateX(-50%) translateY(10px); 
-        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; 
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(-50%) translateY(10px);
+        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
       }
 
       /* Add a small triangle under the tooltip */
       &::before {
         content: "";
         position: absolute;
-        top: 32px; 
+        top: 32px;
         left: 50%;
         transform: translateX(-50%);
-        border-width: 6px; 
+        border-width: 6px;
         border-style: solid;
         border-color: transparent transparent map-get($color-set-1, accent-200)
-          transparent; 
-        opacity: 0; 
+          transparent;
+        opacity: 0;
         visibility: hidden;
         transition: opacity 0.3s ease, visibility 0.3s ease;
       }
@@ -74,7 +76,7 @@
       &:hover::before {
         opacity: 0.6;
         visibility: visible;
-        transform: translateX(-50%) translateY(0); 
+        transform: translateX(-50%) translateY(0);
       }
     }
   }
@@ -130,7 +132,7 @@
         border: none;
         cursor: pointer;
         padding: 0;
-        transition: transform 0.3s ease; 
+        transition: transform 0.3s ease;
 
         svg {
           transition: transform 0.3s ease;
@@ -149,9 +151,9 @@
         padding: 5px 5px;
 
         min-width: 150px;
-        transform: translateY(10px); 
-        opacity: 0; 
-        transition: opacity 0.3s ease, transform 0.3s ease; 
+        transform: translateY(10px);
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease;
 
         a {
           display: block;
@@ -170,65 +172,62 @@
       &:hover {
         .dropdown-menu {
           display: block;
-          opacity: 1; 
-          transform: translateY(0); 
+          opacity: 1;
+          transform: translateY(0);
         }
-    
+
         .dropdown-toggle svg {
-          transform: rotate(90deg); 
+          transform: rotate(90deg);
         }
       }
     }
   }
 
-  /* 右边样式 */
   .header-right {
     margin-left: auto;
     display: flex;
-    align-items: center; 
+    align-items: center;
     gap: 20px;
 
     a {
-      position: relative; 
+      position: relative;
       display: flex;
-      align-items: center; 
+      align-items: center;
       justify-content: center;
       text-decoration: none;
       font-size: 1rem;
 
       /* Tooltip styling */
       &::after {
-        content: attr(
-          data-tooltip
-        ); 
+        content: attr(data-tooltip);
         position: absolute;
-        top: 30px; 
-        left: 50%; 
+        top: 30px;
+        left: 50%;
         transform: translateX(-50%);
-        color: map-get($color-set-1, accent-200); 
-        padding: 2px 8px; 
-        border-radius: 8px; 
-        font-size: 10px; 
-        font-weight: bold; 
-        white-space: nowrap; 
-        opacity: 0; 
-        visibility: hidden; 
+        color: map-get($color-set-1, accent-200);
+        padding: 2px 8px;
+        border-radius: 8px;
+        font-size: 10px;
+        font-weight: bold;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
         transform: translateX(-50%) translateY(10px);
-        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; 
+        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
       }
 
       /* Add a small triangle under the tooltip */
       &::before {
         content: "";
         position: absolute;
-        top: 32px; 
+        top: 32px;
         left: 50%;
         transform: translateX(-50%);
-        border-width: 6px; 
+        border-width: 6px;
         border-style: solid;
         border-color: transparent transparent map-get($color-set-1, accent-200)
-          transparent; 
-        opacity: 0; 
+          transparent;
+        opacity: 0;
         visibility: hidden;
         transition: opacity 0.3s ease, visibility 0.3s ease;
       }
@@ -238,17 +237,8 @@
       &:hover::before {
         opacity: 0.6;
         visibility: visible;
-        transform: translateX(-50%) translateY(0); 
+        transform: translateX(-50%) translateY(0);
       }
-    }
-    @media (max-width: 1200px) {
-      max-width: 95%; /* 小屏幕自适应宽度 */
-      padding: 10px; /* 减少内边距 */
-    }
-  
-    @media (max-width: 768px) {
-      max-width: 100%; /* 超小屏幕宽度全屏 */
-      padding: 10px; /* 减少内边距 */
     }
   }
 }
