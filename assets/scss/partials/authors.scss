@@ -279,19 +279,19 @@ $font-author: "Playwrite US Trad", "Noto Serif SC", serif;
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
+  display: inline-block;
   gap: 1rem; 
   align-items: center;
 }
 
 .social-links li {
-  display: flex;
+  display: inline-block;
   align-items: center;
 }
 
 .social-links a {
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: #333;
   display: flex;
   align-items: center;
@@ -300,17 +300,17 @@ $font-author: "Playwrite US Trad", "Noto Serif SC", serif;
 }
 
 .social-links a:hover {
-  color: #007bff; 
+  color: map-get($map: $color-set-1, $key: accent-200); 
   transform: translateY(-2px);
 }
 
 .social-links .icon {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   fill: currentColor; 
   transition: fill 0.3s ease;
 }
 
 .social-links a:hover .icon {
-  fill: #007bff; 
+  fill: map-get($map: $color-set-1, $key: accent-200); 
 }
