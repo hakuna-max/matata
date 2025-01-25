@@ -7,14 +7,49 @@
   <!-- 作者简介 -->
   <p>{{ .Params.bio }}</p>
   <!-- 社交链接 -->
-  <ul>
+  <ul class="social-links">
     {{ with .Params.social.twitter }}
-    <li><a href="{{ . }}">Twitter</a></li>
+    <li>
+      <a href="{{ . }}" aria-label="Twitter">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon">
+          <path d="M22.46 6c-.77.35-1.6.59-2.46.69a4.15 4.15 0 001.82-2.3 8.4 8.4 0 01-2.6.99 4.1 4.1 0 00-7 3.73A11.65 11.65 0 013 5.14a4.1 4.1 0 001.27 5.47 4.07 4.07 0 01-1.85-.5v.05a4.1 4.1 0 003.3 4 4.07 4.07 0 01-1.84.07 4.1 4.1 0 003.83 2.85A8.24 8.24 0 012 19.54a11.62 11.62 0 006.29 1.85c7.55 0 11.67-6.26 11.67-11.68 0-.18 0-.36-.01-.54a8.35 8.35 0 002.05-2.13z"></path>
+        </svg>
+        Twitter
+      </a>
+    </li>
     {{ end }}
     {{ with .Params.social.linkedin }}
-    <li><a href="{{ . }}">LinkedIn</a></li>
+    <li>
+      <a href="{{ . }}" aria-label="LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon">
+          <path d="M4.98 3.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zM4 8.98h2V21H4zM9.5 8.98h2v1.5h.03c.28-.53 1.2-1.09 2.47-1.09 2.64 0 3.13 1.72 3.13 3.95V21h-2v-5.25c0-1.25-.03-2.84-1.73-2.84-1.74 0-2 1.37-2 2.76V21h-2z"></path>
+        </svg>
+        LinkedIn
+      </a>
+    </li>
+    {{ end }}
+    {{ with .Params.social.email }}
+    <li>
+      <a href="mailto:{{ . }}" aria-label="Email">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon">
+          <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zM4 6h16l-8 6-8-6zm16 12H4V8l8 6 8-6v10z"></path>
+        </svg>
+        Email
+      </a>
+    </li>
+    {{ end }}
+    {{ with .Params.social.resume }}
+    <li>
+      <a href="{{ . }}" target="_blank" aria-label="Resume">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm2 18H6V4h7v5h5v11zm-7-8h4v2h-4zm0 4h4v2h-4z"></path>
+        </svg>
+        Resume
+      </a>
+    </li>
     {{ end }}
   </ul>
+  
 </div>
 
 

@@ -23,11 +23,19 @@ $font-author: "Playwrite US Trad", "Noto Serif SC", serif;
   font-family: $font-author;
 }
 
-.author-photo,
-.author-thumbnail {
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
+.author-photo {
+  border-radius: 50% !important; 
+  width: 150px; 
+  height: 150px; 
+  object-fit: cover; 
+  object-position: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+  border: 2px solid rgba(0, 0, 0, 0.1); 
+  transition: transform 0.3s ease; 
+}
+
+.author-photo:hover {
+  transform: scale(1.05); 
 }
 
 .author-articles {
@@ -84,7 +92,6 @@ $font-author: "Playwrite US Trad", "Noto Serif SC", serif;
   }
 }
 
-// SCSS structure
 .card {
   overflow: visible;
   width: 190px;
@@ -265,4 +272,45 @@ $font-author: "Playwrite US Trad", "Noto Serif SC", serif;
   100% {
     transform: rotateZ(360deg);
   }
+}
+
+
+.social-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1rem; 
+  align-items: center;
+}
+
+.social-links li {
+  display: flex;
+  align-items: center;
+}
+
+.social-links a {
+  text-decoration: none;
+  font-size: 1rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; 
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #007bff; 
+  transform: translateY(-2px);
+}
+
+.social-links .icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor; 
+  transition: fill 0.3s ease;
+}
+
+.social-links a:hover .icon {
+  fill: #007bff; 
 }
