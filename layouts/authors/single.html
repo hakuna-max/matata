@@ -1,7 +1,9 @@
 {{ define "main" }}
 <div class="author-profile">
   <!-- 作者头像 -->
-  <img src="{{ .RelPermalink }}{{ .Params.photo }}" alt="{{ .Title }}'s photo" class="author-photo">
+  <!-- <img src="{{ .RelPermalink }}{{ .Params.photo }}" alt="{{ .Title }}'s photo" class="author-photo"> -->
+  <img src="{{ with .Params.photo }}{{ . }}{{ else }}{{ "/images/default-avatar.jpg" | relURL }}{{ end }}" 
+       alt="{{ .Title }}'s photo" class="author-photo">
   <!-- 作者名字 -->
   <h1>{{ .Title }}</h1>
   <!-- 作者简介 -->
