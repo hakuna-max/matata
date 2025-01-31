@@ -10,11 +10,6 @@
     opacity: 0.5;
     user-select: none; // 禁止选中文本
 
-    .material-icons {
-      margin-right: 4px; // 图标与文字之间的间距
-      vertical-align: middle; // 确保图标在文字中垂直居中
-    }
-
     .text-info {
       display: flex; // 子内容使用 Flexbox
       flex-direction: row; // 改为行方向
@@ -23,15 +18,15 @@
       color: map-get($color-set-2, accent-100);
       font-size: 0.9em;
 
-      p {
-        margin: 0; // 移除默认的段落间距
-        display: flex; // 使用 Flexbox 布局，方便对齐内部内容
-        align-items: center; // 垂直居中对齐
-      }
+      span {
+        display: relative; 
+        gap:8px;
 
-      .icon {
-        display: inline-block; // SVG 图标的内联块布局
-        margin-right: 8px; // 图标与后续文字之间的间距
+        svg {
+          width: 1em; 
+          height: 1em; 
+          transform: translateY(2px); 
+        }
       }
     }
   }
