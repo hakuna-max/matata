@@ -2,7 +2,8 @@
 <div class="author-profile">
   <!-- 作者头像 -->
   <!-- <img src="{{ .RelPermalink }}{{ .Params.photo }}" alt="{{ .Title }}'s photo" class="author-photo"> -->
-  <img src="{{ if .Params.photo }}{{ .Params.photo | relURL }}{{ else }}{{ "/images/default-avatar.png" | relURL }}{{ end }}" alt="{{ .Title }}'s photo" class="author-photo">
+  <!-- <img src="{{ if .Params.photo }}{{ .Params.photo | relURL }}{{ else }}{{ "/images/default-avatar.png" | relURL }}{{ end }}" alt="{{ .Title }}'s photo" class="author-photo"> -->
+  <canvas id="authorCanvas" width="150" height="150" data-photo="{{ if .Params.photo }}{{ .RelPermalink }}{{ .Params.photo }}{{ else }}{{ "" }}{{ end }}"></canvas>
   <!-- 作者名字 -->
   <h1>{{ .Title }}</h1>
   <!-- 作者简介 -->

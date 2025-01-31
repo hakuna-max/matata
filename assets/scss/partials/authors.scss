@@ -23,19 +23,31 @@ $font-author: "Playwrite US Trad", "Noto Serif SC", serif;
   font-family: $font-author;
 }
 
-.author-photo {
-  border-radius: 50% !important; 
-  width: 150px; 
-  height: 150px; 
-  object-fit: cover; 
-  object-position: center;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
-  border: 2px solid rgba(0, 0, 0, 0.1); 
-  transition: transform 0.3s ease; 
-}
+// .author-photo {
+//   border-radius: 50% !important; 
+//   width: 150px; 
+//   height: 150px; 
+//   object-fit: cover; 
+//   object-position: center;
+//   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+//   border: 2px solid rgba(0, 0, 0, 0.1); 
+//   transition: transform 0.3s ease; 
+// }
 
-.author-photo:hover {
-  transform: scale(1.05); 
+// .author-photo:hover {
+//   transform: scale(1.05); 
+// }
+
+#authorCanvas {
+  border-radius: 50% !important;
+  width: 150px;
+  height: 150px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+#authorCanvas:hover {
+  transform: scale(1.05);
 }
 
 .author-articles {

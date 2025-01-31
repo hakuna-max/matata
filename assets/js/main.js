@@ -7,6 +7,8 @@ import { initProtectedContent } from './shortcodes/protected-content';
 
 import { setupMobileMenuToggle } from './utils/mobile-menu';
 
+import { initAuthorPhoto } from "./utils/draw-author-photo.js";
+
 setupDocumentReady();
 initializeSvgAnimations();
 backToTop();
@@ -15,4 +17,4 @@ setupMobileMenuToggle();
 initializeMermaid();
 initProtectedContent();
 
-
+initAuthorPhoto();
