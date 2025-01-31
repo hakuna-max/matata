@@ -21,6 +21,7 @@ $font-author: "Playwrite US Trad", "Noto Serif SC", serif;
   margin: 20px auto;
 
   font-family: $font-author;
+  user-select: none;
 }
 
 // .author-photo {
@@ -60,6 +61,11 @@ $font-author: "Playwrite US Trad", "Noto Serif SC", serif;
     &:hover {
       color: map-get($color-set-3, accent-100); /* 鼠标悬浮时颜色 */
     }
+  }
+  
+  ul {
+    overflow-y: auto;
+    max-height: 400px;
   }
 
   ul li {
