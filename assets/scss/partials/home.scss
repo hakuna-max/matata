@@ -13,10 +13,11 @@ $colors: (red, green, blue);
   user-select: none;
 
   h1 {
-    // font-size: 5rem;
     color: map-get($color-set-1, primary-300);
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     font-family: "Liu Jian Mao Cao", serif;
+    display: inline-block;
+    transform: scale(2.5) !important;
   }
 
   p {
