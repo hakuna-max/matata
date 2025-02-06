@@ -132,19 +132,6 @@
   }
 }
 
-#qrcode {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-}
-
 /* 固定标题样式 */
 .toc {
   position: relative; /* 改为相对定位，不随内容滚动 */
@@ -244,16 +231,16 @@
 }
 
 .content-wrapper {
-  max-width: inherit; // 内容最大宽度
-  margin: 0 auto; // 水平居中
-  position: relative; // 确保子元素可以相对定位
+  max-width: inherit; 
+  margin: 0 auto; 
+  position: relative; 
 }
 
 .back-to-top {
   position: fixed;
-  bottom: 60px; // 距离底部 60px
-  right: 20px; // 紧贴内容右侧
-  color: map-get($color-set-3, accent-200); // 按钮文字或图标颜色
+  bottom: 60px; 
+  right: 20px; 
+  color: map-get($color-set-3, accent-200); 
   font-size: 24px;
   text-align: center;
   padding: 10px;
