@@ -4,6 +4,7 @@
 {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }} {{
 $dateHuman := .Date | time.Format ":date_long" }}
 <div class="desc">
+  <div class="meta">
   <span class="author">
     <!-- 作者图标 -->
     <svg
@@ -95,6 +96,19 @@ $dateHuman := .Date | time.Format ":date_long" }}
     <a href="/tags/{{ . | urlize }}">{{ . }}</a>
     {{ end }}
   </span>
+      
+</div>
+
+<div class="share">
+  <span class="share-buttons">
+    <!-- Share to -->
+    <span class="x-icon">
+      <a href="https://x.com/intent/tweet?url={{ .Permalink }}&text={{ .Title }}&via=YourUsername&hashtags=tag1,tag2" target="_blank">
+        <img src="/images/x-icon.png" alt="分享到X">
+      </a>
+    </span>
+  </span>
+  </div>
 </div>
 
 {{ if .Page.TableOfContents }}
@@ -122,3 +136,7 @@ $dateHuman := .Date | time.Format ":date_long" }}
 </div>
 <!-- {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }} -->
 {{ end }}
+
+
+  
+
