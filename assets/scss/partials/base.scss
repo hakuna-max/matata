@@ -171,7 +171,7 @@ body {
 
 /* 滑块默认样式 */
 *::-webkit-scrollbar-thumb {
-  background: map-get($color-set-1, accent-100);
+  background: map-get($color-set-4, text-200);
   // border-radius: 10px;
   transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out; /* 添加滑块的平滑变化 */
   opacity: 0.5;
