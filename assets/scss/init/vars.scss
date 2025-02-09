@@ -1,5 +1,5 @@
 // 系统和通用字体
-$font-sans-serif: "Poppins", "Montserrat", "Raleway", Roboto, -apple-system, 
+$font-sans-serif: "LXGW WenKai", "Poppins", "Montserrat", "Raleway", Roboto, -apple-system, 
   BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, 
   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
@@ -8,10 +8,10 @@ $font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
   "Courier New", monospace;
 
 // 添加 JetBrains Mono 字体
-$font-jetbrains-mono: "JetBrains Mono", monospace;;
+$font-jetbrains-mono: "JetBrains Mono", "LXGW WenKai Mono", monospace;;
 
 // 中文字体（可选替代，如用系统默认字体）
-$font-chinese: "Noto Serif SC", "PingFang SC", "Microsoft YaHei", "SimSun", serif;
+$font-chinese: "LXGW WenKai", "Noto Serif SC", "PingFang SC", "Microsoft YaHei", "SimSun", serif;
 
 // 自定义字体变量
 $font-base: $font-chinese, $font-sans-serif; // 英文优先使用 sans-serif，中文使用系统默认字体
