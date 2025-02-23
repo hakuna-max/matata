@@ -1,0 +1,57 @@
+$active-color-set: $color-set-2; 
+
+blockquote {
+    padding: 12px 20px;
+    margin: 20px 0;
+    border-left: 5px solid map-get($active-color-set, primary-200);
+    background-color: map-get($active-color-set, bg-100);
+    color: map-get($active-color-set, text-100);
+    font-size: 1rem;
+    font-style: italic;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.admonition {
+    padding: 12px 20px;
+    margin: 16px 0;
+    border-left: 5px solid;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
+
+    &.note {
+        border-left-color: map-get($active-color-set, primary-200);
+        background-color: map-get($active-color-set, bg-100);
+        color: map-get($active-color-set, text-100);
+    }
+
+    &.tip {
+        border-left-color: map-get($active-color-set, accent-100);
+        background-color: lighten(map-get($active-color-set, primary-100), 20%);
+        color: map-get($active-color-set, text-100);
+    }
+
+    &.important {
+        border-left-color: map-get($active-color-set, primary-100);
+        background-color: lighten(map-get($active-color-set, bg-200), 10%);
+        color: map-get($active-color-set, text-100);
+    }
+
+    &.warning {
+        border-left-color: map-get($active-color-set, accent-100);
+        background-color: lighten(map-get($active-color-set, accent-200), 35%);
+        color: map-get($active-color-set, text-100);
+    }
+
+    &.caution {
+        border-left-color: map-get($active-color-set, primary-300);
+        background-color: lighten(map-get($active-color-set, bg-300), 10%);
+        color: darken(map-get($active-color-set, text-100), 20%);
+    }
+
+    .admonition-title {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+}
