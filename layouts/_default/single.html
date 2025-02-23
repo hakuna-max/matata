@@ -119,7 +119,9 @@ $dateHuman := .Date | time.Format ":date_long" }}
 {{ end }}
 
 <div class="content-wrapper">
-  <div class="single-content">{{ .Content }}</div>
+  <div class="single-content">
+  {{ .Content }}
+  </div>
   <a href="#" class="back-to-top">
     <svg
       xmlns="http://www.w3.org/2000/svg"
