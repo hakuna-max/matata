@@ -1,30 +1,25 @@
-{{- $content := printf "%s" . | safeHTML -}}
-{{- $class := "note" -}}
-{{- $title := "Note" -}}
+{{ $emojis := dict
+  "caution" ":exclamation:"
+  "important" ":information_source:"
+  "note" ":information_source:"
+  "tip" ":bulb:"
+  "warning" ":information_source:"
+}}
 
-{{- if findRE "^\\[!NOTE\\]" $content 1 -}}
-  {{- $class = "note" -}}
-  {{- $title = "Note" -}}
-  {{- $content = replaceRE "^\\[!NOTE\\]" "" $content -}}
-{{- else if findRE "^\\[!TIP\\]" $content 1 -}}
-  {{- $class = "tip" -}}
-  {{- $title = "Tip" -}}
-  {{- $content = replaceRE "^\\[!TIP\\]" "" $content -}}
-{{- else if findRE "^\\[!IMPORTANT\\]" $content 1 -}}
-  {{- $class = "important" -}}
-  {{- $title = "Important" -}}
-  {{- $content = replaceRE "^\\[!IMPORTANT\\]" "" $content -}}
-{{- else if findRE "^\\[!WARNING\\]" $content 1 -}}
-  {{- $class = "warning" -}}
-  {{- $title = "Warning" -}}
-  {{- $content = replaceRE "^\\[!WARNING\\]" "" $content -}}
-{{- else if findRE "^\\[!CAUTION\\]" $content 1 -}}
-  {{- $class = "caution" -}}
-  {{- $title = "Caution" -}}
-  {{- $content = replaceRE "^\\[!CAUTION\\]" "" $content -}}
-{{- end -}}
-
-<div class="admonition {{ $class }}">
-  <p class="admonition-title"><em>{{ $title }}</em></p>
-  {{ .Text }}
-</div>
+{{ if eq .Type "alert" }}
+  <blockquote class="alert alert-{{ .AlertType }}">
+    <p class="alert-heading">
+      {{ transform.Emojify (index $emojis .AlertType) }}
+      {{ with .AlertTitle }}
+        {{ . }}
+      {{ else }}
+        {{ or (i18n .AlertType) (title .AlertType) }}
+      {{ end }}
+    </p>
+    {{ .Text }}
+  </blockquote>
+{{ else }}
+  <blockquote>
+    {{ .Text }}
+  </blockquote>
+{{ end }}

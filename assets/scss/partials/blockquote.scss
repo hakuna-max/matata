@@ -1,5 +1,7 @@
-$active-color-set: $color-set-2; 
+// 选择配色方案
+$active-color-set: $color-set-2;
 
+// Blockquote 默认样式
 blockquote {
     padding: 12px 20px;
     margin: 20px 0;
@@ -12,46 +14,55 @@ blockquote {
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-.admonition {
+// Alert 样式
+.alert {
     padding: 12px 20px;
     margin: 16px 0;
     border-left: 5px solid;
     border-radius: 5px;
     font-size: 1rem;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
+    font-style: normal;
+    position: relative;
+    display: block;
 
-    &.note {
+    // 统一处理 alert-heading（标题样式）
+    .alert-heading {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        gap: 8px; // 让 Emoji 和标题有间距
+    }
+
+    // 不同类型的警告框
+    &.alert-note {
         border-left-color: map-get($active-color-set, primary-200);
-        background-color: map-get($active-color-set, bg-100);
+        background-color: lighten(map-get($active-color-set, bg-100), 5%);
         color: map-get($active-color-set, text-100);
     }
 
-    &.tip {
+    &.alert-tip {
         border-left-color: map-get($active-color-set, accent-100);
-        background-color: lighten(map-get($active-color-set, primary-100), 20%);
+        background-color: lighten(map-get($active-color-set, primary-100), 15%);
         color: map-get($active-color-set, text-100);
     }
 
-    &.important {
+    &.alert-important {
         border-left-color: map-get($active-color-set, primary-100);
         background-color: lighten(map-get($active-color-set, bg-200), 10%);
         color: map-get($active-color-set, text-100);
     }
 
-    &.warning {
+    &.alert-warning {
         border-left-color: map-get($active-color-set, accent-100);
-        background-color: lighten(map-get($active-color-set, accent-200), 35%);
-        color: map-get($active-color-set, text-100);
+        background-color: lighten(map-get($active-color-set, accent-200), 40%);
+        color: darken(map-get($active-color-set, text-100), 10%);
     }
 
-    &.caution {
+    &.alert-caution {
         border-left-color: map-get($active-color-set, primary-300);
-        background-color: lighten(map-get($active-color-set, bg-300), 10%);
-        color: darken(map-get($active-color-set, text-100), 20%);
-    }
-
-    .admonition-title {
-        font-weight: bold;
-        margin-bottom: 5px;
+        background-color: lighten(map-get($active-color-set, bg-300), 15%);
+        color: darken(map-get($active-color-set, text-100), 25%);
     }
 }
