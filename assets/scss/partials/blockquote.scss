@@ -38,31 +38,31 @@ blockquote {
     // 不同类型的警告框
     &.alert-note {
         border-left-color: map-get($active-color-set, primary-200);
-        background-color: lighten(map-get($active-color-set, bg-100), 5%);
+        background-color: lighten(map-get($active-color-set, primary-200), 45%);
         color: map-get($active-color-set, text-100);
     }
 
     &.alert-tip {
         border-left-color: map-get($active-color-set, accent-100);
-        background-color: lighten(map-get($active-color-set, primary-100), 15%);
+        background-color: lighten(map-get($active-color-set, accent-100), 45%);
         color: map-get($active-color-set, text-100);
     }
 
     &.alert-important {
-        border-left-color: map-get($active-color-set, primary-100);
-        background-color: lighten(map-get($active-color-set, bg-200), 10%);
+        border-left-color: map-get($color-set-3, primary-100);
+        background-color: lighten(map-get($active-color-set, primary-100), 45%);
         color: map-get($active-color-set, text-100);
     }
 
     &.alert-warning {
-        border-left-color: map-get($active-color-set, accent-100);
-        background-color: lighten(map-get($active-color-set, accent-200), 40%);
+        border-left-color: map-get($color-set-3, accent-100);
+        background-color: lighten(map-get($color-set-3, accent-100), 45%);
         color: darken(map-get($active-color-set, text-100), 10%);
     }
 
     &.alert-caution {
         border-left-color: map-get($active-color-set, primary-300);
-        background-color: lighten(map-get($active-color-set, bg-300), 15%);
+        background-color: lighten(map-get($active-color-set, primary-300), 45%);
         color: darken(map-get($active-color-set, text-100), 25%);
     }
 }
