@@ -93,6 +93,13 @@ body {
           overflow: auto;
           position: relative;
           width: 100%;
+
+          .language-plaintext {
+            font-weight: 100;
+            display: block;
+            padding-left: 30px;
+            padding-right: 30px;
+          }
         }
       }
 
@@ -112,7 +119,7 @@ body {
           }
         }
       }
-
+ 
       code {
         font-family: $font-code !important;
       }
