@@ -36,7 +36,7 @@
     {{ $pages := index $grouped $key }}
     {{ $year := substr $key 0 4 }}
     {{ $month := substr $key 5 2 }}
-    <h3>{{ $year }} 年 {{ $month }} 月</h3>
+    <span style="font-weight: bolder;">{{ $year }} 年 {{ $month }} 月</span>
     <ul>
       {{ range $pages }}
         <li>

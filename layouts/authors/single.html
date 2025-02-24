@@ -61,7 +61,7 @@
 
   <!-- 作者的所有文章 -->
   <div class="author-articles">
-    <h2>Articles by {{ .Title }}</h2>
+    <span style="font-weight: bolder;">Articles by {{ .Title }}</span>
     <ul>
       {{ $currentAuthor := .Title }} <!-- 当前作者的名称 -->
       {{ range .Site.RegularPages }} <!-- 遍历所有 Regular Pages -->

@@ -52,7 +52,7 @@
   $reversedKeys | append (index $sortedKeys $index) }} {{ end }} {{ range
   $reversedKeys }} {{ $key := . }} {{ $pages := index $grouped $key }} {{ $year
   := substr $key 0 4 }} {{ $month := substr $key 5 2 }}
-  <h2>{{ $year }} 年 {{ $month }} 月</h2>
+  <span style="font-weight: bolder;">{{ $year }} 年 {{ $month }} 月</span>
   <ul>
     {{ range $pages }} {{ $normalizedPath := strings.Replace .File.Path "\\" "/"
     -1 }} {{ if not (or (eq .File.BaseFileName "archive") (strings.HasPrefix

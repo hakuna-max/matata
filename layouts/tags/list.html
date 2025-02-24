@@ -4,9 +4,9 @@
   <div class="tags-container">
     {{ range .Data.Terms }}
       <div class="tag-box">
-        <h2> 
-            <a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a> <span>{{ .Count }}</span>
-        </h2>
+        <span> 
+            <a href="{{ .Page.Permalink }}" style="color: #00668c">{{ .Page.Title }}</a> <span style="font-size: 0.8rem">{{ .Count }}</span>
+        </span>
         <ul>
           {{ range .Pages }}
             <li>
