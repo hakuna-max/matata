@@ -83,6 +83,8 @@ body {
             padding: 10px;
             vertical-align: bottom; // 标题栏向下对齐
             font-weight: bold; // 加粗表头
+            font-size: 0.8rem; // 表头字体大小
+            line-height: initial; // 表头行高
           }
         }
 
@@ -94,6 +96,8 @@ body {
             color: map-get($color-set-1, text-200); // 表体文字颜色
             background-color: map-get($color-set-1, bg-100); // 表体背景色
             vertical-align: top; // 内容向上对齐
+            font-size: 0.8rem; 
+            line-height: initial; 
           }
 
           tr:last-child td {
