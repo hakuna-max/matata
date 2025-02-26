@@ -222,16 +222,3 @@ body {
   transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out; /* 添加滑块的平滑变化 */
   opacity: 0.5;
 }
-
-// /* 鼠标悬浮到内容区域时，显示滑块 */
-// *:hover::-webkit-scrollbar-thumb {
-//   background: map-get($color-set-4, primary-100); /* 鼠标悬浮时，滑块颜色变亮 */
-//   opacity: 1; /* 滑块变得可见 */
-//   width: 2px;
-//   height: 2px;
-// }
-
-// /* 鼠标悬浮到滑块时进一步调整颜色 */
-// *::-webkit-scrollbar-thumb:hover {
-//   background: map-get($color-set-2, primary-200); /* 鼠标悬浮时，滑块颜色变亮 */
-// }
