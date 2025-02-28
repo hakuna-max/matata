@@ -122,42 +122,53 @@ body {
 
       /* 代码块 */
       .highlight {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        max-width: 100%;
-        padding: 5px;
+        // display: flex;
+        // display: block;
+        // flex-direction: row;
+        // width: 100%;
+        min-width: 100%;
+        // padding: 5px;
         overflow: auto;
-
-        pre {
-          font-size: 0.9rem;
-          line-height: 1.5;
-          margin: 0;
-          padding: 5px 0;
-          overflow: auto;
-          position: relative;
-          width: 100%;
-          border-radius: 5px;
-          padding-left: 10px;
-        }
+        // background-color: #ffb787;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        // border-bottom: none !important;
       }
 
-      /* 针对小屏幕优化 */
-      @media (max-width: 768px) {
-        .highlight {
-          flex-direction: column; /* 在小屏幕上改为垂直方向布局 */
-          padding: 8px; /* 缩小整体内边距 */
-          font-size: 0.8rem; /* 再次调整字体大小以适应屏幕 */
-          overflow-x: auto; /* 仍保留水平滚动条 */
+      //   pre {
+      //     font-size: 0.9rem;
+      //     line-height: 1.5;
+      //     margin: 0;
+      //     padding: 5px 0;
+      //     overflow: auto;
+      //     position: relative;
+      //     min-width: 100%;
+      //     border-radius: 5px;
+      //     white-space: pre;
+      //   }
+      // }
 
-          pre {
-            font-size: 0.8rem; /* 字体更小以适配小屏幕 */
-            padding: 5px; /* 调整内边距 */
-            white-space: pre-wrap; /* 自动换行 */
-            word-wrap: break-word; /* 长内容可断词 */
-          }
-        }
-      }
+      // /* 针对小屏幕优化 */
+      // @media (max-width: 768px) {
+      //   .highlight {
+      //     flex-direction: column; /* 在小屏幕上改为垂直方向布局 */
+      //     padding: 8px; /* 缩小整体内边距 */
+      //     font-size: 0.8rem; /* 再次调整字体大小以适应屏幕 */
+      //     overflow-x: auto; /* 仍保留水平滚动条 */
+
+      //     pre {
+      //       font-size: 0.8rem; /* 字体更小以适配小屏幕 */
+      //       padding: 5px; /* 调整内边距 */
+      //       white-space: pre-wrap; /* 自动换行 */
+      //       word-wrap: break-word; /* 长内容可断词 */
+      //     }
+      //   }
+      // }
+      // .highlight > span{
+      //   display: inline-block;
+      //   padding: 0 5px;
+      // }
 
       code {
         font-family: $font-code !important;
