@@ -132,8 +132,16 @@ body {
         // background-color: #ffb787;
         border-radius: 5px;
         font-size: 0.9rem;
-        line-height: 1.5;
+        line-height: 1.8;
         // border-bottom: none !important;
+        background-color: #fffefb;
+        margin: 5px;
+
+        .hl {
+          display: table-row;
+          min-width: 100%;
+        }
+
       }
 
       //   pre {
