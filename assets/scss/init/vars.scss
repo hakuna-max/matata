@@ -11,7 +11,7 @@ $font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
 $font-jetbrains-mono: "JetBrains Mono", "LXGW WenKai Mono", monospace;
 
 // 中文字体（可选替代，如用系统默认字体）
-$font-chinese: "LXGW WenKai", "Noto Serif SC", "PingFang SC", "Microsoft YaHei", "SimSun", serif;
+$font-chinese: "IBM Plex Sans SC", "LXGW WenKai", "Noto Serif SC", "PingFang SC", "Microsoft YaHei", "SimSun", serif;
 
 // 自定义字体变量
 $font-base: $font-chinese, $font-sans-serif; // 英文优先使用 sans-serif，中文使用系统默认字体
