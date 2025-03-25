@@ -8,6 +8,8 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.min.css">
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ibm/plex-sans-sc@1.1.0/css/ibm-plex-sans-sc-all.min.css">
+
 {{- if eq hugo.Environment "development" }}
 <link rel="stylesheet" href="{{ $sass.RelPermalink }}" />
 {{- else }} {{ $minified := $sass | minify }} {{- with $minified | fingerprint
