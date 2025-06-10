@@ -8,7 +8,7 @@
     font-weight: bold;
     text-align: center;
     margin-bottom: 30px;
-    color: map-get($color-set-3, accent-100);
+    color: map-get($color-set-1, accent-200);
     padding-bottom: 40px;
   }
 
@@ -41,7 +41,7 @@
 
       a {
         text-decoration: none; /* 去掉下划线 */
-        color: map-get($color-set-3, accent-100); /* 链接颜色 */
+        color: map-get($color-set-1, accent-200); /* 链接颜色 */
         font-size: 1.1rem; /* 标题字体大小 */
         font-weight: bold;
         padding-left: 40px;
