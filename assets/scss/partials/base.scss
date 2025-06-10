@@ -24,44 +24,34 @@ body {
     h1 {
       font-size: clamp(1.8rem, 4vw, 2rem);
       line-height: 1.5;
+      border-top: 3px solid rgba(194, 29, 3, 0.9); /* h1 分隔线，深红色，高不透明度 */
+      padding-top: 1rem; /* 分隔线与标题的间距 */
+      margin-top: 1.5rem;
     }
+
     h2 {
-      counter-reset: h3;
       font-size: clamp(1.4rem, 2.5vw, 1.6rem);
       line-height: 1.5;
       font-weight: bold;
+      border-top: 2px solid rgba(253, 87, 50, 0.7); /* h2 分隔线，橙红色，中等不透明度 */
+      padding-top: 0.8rem;
+      margin-top: 1.2rem;
     }
 
     h3 {
-      counter-reset: h4;
       font-size: clamp(1.2rem, 2vw, 1.4rem);
       line-height: 1.5;
+      border-top: 1.5px solid rgba(255, 183, 135, 0.5); /* h3 分隔线，浅橙色，较低不透明度 */
+      padding-top: 0.6rem;
+      margin-top: 1rem;
     }
 
     h4 {
       font-size: clamp(1rem, 1.5vw, 1.2rem);
       line-height: 1.5;
-    }
-
-    h2:not(.no-counter)::before {
-      counter-increment: h2;
-      content: counter(h2) ". ";
-      font-weight: bold;
-      color: #c21d03;
-    }
-
-    h3::before {
-      counter-increment: h3;
-      content: counter(h2) "." counter(h3) " ";
-      font-weight: bold;
-      color: #fd5732;
-    }
-
-    h4::before {
-      counter-increment: h4;
-      content: counter(h2) "." counter(h3) "." counter(h4) " ";
-      font-weight: bold;
-      color: #ffb787;
+      border-top: 1px solid rgba(255, 183, 135, 0.3); /* h4 分隔线，浅橙色，最低不透明度 */
+      padding-top: 0.5rem;
+      margin-top: 0.8rem;
     }
 
     .site-main {
@@ -141,7 +131,6 @@ body {
           display: table-row;
           min-width: 100%;
         }
-
       }
 
       //   pre {
