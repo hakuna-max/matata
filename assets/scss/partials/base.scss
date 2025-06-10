@@ -10,7 +10,7 @@ body {
   line-height: 200%;
   letter-spacing: 0.05em;
 
-  counter-reset: h2;
+  // counter-reset: h2;
 
   ::selection {
     background-color: map-get($color-set-1, primary-100); /* 选中文本背景色 */
