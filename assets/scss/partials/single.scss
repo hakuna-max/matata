@@ -85,7 +85,6 @@
   }
 }
 
-
 // share-buttons s'css
 
 .share-buttons {
@@ -93,7 +92,7 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  
+
   a {
     display: inline-flex;
     align-items: center;
@@ -208,6 +207,24 @@
     border-radius: 4px; /* 圆角 */
   }
 
+  ul {
+    list-style-type: disc; /* 显式设置项目符号为圆点 */
+    margin: 1rem 0; /* 上下间距 */
+    padding-left: 2rem; /* 左侧缩进，确保项目符号可见 */
+  }
+
+  li {
+    margin-bottom: 0.5rem; /* 列表项之间的间距 */
+    line-height: 1.6; /* 与标题一致的行高 */
+    display: list-item; /* 确保列表项以列表形式显示 */
+  }
+
+  /* 针对MathJax容器的样式调整 */
+  li mjx-container {
+    display: inline; /* 确保MathJax公式不破坏列表项布局 */
+    vertical-align: middle; /* 公式与文本对齐 */
+  }
+
   a {
     color: map-get($color-set-1, accent-200); /* 默认链接颜色 */
     text-decoration: underline; /* 默认无下划线 */
@@ -231,16 +248,16 @@
 }
 
 .content-wrapper {
-  max-width: inherit; 
-  margin: 0 auto; 
-  position: relative; 
+  max-width: inherit;
+  margin: 0 auto;
+  position: relative;
 }
 
 .back-to-top {
   position: fixed;
-  bottom: 60px; 
-  right: 20px; 
-  color: map-get($color-set-3, accent-200); 
+  bottom: 60px;
+  right: 20px;
+  color: map-get($color-set-3, accent-200);
   font-size: 24px;
   text-align: center;
   padding: 10px;
