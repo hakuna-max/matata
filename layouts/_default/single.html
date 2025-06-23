@@ -5,110 +5,123 @@
 $dateHuman := .Date | time.Format ":date_long" }}
 <div class="desc">
   <div class="meta">
-  <span class="author">
-    <!-- 作者图标 -->
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height="24px"
-      viewBox="0 -960 960 960"
-      width="24px"
-      fill="#5f6368"
-    >
-      <path
-        d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"
-      />
-    </svg>
-    <!-- 作者姓名 -->
-    {{ with .Params.author }}
-    <a href="/authors/{{ . | urlize }}">{{ . }}</a>
-    {{ else }} {{ with .Site.Params.author }}
-    <a href="/authors/{{ . | urlize }}">{{ . }}</a>
-    {{ else }}
-    <span>Unknown Author</span>
-    {{ end }} {{ end }}
-  </span>
-  <span>
-    <!-- 更新： -->
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height="24px"
-      viewBox="0 -960 960 960"
-      width="24px"
-      fill="#5f6368"
-    >
-      <path
-        d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v200h-80v-40H200v400h280v80H200Zm0-560h560v-80H200v80Zm0 0v-80 80ZM560-80v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q8 9 12.5 20t4.5 22q0 11-4 22.5T903-300L683-80H560Zm300-263-37-37 37 37ZM620-140h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z"
-      />
-    </svg>
-    {{ .Date.Format "2006-01-02" }}
-  </span>
-  <span>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height="24px"
-      viewBox="0 -960 960 960"
-      width="24px"
-      fill="#5f6368"
-    >
-      <path
-        d="M480-120q-75 0-140.5-28.5t-114-77q-48.5-48.5-77-114T120-480q0-75 28.5-140.5t77-114q48.5-48.5 114-77T480-840q82 0 155.5 35T760-706v-94h80v240H600v-80h110q-41-56-101-88t-129-32q-117 0-198.5 81.5T200-480q0 117 81.5 198.5T480-200q105 0 183.5-68T756-440h82q-15 137-117.5 228.5T480-120Zm112-192L440-464v-216h80v184l128 128-56 56Z"
-      />
-    </svg>
-    {{ .Lastmod.Format "2006-01-02" }}
-  </span>
-  <span>
-    <!-- 字数： -->
-    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M80-120v-80h800v80H80Zm40-120v-280h120v280H120Zm200 0v-480h120v480H320Zm200 0v-360h120v360H520Zm200 0v-600h120v600H720Z"/></svg>
-    {{ .WordCount }} 字
-  </span>
-  <span>
-    <!-- 阅读： -->
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height="24px"
-      viewBox="0 -960 960 960"
-      width="24px"
-      fill="#5f6368"
-    >
-      <path
-        d="M203-480h117q11 0 21 5.5t15 16.5l44 88 124-248q11-23 36-23t36 23l69 138h92q-15-102-93-171t-184-69q-106 0-184 69t-93 171Zm277 320q106 0 184-69t93-171H640q-11 0-21-5.5T604-422l-44-88-124 248q-11 23-36 23t-36-23l-69-138h-92q15 102 93 171t184 69Zm0 80q-74 0-139.5-28.5T226-186q-49-49-77.5-114.5T120-440h80q0 116 82 198t198 82q116 0 198-82t82-198h80q0 74-28.5 139.5T734-186q-49 49-114.5 77.5T480-80ZM120-440q0-74 28.5-139.5T226-694q49-49 114.5-77.5T480-800q62 0 119 20t107 58l56-56 56 56-56 56q38 50 58 107t20 119h-80q0-116-82-198t-198-82q-116 0-198 82t-82 198h-80Zm240-400v-80h240v80H360Zm120 680q-116 0-198-82t-82-198q0-116 82-198t198-82q116 0 198 82t82 198q0 116-82 198t-198 82Zm0-280Z"
-      />
-    </svg>
-    {{ $readingSpeed := .Site.Language.Params.reading_speed }} {{ $readingTime
-    := div .WordCount $readingSpeed }} {{ if gt (mod .WordCount $readingSpeed) 0
-    }} {{ add $readingTime 1 }} {{ else }} {{ $readingTime }} {{ end }} minutes
-  </span>
-  <span class="tags">
-    <!-- 标签 -->
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height="24px"
-      viewBox="0 -960 960 960"
-      width="24px"
-      fill="#5f6368"
-    >
-      <path
-        d="m389-400 91-55 91 55-24-104 80-69-105-9-42-98-42 98-105 9 80 69-24 104ZM200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Zm80-122 200-86 200 86v-518H280v518Zm0-518h400-400Z"
-      />
-    </svg>
-
-    {{ range .Params.tags }}
-    <a href="/tags/{{ . | urlize }}">{{ . }}</a>
-    {{ end }}
-  </span>
-      
-</div>
-
-<div class="share">
-  <span class="share-buttons">
-    <!-- Share to -->
-    <span class="x-icon">
-      <a href="https://x.com/intent/tweet?url={{ .Permalink }}&text={{ .Title }}&via=YourUsername&hashtags=tag1,tag2" target="_blank">
-        <img src="/images/x-icon.svg" alt="分享到X">
-      </a>
+    <span class="author">
+      <!-- 作者图标 -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="24px"
+        viewBox="0 -960 960 960"
+        width="24px"
+        fill="#5f6368"
+      >
+        <path
+          d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"
+        />
+      </svg>
+      <!-- 作者姓名 -->
+      {{ with .Params.author }}
+      <a href="/authors/{{ . | urlize }}">{{ . }}</a>
+      {{ else }} {{ with .Site.Params.author }}
+      <a href="/authors/{{ . | urlize }}">{{ . }}</a>
+      {{ else }}
+      <span>Unknown Author</span>
+      {{ end }} {{ end }}
     </span>
-  </span>
+    <span>
+      <!-- 更新： -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="24px"
+        viewBox="0 -960 960 960"
+        width="24px"
+        fill="#5f6368"
+      >
+        <path
+          d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v200h-80v-40H200v400h280v80H200Zm0-560h560v-80H200v80Zm0 0v-80 80ZM560-80v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q8 9 12.5 20t4.5 22q0 11-4 22.5T903-300L683-80H560Zm300-263-37-37 37 37ZM620-140h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z"
+        />
+      </svg>
+      {{ .Date.Format "2006-01-02" }}
+    </span>
+    <span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="24px"
+        viewBox="0 -960 960 960"
+        width="24px"
+        fill="#5f6368"
+      >
+        <path
+          d="M480-120q-75 0-140.5-28.5t-114-77q-48.5-48.5-77-114T120-480q0-75 28.5-140.5t77-114q48.5-48.5 114-77T480-840q82 0 155.5 35T760-706v-94h80v240H600v-80h110q-41-56-101-88t-129-32q-117 0-198.5 81.5T200-480q0 117 81.5 198.5T480-200q105 0 183.5-68T756-440h82q-15 137-117.5 228.5T480-120Zm112-192L440-464v-216h80v184l128 128-56 56Z"
+        />
+      </svg>
+      {{ .Lastmod.Format "2006-01-02" }}
+    </span>
+    <span>
+      <!-- 字数： -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="24px"
+        viewBox="0 -960 960 960"
+        width="24px"
+        fill="#5f6368"
+      >
+        <path
+          d="M80-120v-80h800v80H80Zm40-120v-280h120v280H120Zm200 0v-480h120v480H320Zm200 0v-360h120v360H520Zm200 0v-600h120v600H720Z"
+        />
+      </svg>
+      {{ .WordCount }} 字
+    </span>
+    <span>
+      <!-- 阅读： -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="24px"
+        viewBox="0 -960 960 960"
+        width="24px"
+        fill="#5f6368"
+      >
+        <path
+          d="M203-480h117q11 0 21 5.5t15 16.5l44 88 124-248q11-23 36-23t36 23l69 138h92q-15-102-93-171t-184-69q-106 0-184 69t-93 171Zm277 320q106 0 184-69t93-171H640q-11 0-21-5.5T604-422l-44-88-124 248q-11 23-36 23t-36-23l-69-138h-92q15 102 93 171t184 69Zm0 80q-74 0-139.5-28.5T226-186q-49-49-77.5-114.5T120-440h80q0 116 82 198t198 82q116 0 198-82t82-198h80q0 74-28.5 139.5T734-186q-49 49-114.5 77.5T480-80ZM120-440q0-74 28.5-139.5T226-694q49-49 114.5-77.5T480-800q62 0 119 20t107 58l56-56 56 56-56 56q38 50 58 107t20 119h-80q0-116-82-198t-198-82q-116 0-198 82t-82 198h-80Zm240-400v-80h240v80H360Zm120 680q-116 0-198-82t-82-198q0-116 82-198t198-82q116 0 198 82t82 198q0 116-82 198t-198 82Zm0-280Z"
+        />
+      </svg>
+      {{ $readingSpeed := .Site.Language.Params.reading_speed }} {{ $readingTime
+      := div .WordCount $readingSpeed }} {{ if gt (mod .WordCount $readingSpeed)
+      0 }} {{ add $readingTime 1 }} {{ else }} {{ $readingTime }} {{ end }}
+      minutes
+    </span>
+    <span class="tags">
+      <!-- 标签 -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="24px"
+        viewBox="0 -960 960 960"
+        width="24px"
+        fill="#5f6368"
+      >
+        <path
+          d="m389-400 91-55 91 55-24-104 80-69-105-9-42-98-42 98-105 9 80 69-24 104ZM200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Zm80-122 200-86 200 86v-518H280v518Zm0-518h400-400Z"
+        />
+      </svg>
+
+      {{ range .Params.tags }}
+      <a href="/tags/{{ . | urlize }}">{{ . }}</a>
+      {{ end }}
+    </span>
   </div>
+
+  <!-- <div class="share"> -->
+  <!-- <span class="share-buttons"> -->
+  <!-- Share to -->
+  <!-- <span class="x-icon"> -->
+  <!-- <a -->
+  <!-- href="https://x.com/intent/tweet?url={{ .Permalink }}&text={{ .Title }}&via=YourUsername&hashtags=tag1,tag2" -->
+  <!-- target="_blank" -->
+  <!-- > -->
+  <!-- <img src="/images/x-icon.svg" alt="分享到X" /> -->
+  <!-- </a> -->
+  <!-- </span> -->
+  <!-- </span> -->
+  <!-- </div> -->
 </div>
 
 {{ if .Page.TableOfContents }}
@@ -119,9 +132,7 @@ $dateHuman := .Date | time.Format ":date_long" }}
 {{ end }}
 
 <div class="content-wrapper">
-  <div class="single-content">
-  {{ .Content }}
-  </div>
+  <div class="single-content">{{ .Content }}</div>
   <a href="#" class="back-to-top">
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -138,7 +149,3 @@ $dateHuman := .Date | time.Format ":date_long" }}
 </div>
 <!-- {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }} -->
 {{ end }}
-
-
-  
-
