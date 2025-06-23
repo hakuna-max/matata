@@ -10,6 +10,10 @@ body {
   line-height: 200%;
   letter-spacing: 0.05em;
 
+  p {
+    margin: 0 0 0.8em; /* 设置段落的底部外边距 */
+  }
+
   // counter-reset: h2;
 
   ::selection {
