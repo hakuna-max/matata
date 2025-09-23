@@ -14,7 +14,14 @@
 ></script>
 
 <!-- 引入 MathJax -->
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+
+<!-- 可选：添加 HEIC 支持库 -->
+<script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.3/dist/heic2any.min.js"></script>
 
 {{- with resources.Get "js/main.js" }} {{- if eq hugo.Environment "development"
 }} {{- with . | js.Build }}
