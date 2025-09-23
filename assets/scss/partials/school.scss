@@ -172,75 +172,151 @@ $bg-300: #c2baa6;
   }
 }
 
+/* photo-gallery.scss */
+
 .single-photo {
   max-width: 800px;
+  /* 限制内容宽度 */
   margin: 0 auto;
   padding: 20px;
+  text-align: center;
 
-  .photo-carousel {
+  h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .photo-meta {
+    margin-bottom: 20px;
+    color: #666;
+    font-size: 0.9em;
+
+    time {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+  }
+
+  .photo-gallery {
     position: relative;
     width: 100%;
-    height: 500px; // Adjust as needed
+    max-width: 700px;
+    /* 画廊最大宽度 */
+    margin: 30px auto;
+    background-color: #f0f0f0;
+    border-radius: 8px;
     overflow: hidden;
+    /* 确保图片不会溢出 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding-bottom: 60%;
+    /* 固定宽高比，例如16:9，或根据图片实际尺寸调整 */
+    height: 0;
+    /* 配合padding-bottom实现响应式高度 */
 
-    .carousel-images {
-      position: relative;
+    .gallery-image {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
+      object-fit: contain;
+      /* 保持图片比例并填充容器，或者cover截取填充 */
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      border-radius: 8px;
+      background-color: #fff;
+      /* 防止背景透视，可选 */
 
-      .carousel-image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: contain; // Or cover, depending on preference
-        opacity: 0;
-        transition: opacity 0.5s ease;
+      &.active {
+        opacity: 1;
         z-index: 1;
+        /* 确保激活的图片在最上层 */
+      }
+    }
 
-        &.active {
-          opacity: 1;
-          z-index: 2;
+    .gallery-nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      z-index: 2;
+      /* 确保按钮在图片上方 */
+      pointer-events: none;
+      /* 默认不响应鼠标事件 */
+
+      button {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        font-size: 1.5em;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        pointer-events: all;
+        /* 按钮响应鼠标事件 */
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        &.prev-button {
+          margin-left: 10px;
+        }
+
+        &.next-button {
+          margin-right: 10px;
         }
       }
     }
 
-    .carousel-prev,
-    .carousel-next {
+    .gallery-counter {
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0, 0, 0, 0.5);
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.6);
       color: white;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      z-index: 3;
-    }
-
-    .carousel-prev {
-      left: 10px;
-    }
-
-    .carousel-next {
-      right: 10px;
+      padding: 5px 12px;
+      border-radius: 15px;
+      font-size: 0.9em;
+      z-index: 2;
     }
   }
 
-  .photo-meta {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  .full-image {
-    // Removed as we're using carousel now
-    display: none;
-  }
-
-  nav.photo-nav {
+  .photo-nav {
+    margin-top: 40px;
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    align-items: center;
+
+    a {
+      display: inline-block;
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+
+      &.prev {
+        margin-right: auto;
+      }
+
+      &.next {
+        margin-left: auto;
+      }
+    }
   }
 }
