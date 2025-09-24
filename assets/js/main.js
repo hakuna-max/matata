@@ -22,5 +22,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initProtectedContent();
 
   initAuthorPhoto();
-  //   initDragonAnimation();
+  initDragonAnimation();
 });
