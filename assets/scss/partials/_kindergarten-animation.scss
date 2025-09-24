@@ -1,16 +1,16 @@
 // _kindergarten-animation.scss
 
 // 定义一些柔和、多彩的颜色
-$colors: #f3a683, #f7d794, #77dd77, #84b4c8, #c598d8, #f8c291;
+$colors: #ffadad, #ffd6a5, #fdffb6, #caffbf, #9bf6ff, #a0c4ff, #bdb2ff;
 
-// 为 stage-row 创建一个相对定位的容器，以便伪元素可以绝对定位
+// 舞台行（例如“幼儿园”所在的行）的样式
 .stage-row.kindergarten {
     position: relative;
-    overflow: hidden; // 隐藏超出边界的形状
-    background-color: #f0f8ff; // 设置一个淡雅的背景色
+    overflow: hidden; // 隐藏超出边界的动画形状
+    background-color: #f0f8ff; // 设置一个淡雅的天蓝色背景
 }
 
-// 使用 ::before 和 ::after 伪元素来创建动画层
+// 使用 ::before 和 ::after 创建两个动画层，以产生视差效果
 .stage-row.kindergarten::before,
 .stage-row.kindergarten::after {
     content: "";
@@ -19,63 +19,91 @@ $colors: #f3a683, #f7d794, #77dd77, #84b4c8, #c598d8, #f8c291;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0; //确保动画在内容的下方
+    z-index: 0; // 确保动画在内容的下方
+    background-repeat: no-repeat;
 }
 
-// 创建多个动画延迟和持续时间不同的形状
-@for $i from 1 through 15 {
-    .stage-row.kindergarten::before {
-        // 创建圆形
-        background-image: radial-gradient(circle at #{random(100)}% #{random(100)}%, nth($colors, random(length($colors))) 10%, transparent 11%);
-        background-repeat: no-repeat;
-        animation: move 20s linear infinite;
-        animation-delay: #{$i * -1.5}s;
+// 定义一个 Sass mixin 来生成随机的形状，避免代码重复
+// 参数: $count - 形状的数量, $shape-type - 'circles' or 'squares'
+@mixin generate-shapes($count, $shape-type) {
+    // 初始化空的Sass列表
+    $bg-images: (
+    );
+$bg-positions: (
+);
+$bg-sizes: (
+);
+
+// 循环生成每个形状的属性
+@for $i from 1 through $count {
+    $size: random(8) + 2vw; // 随机大小 (2vw 到 10vw 之间)
+    $color: nth($colors, random(length($colors))); // 随机颜色
+    $x-pos: random(100) * 1%; // 随机X轴位置
+    $y-pos: random(100) * 1%; // 随机Y轴位置
+
+    // 根据形状类型创建渐变
+    $shape-gradient: null;
+
+    @if $shape-type =='circles' {
+        // radial-gradient 创建圆形
+        $shape-gradient: radial-gradient(circle, $color 60%, transparent 62%);
     }
+
+    @else if $shape-type =='squares' {
+        // 线性渐变也可以模拟形状，这里用径向渐变加border-radius
+        $shape-gradient: radial-gradient($color, $color);
+    }
+
+    // 将生成的属性追加到列表中
+    $bg-images: append($bg-images, $shape-gradient, comma);
+    $bg-positions: append($bg-positions, $x-pos $y-pos, comma);
+    $bg-sizes: append($bg-sizes, $size $size, comma);
 }
 
-@for $i from 1 through 10 {
-    .stage-row.kindergarten::after {
-        // 创建正方形 (通过border-radius控制)
-        background-image: radial-gradient(circle at #{random(100)}% #{random(100)}%, nth($colors, random(length($colors))) 20%, transparent 21%);
-        background-repeat: no-repeat;
-        animation: spin 30s linear infinite;
-        animation-delay: #{$i * -2}s;
-        border-radius: 10%; // 使其看起来像方形
-    }
+// 将列表赋值给CSS属性
+background-image: $bg-images;
+background-position: $bg-positions;
+background-size: $bg-sizes;
+
+@if $shape-type =='squares' {
+    border-radius: 10%; // 给方形添加一点圆角
+}
 }
 
-// 移动动画
-@keyframes move {
-    0% {
-        transform: translateY(0) translateX(0) scale(1);
-        opacity: 0.8;
-    }
-
-    50% {
-        transform: translateY(#{random(200) - 100}px) translateX(#{random(200) - 100}px) scale(1.5);
-        opacity: 0.5;
-    }
-
-    100% {
-        transform: translateY(0) translateX(0) scale(1);
-        opacity: 0.8;
-    }
+// 应用到 ::before 伪元素 (第一层动画)
+.stage-row.kindergarten::before {
+    @include generate-shapes(15, 'circles'); // 生成15个圆形
+    animation: float-up 35s infinite linear;
 }
 
-// 旋转和移动动画
-@keyframes spin {
-    from {
-        transform: rotate(0deg) scale(1) translateY(0);
-    }
-
-    to {
-        transform: rotate(360deg) scale(1.2) translateY(-50px);
-    }
+// 应用到 ::after 伪元素 (第二层动画)
+.stage-row.kindergarten::after {
+    @include generate-shapes(10, 'squares'); // 生成10个方形
+    opacity: 0.6;
+    animation: float-up 50s infinite linear; // 使用不同时长创建视差
 }
 
-// 确保 stage-label 和 stage-years 在动画之上
+// 确保实际内容在动画之上
 .stage-label,
 .stage-years {
     position: relative;
     z-index: 1;
+}
+
+// 定义漂浮动画
+@keyframes float-up {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+
+    100% {
+        // 移动出屏幕顶端，并增加一点旋转
+        transform: translateY(-100vh) rotate(180deg);
+        opacity: 0.8;
+    }
 }
