@@ -1,0 +1,81 @@
+// _kindergarten-animation.scss
+
+// 定义一些柔和、多彩的颜色
+$colors: #f3a683, #f7d794, #77dd77, #84b4c8, #c598d8, #f8c291;
+
+// 为 stage-row 创建一个相对定位的容器，以便伪元素可以绝对定位
+.stage-row.kindergarten {
+    position: relative;
+    overflow: hidden; // 隐藏超出边界的形状
+    background-color: #f0f8ff; // 设置一个淡雅的背景色
+}
+
+// 使用 ::before 和 ::after 伪元素来创建动画层
+.stage-row.kindergarten::before,
+.stage-row.kindergarten::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; //确保动画在内容的下方
+}
+
+// 创建多个动画延迟和持续时间不同的形状
+@for $i from 1 through 15 {
+    .stage-row.kindergarten::before {
+        // 创建圆形
+        background-image: radial-gradient(circle at #{random(100)}% #{random(100)}%, nth($colors, random(length($colors))) 10%, transparent 11%);
+        background-repeat: no-repeat;
+        animation: move 20s linear infinite;
+        animation-delay: #{$i * -1.5}s;
+    }
+}
+
+@for $i from 1 through 10 {
+    .stage-row.kindergarten::after {
+        // 创建正方形 (通过border-radius控制)
+        background-image: radial-gradient(circle at #{random(100)}% #{random(100)}%, nth($colors, random(length($colors))) 20%, transparent 21%);
+        background-repeat: no-repeat;
+        animation: spin 30s linear infinite;
+        animation-delay: #{$i * -2}s;
+        border-radius: 10%; // 使其看起来像方形
+    }
+}
+
+// 移动动画
+@keyframes move {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: translateY(#{random(200) - 100}px) translateX(#{random(200) - 100}px) scale(1.5);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0.8;
+    }
+}
+
+// 旋转和移动动画
+@keyframes spin {
+    from {
+        transform: rotate(0deg) scale(1) translateY(0);
+    }
+
+    to {
+        transform: rotate(360deg) scale(1.2) translateY(-50px);
+    }
+}
+
+// 确保 stage-label 和 stage-years 在动画之上
+.stage-label,
+.stage-years {
+    position: relative;
+    z-index: 1;
+}
