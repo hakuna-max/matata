@@ -6,44 +6,40 @@
 
 // 这是我们在 partial HTML 中添加的顶层容器
 .animation-background-container {
+    // [关键] 绝对定位于 .stage-row 内部
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
+
+    // [关键] 将 z-index 设为 0。
+    // 因为它在 .stage-row 内部，所以它会位于 z-index: 1 的内容层之下。
+    z-index: -1 !important;
+
     overflow: hidden;
     border-radius: $border-radius;
 
-    // [关键] 让容器本身成为 Flexbox，以便轻松居中场景
+    // 使用 Flexbox 来轻松实现对齐
     display: flex;
     justify-content: center; // 水平居中
-    align-items: flex-end; // 垂直居中
+    align-items: flex-end; // [关键] 垂直底部对齐
 }
 
-
-// // 这是原始动画的场景中心容器
+// 原始动画的场景中心容器
 .section-center {
-    // 定义原始宽高比
-    --aspect-ratio: 600 / 450;
-
-    // 移除所有旧的 transform 和定位代码
     margin-bottom: 20px;
 
-    // --- 核心自适应逻辑 ---
+    // 1. 设置元素的原始尺寸
+    width: 600px;
+    height: 450px;
 
-    // 1. 让场景宽度始终等于其容器宽度
-    width: 100%;
+    // 2. [核心魔法] 使用 max-width 和 max-height 来约束元素
+    // 浏览器会自动按比例缩小元素，以同时满足这两个条件
+    max-width: 100%;
+    max-height: 100%;
 
-    // 2. 根据宽度和原始宽高比，自动计算高度
-    height: calc(100% / var(--aspect-ratio));
-
-    // 3. 如果计算出的高度超过了容器高度，则反过来基于高度进行计算
-    @media (min-aspect-ratio: 600/450) {
-        height: 100%;
-        width: calc(100% * var(--aspect-ratio));
-    }
-
+    // 3. 确保内部的绝对定位元素能正常工作
     position: relative;
 }
 
