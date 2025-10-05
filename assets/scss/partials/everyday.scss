@@ -1,0 +1,159 @@
+// assets/scss/everyday.scss
+
+// ---- 变量定义 (方便统一修改) ----
+$spacing-unit: 1rem;
+$card-bg: #ffffff;
+$card-border-color: #e0e0e0;
+$card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+$card-hover-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+$text-color-dark: #333;
+$text-color-light: #666;
+$accent-color: #007bff;
+$border-radius: 8px;
+
+
+// ---- 整体容器 ----
+.everyday-archive {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: $spacing-unit * 2;
+
+    h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: $spacing-unit * 2;
+        color: $text-color-dark;
+    }
+}
+
+// ---- 每一年的分组 ----
+.year-group {
+    margin-bottom: $spacing-unit * 3;
+
+    h2 {
+        font-size: 2rem;
+        color: $text-color-dark;
+        padding-bottom: $spacing-unit;
+        border-bottom: 2px solid $card-border-color;
+        margin-bottom: $spacing-unit * 2;
+    }
+}
+
+// ---- 月份网格布局 ----
+.months-grid {
+    display: grid;
+    gap: $spacing-unit * 1.5;
+
+    // 默认 (手机): 1列
+    grid-template-columns: 1fr;
+
+    // 中等屏幕 (平板): 3列
+    @media (min-width: 600px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    // 大屏幕 (桌面): 6列
+    @media (min-width: 1200px) {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+
+// ---- 每个月的卡片 ----
+.month-stack {
+    background: $card-bg;
+    border-radius: $border-radius;
+    border: 1px solid $card-border-color;
+    box-shadow: $card-shadow;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; // 确保堆叠照片的阴影不溢出卡片边界
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: $card-hover-shadow;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+        margin: 0;
+        padding: $spacing-unit;
+        text-align: center;
+        background-color: #f8f9fa; // 给标题一个浅色背景
+        border-bottom: 1px solid $card-border-color;
+
+        a {
+            text-decoration: none;
+            color: $accent-color;
+            font-weight: 600;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+// ---- 照片堆叠效果的容器 ----
+.photo-stack {
+    position: relative;
+    min-height: 180px; // 给堆叠一个最小高度
+    padding: $spacing-unit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        position: absolute;
+        width: 80%;
+        max-width: 150px;
+        height: auto;
+        border-radius: $border-radius / 2;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+        object-fit: cover; // 确保图片不变形
+
+        // 制造随机堆叠感
+        &:nth-child(1) {
+            transform: rotate(-8deg);
+        }
+
+        &:nth-child(2) {
+            transform: rotate(4deg) scale(0.98);
+        }
+
+        &:nth-child(3) {
+            transform: rotate(10deg) scale(0.95);
+        }
+
+        &:nth-child(4) {
+            transform: rotate(-2deg) scale(0.92);
+        }
+
+        &:nth-child(5) {
+            transform: rotate(0deg) scale(0.9);
+        }
+    }
+
+    // 鼠标悬停在卡片上时，照片展开
+    .month-stack:hover & img {
+        transform: rotate(0deg) scale(1);
+
+        &:nth-child(1) {
+            transform: translate(-30%, -15%) rotate(-10deg) scale(1.05);
+        }
+
+        &:nth-child(2) {
+            transform: translate(30%, -15%) rotate(10deg) scale(1.05);
+        }
+
+        &:nth-child(3) {
+            transform: translate(0, 15%) rotate(0deg) scale(1.05);
+        }
+
+        // 隐藏第4和第5张，让效果更清爽
+        &:nth-child(4),
+        &:nth-child(5) {
+            opacity: 0;
+        }
+    }
+}
